@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QEEPP | Disciplined Transformation</title>
+  <meta name="description" content="The QEEPP Framework is a structural discipline model for enterprise digital transformation: Quality, Effectiveness, Efficiency, Performance, Productivity." />
+  <!--link rel="icon" type="image/png" sizes="32x32" href="qeepp-favicon32.png"-->
+  <link rel="icon" type="image/png" href="qeepp-favicon16.png">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --text:#e8eef6;
+      --muted:#a9b6c6;
+      --line:#233244;
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --ok:#86efac;
+      --warn:#fbbf24;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(125,211,252,.12), transparent 55%),
+        radial-gradient(900px 700px at 90% 20%, rgba(167,139,250,.12), transparent 55%),
+        radial-gradient(700px 600px at 50% 110%, rgba(134,239,172,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background: rgba(11,15,20,.72);
+      border-bottom:1px solid rgba(35,50,68,.55);
+    }
+    .navrow{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:.3px;
+	  font-size: 28px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:3px;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.85));
+      box-shadow: 0 8px 22px rgba(125,211,252,.12);
+      position:relative;
+      overflow:hidden;
+    }
+	.logo {
+	  width: 34px;
+	  height: 34px;
+	  background-image: url('qeepp-icon.png');
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	}
+    /*.logo:before{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,.55), transparent 45%);
+      transform: rotate(10deg);
+    }*/
+    .navlinks{
+      display:flex; gap:16px;
+      color:var(--muted);
+      font-size:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{padding:8px 10px; border-radius:12px}
+    .navlinks a:hover{background: rgba(35,50,68,.35); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(35,50,68,.75);
+      background: rgba(15,22,32,.65);
+      color:var(--text);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      font-weight:600;
+      font-size:14px;
+      gap:10px;
+      cursor:pointer;
+    }
+    .btn:hover{border-color: rgba(125,211,252,.55); background: rgba(15,22,32,.9)}
+    .btn.primary{
+      border-color: rgba(125,211,252,.55);
+      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.18));
+    }
+    .hero{
+      padding:60px 0 26px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:start;
+    }
+    @media (max-width: 940px){
+      .grid2{grid-template-columns:1fr; gap:18px}
+      .navlinks{display:none}
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; color:var(--muted);
+      border:1px solid rgba(35,50,68,.6);
+      background: rgba(15,22,32,.55);
+      padding:8px 12px;
+      border-radius:999px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--ok);
+      box-shadow: 0 0 0 6px rgba(134,239,172,.10);
+    }
+    h1{
+      font-size:44px;
+      line-height:1.08;
+      margin:14px 0 12px;
+      letter-spacing:-.8px;
+    }
+    @media (max-width:520px){ h1{font-size:34px} }
+    .lead{
+      font-size:16px; color:var(--muted);
+      max-width: 62ch;
+    }
+    .heroActions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .panel{
+      background: rgba(15,22,32,.6);
+      border:1px solid rgba(35,50,68,.65);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .panel h3{margin:0 0 10px; font-size:14px; color:var(--muted); font-weight:700; letter-spacing:.25px}
+    .panel p{margin:0; color:var(--text)}
+    .mini{
+      font-family:var(--mono);
+      font-size:12px;
+      color: rgba(232,238,246,.85);
+      border:1px solid rgba(35,50,68,.65);
+      background: rgba(11,15,20,.45);
+      border-radius: 14px;
+      padding:14px;
+      overflow:auto;
+      white-space:pre;
+      line-height:1.35;
+    }
+    .section{padding:26px 0}
+    .sectionHeader{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom:14px;
+    }
+    .sectionHeader h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .sectionHeader .sub{
+      color:var(--muted);
+      font-size:14px;
+      max-width: 70ch;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 940px){ .cards{grid-template-columns:1fr} }
+    .card{
+      background: rgba(15,22,32,.55);
+      border:1px solid rgba(35,50,68,.65);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:16px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .bullets{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .bullets li{margin:6px 0}
+    .modelWrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 940px){ .modelWrap{grid-template-columns:1fr} }
+    .stack{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .layer{
+      border-radius: 16px;
+      padding:14px 14px;
+      border:1px solid rgba(35,50,68,.65);
+      background: rgba(15,22,32,.55);
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:10px;
+    }
+    .layer strong{display:block; font-size:14px; letter-spacing:.2px}
+    .layer span{display:block; color:var(--muted); font-size:13px; margin-top:2px}
+    .pill{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(35,50,68,.75);
+      background: rgba(11,15,20,.35);
+      color: rgba(232,238,246,.85);
+      flex:0 0 auto;
+      align-self:center;
+    }
+    .callout{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,50,68,.65);
+      background: linear-gradient(135deg, rgba(125,211,252,.10), rgba(167,139,250,.08));
+      padding:16px;
+    }
+    .callout h3{margin:0 0 8px}
+    .callout p{margin:0; color:var(--muted)}
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 1100px){ .steps{grid-template-columns:1fr; } }
+    .step{
+      border:1px solid rgba(35,50,68,.65);
+      background: rgba(15,22,32,.55);
+      border-radius: 16px;
+      padding:14px;
+      min-height: 140px;
+    }
+    .step .n{
+      font-family: var(--mono);
+      color: rgba(232,238,246,.75);
+      font-size:12px;
+      opacity:.95;
+    }
+    .step h4{margin:6px 0 8px; font-size:14px}
+    .step ul{margin:0; padding-left:16px; color:var(--muted); font-size:13px}
+    .step li{margin:6px 0}
+    .footer{
+      padding:34px 0 44px;
+      border-top:1px solid rgba(35,50,68,.55);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footergrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 940px){ .footergrid{grid-template-columns:1fr} }
+    .smallLinks a{display:inline-block; margin-right:12px; padding:6px 0}
+    .smallLinks a:hover{color:var(--text)}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius: 999px;
+      border:1px solid rgba(35,50,68,.65);
+      background: rgba(15,22,32,.55);
+      color: rgba(232,238,246,.85);
+      font-size:12px;
+      margin-top: 10px;
+    }
+    .tag .s{
+      width:8px; height:8px; border-radius: 99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(125,211,252,.10);
+    }
+	/* height of your sticky header + a little breathing room */
+	:root { --scroll-offset: 86px; }
+	/* apply to all sections you jump to */
+	section[id] { scroll-margin-top: var(--scroll-offset); }
+	.initial {
+	  font-weight: 700;
+	  font-size: 1.25em;
+	  letter-spacing: 1px;
+	  color: var(--accent);
+	  margin-right: 1px;
+	}
+	
+.ascent-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.ascent-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(125, 211, 252, 0.5),
+    transparent 100%
+  );
+  clip-path: polygon(
+  50% 10%,     /* tip */
+  70% 31%,    /* right head */
+  60% 31%,    /* shaft right */
+  60% 85%,    /* shaft bottom */
+  40% 85%,    /* shaft bottom left */
+  40% 31%,    /* shaft left */
+  30% 31%     /* left head */
+);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ascent-bg > * {
+  position: relative;
+  z-index: 1;
+}	
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="navrow">
+        <a class="brand" href="#top" aria-label="QEEPP home">
+          <span class="logo" aria-hidden="true"></span>
+          <!--span>Q E E P P</span-->
+		  <span class="initial">QEEPP</span>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#problem">Problem</a>
+          <a href="#model">Model</a>
+          <a href="#method">Method</a>
+          <a href="#use">Use cases</a>
+          <a href="#resources">Resources</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a class="btn" href="#resources">Download</a>
+          <a class="btn primary" href="#contact">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <div class="kicker" title="Transformation Discipline Framework">
+            <span class="dot" aria-hidden="true"></span>
+            <!--span>QEEPP is a structural discipline model for enterprise digital transformation.</span-->
+			<span><h3>QEEPP – Structural Discipline Framework for Digital Transformation</h3></span>
+          </div>
+
+          <h1>Disciplined Transformation</h1>
+
+          <p class="lead">
+			Transformation without structural discipline collapses at scale.
+			Scale amplifies structural strength - or structural weakness.
+			QEEPP stabilizes foundational quality, aligns to business value, removes waste, institutionalizes measurement, and enables scale without degradation.
+            
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#model">See the model</a>
+            <a class="btn" href="#method">Implementation approach</a>
+            <a class="btn" href="#resources">Whitepaper (PDF)</a>
+          </div>
+
+          <div class="tag" title="Method-agnostic">
+            <span class="s" aria-hidden="true"></span>
+            <span><h3>Governs transformation maturity independent of strategy and delivery methods</h3></span>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Quick summary panel">
+          <h3>Five Dimensions</h3>
+          <div class="mini" role="note">
+<h3>Structural Layers of Disciplined Transformation</h3>
+<strong><span class="initial">Q</span>uality</strong>        Structural integrity before velocity
+<strong><span class="initial">E</span>ffectiveness</strong>  Relevance before optimization
+<strong><span class="initial">E</span>fficiency</strong>     Lean before expansion
+<strong><span class="initial">P</span>erformance</strong>    Measurement before momentum
+<strong><span class="initial">P</span>roductivity</strong>   Scale without degradation
+          </div>
+          <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+            Use QEEPP to govern transformation maturity across platforms, programs, portfolios, and operating models.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>Why transformations fail or underperform</h2>
+          <div class="sub">Not because the ambition is wrong, but because the sequence is wrong.</div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Scaling instability</h3>
+          <p>Velocity increases, but reliability drops. Risk multiplies as you expand.</p>
+          <ul class="bullets">
+            <li>Inconsistent standards across teams</li>
+            <li>Data and security gaps surface at scale</li>
+            <li>Technical debt becomes structural</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Optimizing irrelevance</h3>
+          <p>Cost and process optimization can detach from sustained value alignment.</p>
+          <ul class="bullets">
+            <li>Misalignment within the portfolio</li>
+            <li>Outputs without measurable outcomes</li>
+            <li>Optimization of non-strategic initiatives</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Measuring noise</h3>
+          <p>Dashboards proliferate while accountability stays fuzzy.</p>
+          <ul class="bullets">
+            <li>Activity metrics replace business results</li>
+            <li>Performance is reported, not managed</li>
+            <li>Progress looks good, outcomes stay flat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL -->
+  <section id="model" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>The QEEPP model</h2>
+          <div class="sub">A foundation-to-scale maturity progression for governing digital transformation</div>
+        </div>
+      </div>
+
+      <div class="modelWrap">
+        <div class="panel ascent-bg">
+          <h3>Controlled ascent</h3>
+          <div class="stack" aria-label="QEEPP layers">
+            <div class="layer">
+              <div>
+                <strong>Productivity</strong>
+                <span>Sustainable scale and capacity expansion</span>
+              </div>
+              <div class="pill">5</div>
+            </div>
+            <div class="layer">
+              <div>
+                <strong>Performance</strong>
+                <span>Measured execution and accountability</span>
+              </div>
+              <div class="pill">4</div>
+            </div>
+            <div class="layer">
+              <div>
+                <strong>Efficiency</strong>
+                <span>Lean operating model and optimized flow</span>
+              </div>
+              <div class="pill">3</div>
+            </div>
+            <div class="layer">
+              <div>
+                <strong>Effectiveness</strong>
+                <span>Strategic alignment and value realization</span>
+              </div>
+              <div class="pill">2</div>
+            </div>
+            <div class="layer">
+              <div>
+                <strong>Quality</strong>
+                <span>Structural integrity, security, data, reliability</span>
+              </div>
+              <div class="pill">1</div>
+            </div>
+          </div>
+          <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+            Each layer depends on the strength of the layers beneath it.<br>
+			Scale is the last outcome, not the first ambition.
+          </p>
+        </div>
+		<div>
+			<div class="callout">
+			  <h3>Core sequence</h3>
+			  <p style="margin-bottom:12px;">
+				QEEPP formalizes a practical progression used to govern transformation maturity:
+			  </p>
+			  <div class="mini" aria-label="Core sequence">Stabilize  →  Align  →  Optimize  →  Measure  →  Scale</div>
+			  <p style="margin-top:12px;">
+				QEEPP does not slow delivery. It prevents transformation from collapsing under its own scale.
+			  </p>
+			</div>
+			<br>
+			<div class="panel">
+				<p style="margin:0; color:var(--muted); font-size:14px;">
+					The structured progression is ensuring that transformation efforts do not amplify instability, inefficiency, or strategic misalignment.
+				</p>
+			</div>
+			
+		</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section id="method" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>Implementation methodology</h2>
+          <div class="sub">Concrete activities in QEEPP order for a transformation program.</div>
+        </div>
+      </div>
+
+      <div class="steps" aria-label="Implementation steps">
+        <div class="step">
+          <div class="n">1. Q</div>
+          <h4>Quality</h4>
+          <ul>
+			<li>Stabilize</li>
+            <li>Baseline architecture, security, data, reliability</li>
+            <li>Define guardrails, reference architectures, standards</li>
+            <li>Quantify technical debt and risk</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="n">2. E</div>
+          <h4>Effectiveness</h4>
+          <ul>
+			<li>Align</li>
+            <li>Strategy to capabilities and value streams</li>
+            <li>Define measurable outcomes and OKRs</li>
+            <li>Prioritize initiatives by impact</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="n">3. E</div>
+          <h4>Efficiency</h4>
+          <ul>
+			<li>Optimize</li>
+            <li>FinOps baselining and optimization</li>
+            <li>App rationalization and operating model changes</li>
+            <li>Automation, DevSecOps flow improvements</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="n">4. P</div>
+          <h4>Performance</h4>
+          <ul>
+			<li>Measure</li>
+            <li>KPI, SLA, SLO definition and dashboards</li>
+            <li>Execution cadence and accountability rhythm</li>
+            <li>Risk and compliance reporting automation</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="n">5. P</div>
+          <h4>Productivity</h4>
+          <ul>
+			<li>Scale</li>
+            <li>Scale platforms, self service, reusable components</li>
+            <li>Expand automation and enablement</li>
+            <li>Scale without degrading quality or control</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:14px;">
+        <h3>How it is used</h3>
+        <p style="color:var(--muted); font-size:14px; margin:0;">
+          Apply QEEPP as a portfolio lens: evaluate each initiative across all five layers and establish demonstrated stability and alignment before scale. Regression in the Quality layer invalidates gains in the Productivity layer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section id="use" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>Where QEEPP fits best</h2>
+          <div class="sub">High-complexity environments where scale and risk matter.</div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Enterprise modernization</h3>
+          <p>Cloud migrations, platform modernization, operating model change, portfolio governance.</p>
+        </div>
+        <div class="card">
+          <h3>Data and AI platforms</h3>
+          <p>Guardrailed adoption, data governance, model risk, scalable delivery, measurable outcomes.</p>
+        </div>
+        <div class="card">
+          <h3>Regulated environments</h3>
+          <p>Financial services, healthcare, public sector, any setting where reliability and compliance are non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>Resources</h2>
+          <div class="sub">Starter assets to apply QEEPP consistently across teams.</div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>QEEPP whitepaper</h3>
+          <p>Definition, model, implementation guidance, and executive narrative.</p>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="#" aria-label="Download whitepaper">Download PDF</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Assessment checklist</h3>
+          <p>A single-page scorecard for portfolio governance across the five dimensions.</p>
+          <div style="margin-top:12px;">
+            <a class="btn" href="#" aria-label="Get checklist">Get checklist</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Slide kit</h3>
+          <p>Problem, model, outcome narrative for steering committees and leadership updates.</p>
+          <div style="margin-top:12px;">
+            <a class="btn" href="#" aria-label="Get slide kit">Get slide kit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>About</h2>
+          <div class="sub">
+		  QEEPP (pronounced as "cue-eep")
+		  </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Authorship</h3>
+        <p style="margin:0; color:var(--muted); font-size:14px;">
+          The QEEPP (Quality–Effectiveness–Efficiency–Performance–Productivity) Framework was conceived and developed by <strong>Rado Dimitrov</strong> as a structural discipline framework for enterprise-scale digital transformation.		  
+        </p>
+        <p style="margin:12px 0 0; color:var(--muted); font-size:14px;">
+		The framework reflects practical experience in cloud architecture, enterprise modernization, AI platform governance, and operating model optimization.<br>
+		It was designed to address a recurring systemic gap in large-scale transformation programs: the tendency to scale initiatives before stabilizing foundational quality, aligning to measurable business outcomes, and institutionalizing performance discipline.<br><br>
+		QEEPP formalizes a structured progression — stabilize, align, optimize, measure, and scale — ensuring that transformation efforts do not amplify instability, inefficiency, or strategic misalignment.<br><br>
+		The conceptual architecture, articulation, and implementation guidance contained within this document originate from the author.
+		</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>Talk to us</h2>
+          <div class="sub">Transformation without chaos</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Engagement options</h3>
+          <ul class="bullets" style="margin-top:0;">
+            <li>Executive briefing: 45 minutes</li>
+            <li>QEEPP assessment: 2 to 4 weeks</li>
+            <li>Transformation governance setup: 4 to 8 weeks</li>
+            <li>Ongoing advisory: monthly cadence</li>
+          </ul>
+          <p style="margin:12px 0 0; color:var(--muted); font-size:14px;">
+            QEEPP it structured!
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Contact form (mock)</h3>
+          <form onsubmit="event.preventDefault(); alert('ERROR: Please send Email instead to contact@qeepp.com');">
+            <label style="display:block; font-size:13px; color:var(--muted); margin:8px 0 6px;">Name</label>
+            <input required type="text" placeholder="Your name"
+              style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
+
+            <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">Email</label>
+            <input required type="email" placeholder="you@company.com"
+              style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
+
+            <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">What are you working on?</label>
+            <textarea required rows="4" placeholder="One sentence is enough."
+              style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none; resize:vertical;"></textarea>
+
+            <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+              <button class="btn primary" type="submit">Send</button>
+              <a class="btn" href="mailto:contact@qeepp.com">Email instead</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footergrid">
+        <div>
+          <div class="brand" style="margin-bottom:8px;">
+            <span class="logo" aria-hidden="true"></span>
+            <span>QEEPP</span>
+          </div>
+          <div style="color:var(--muted); max-width: 70ch;">
+            QEEPP is a structural discipline model for governing enterprise digital transformation across any delivery method.
+            Quality, Effectiveness, Efficiency, Performance, Productivity.
+          </div>
+          <div style="margin-top:10px; color:rgba(232,238,246,.7); font-family:var(--mono); font-size:12px;">
+            QEEPP: Transformation, disciplined.
+          </div>
+        </div>
+
+        <div class="smallLinks">
+          <a href="#problem">Problem</a>
+          <a href="#model">Model</a>
+          <a href="#method">Method</a>
+          <a href="#resources">Resources</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+            © <span id="y"></span> QEEPP. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
