@@ -648,6 +648,39 @@
     </div>
   </section>
 
+  <!-- IS NOT -->
+  <section id="is-not" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>What QEEPP Is - and Is Not</h2>
+        </div>
+      </div>
+		<div class="panel2">
+		  <div class="card">
+			  <h3>What QEEPP Is</h3>
+			  <ul class="bullets">
+				<li>A structural discipline framework for digital transformation</li>
+				<li>A maturity governance lens across five interdependent layers</li>
+				<li>A portfolio-level evaluation model</li>
+				<li>Independent of strategy and delivery methodologies</li>
+				<li>Designed to prevent instability from scaling</li>
+			  </ul>
+			</div>
+			<div class="card">
+			  <h3>What QEEPP Is Not</h3>
+			  <ul class="bullets">
+				<li>Not a strategy framework</li>
+				<li>Not a delivery methodology (Agile, Waterfall, SAFe)</li>
+				<li>Not a technical architecture blueprint</li>
+				<li>Not a change management model</li>
+				<li>Not a replacement for enterprise architecture</li>
+			  </ul>
+			</div>
+		</div>
+    </div>
+  </section>
+	
   <!-- RESOURCES -->
   <section id="resources" class="section">
     <div class="wrap">
@@ -684,39 +717,6 @@
     </div>
   </section>
 
-  <!-- IS NOT -->
-  <section id="is-not" class="section">
-    <div class="wrap">
-      <div class="sectionHeader">
-        <div>
-          <h2>What QEEPP Is - and Is Not</h2>
-        </div>
-      </div>
-		<div class="panel2">
-		  <div class="card">
-			  <h3>What QEEPP Is</h3>
-			  <ul class="bullets">
-				<li>A structural discipline framework for digital transformation</li>
-				<li>A maturity governance lens across five interdependent layers</li>
-				<li>A portfolio-level evaluation model</li>
-				<li>Independent of strategy and delivery methodologies</li>
-				<li>Designed to prevent instability from scaling</li>
-			  </ul>
-			</div>
-			<div class="card">
-			  <h3>What QEEPP Is Not</h3>
-			  <ul class="bullets">
-				<li>Not a strategy framework</li>
-				<li>Not a delivery methodology (Agile, Waterfall, SAFe)</li>
-				<li>Not a technical architecture blueprint</li>
-				<li>Not a change management model</li>
-				<li>Not a replacement for enterprise architecture</li>
-			  </ul>
-			</div>
-		</div>
-    </div>
-  </section>
-	
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="wrap">
@@ -827,5 +827,30 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+	
+  <script>
+	const form = document.getElementById('contactForm');
+
+	form.addEventListener('submit', async function(e) {
+	  e.preventDefault();
+
+	  const data = new FormData(form);
+
+	  const response = await fetch(form.action, {
+		method: 'POST',
+		body: data,
+		headers: { 'Accept': 'application/json' }
+	  });
+
+	  if (response.ok) {
+		alert('Thank you for your message.');
+		form.reset();
+	  } else {
+		alert('Something went wrong. Please try again.');
+	  }
+	});
+  </script>
+
 </body>
 </html>
+
