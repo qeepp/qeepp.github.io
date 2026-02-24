@@ -298,7 +298,7 @@
       background: var(--accent);
       box-shadow: 0 0 0 6px rgba(125,211,252,.10);
     }
-	/* height of your sticky header + a little breathing room */
+	/* height of the sticky header + a little breathing room */
 	:root { --scroll-offset: 86px; }
 	/* apply to all sections you jump to */
 	section[id] { scroll-margin-top: var(--scroll-offset); }
@@ -309,38 +309,39 @@
 	  color: var(--accent);
 	  margin-right: 1px;
 	}
-	
-.ascent-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.ascent-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(125, 211, 252, 0.5),
-    transparent 100%
-  );
-  clip-path: polygon(
-  50% 10%,     /* tip */
-  70% 31%,    /* right head */
-  60% 31%,    /* shaft right */
-  60% 85%,    /* shaft bottom */
-  40% 85%,    /* shaft bottom left */
-  40% 31%,    /* shaft left */
-  30% 31%     /* left head */
-);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.ascent-bg > * {
-  position: relative;
-  z-index: 1;
-}	
+	.ascent-bg {
+	  position: relative;
+	  overflow: hidden;
+	}
+	.ascent-bg::before {
+	  content: "";
+	  position: absolute;
+	  inset: 0;
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(125, 211, 252, 0.5),
+	    transparent 100%);
+	  clip-path: polygon(
+	  50% 10%,    /* tip */
+	  70% 31%,    /* right head */
+	  60% 31%,    /* shaft right */
+	  60% 85%,    /* shaft bottom */
+	  40% 85%,    /* shaft bottom left */
+	  40% 31%,    /* shaft left */
+	  30% 31%     /* left head */);
+	  pointer-events: none;
+	  z-index: 0;
+	}
+	.ascent-bg > * {
+	  position: relative;
+	  z-index: 1;
+	}
+	.panel2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 940px){ .cards{grid-template-columns:1fr} }
   </style>
 </head>
 
@@ -683,6 +684,39 @@
     </div>
   </section>
 
+  <!-- IS NOT -->
+  <section id="is-not" class="section">
+    <div class="wrap">
+      <div class="sectionHeader">
+        <div>
+          <h2>What QEEPP Is - and Is Not</h2>
+        </div>
+      </div>
+		<div class="panel2">
+		  <div class="card">
+			  <h3>What QEEPP Is</h3>
+			  <ul class="bullets">
+				<li>A structural discipline framework for digital transformation</li>
+				<li>A maturity governance lens across five interdependent layers</li>
+				<li>A portfolio-level evaluation model</li>
+				<li>Independent of strategy and delivery methodologies</li>
+				<li>Designed to prevent instability from scaling</li>
+			  </ul>
+			</div>
+			<div class="card">
+			  <h3>What QEEPP Is Not</h3>
+			  <ul class="bullets">
+				<li>Not a strategy framework</li>
+				<li>Not a delivery methodology (Agile, Waterfall, SAFe)</li>
+				<li>Not a technical architecture blueprint</li>
+				<li>Not a change management model</li>
+				<li>Not a replacement for enterprise architecture</li>
+			  </ul>
+			</div>
+		</div>
+    </div>
+  </section>
+	
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="wrap">
@@ -736,23 +770,21 @@
 
         <div class="panel">
           <h3>Contact form (mock)</h3>
-          <form onsubmit="event.preventDefault(); alert('Kindly use email at this time');">
+          <form id="contactForm" action="https://formspree.io/f/mykdbokp" method="POST"">
             <label style="display:block; font-size:13px; color:var(--muted); margin:8px 0 6px;">Name</label>
-            <input required type="text" placeholder="Your name"
+            <input name="name" required type="text" placeholder="Your name"
               style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
-
             <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">Email</label>
-            <input required type="email" placeholder="you@company.com"
+            <input name="email" required type="email" placeholder="you@company.com"
               style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
-
             <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">What are you working on?</label>
-            <textarea required rows="4" placeholder="One sentence is enough."
+            <textarea name="message" required rows="4" placeholder="One sentence is enough."
               style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none; resize:vertical;"></textarea>
-
             <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
               <button class="btn primary" type="submit">Send</button>
               <a class="btn" href="mailto:contact@qeepp.com">Email instead</a>
             </div>
+			<input type="hidden" name="_subject" value="New QEEPP Inquiry">
           </form>
         </div>
       </div>
@@ -797,5 +829,3 @@
   </script>
 </body>
 </html>
-
-
