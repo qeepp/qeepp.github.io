@@ -2,20 +2,19 @@ name: Send Cloudflare Preview Link to Slack
 
 on:
   check_run:
-    types: [completed]   # GitHub supports running workflows when a check_run completes. :contentReference[oaicite:2]{index=2}
+    types: [completed] # Run when a check finishes
 
 permissions:
   checks: read
 
 jobs:
   notify:
-    if: ${{ github.event.check_run.name == 'Cloudflare Pages' && github.event.check_run.conclusion == 'success' }}
+    if: ${{ contains(github.event.check_run.name, 'Cloudflare') && github.event.check_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Build message
         id: msg
         run: |
-          # Try to extract a pages.dev URL from the Cloudflare check output (if present)
           SUMMARY="${{ github.event.check_run.output.summary }}"
           TEXT="${{ github.event.check_run.output.text }}"
           DETAILS="${{ github.event.check_run.details_url }}"
@@ -26,7 +25,7 @@ jobs:
             URL="$DETAILS"
           fi
 
-          echo "preview_url=$URL" >> $GITHUB_OUTPUT
+          echo "preview_url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Post to Slack
         env:
