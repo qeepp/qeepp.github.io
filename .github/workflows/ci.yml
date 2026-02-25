@@ -52,11 +52,12 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress --accept 200,206,429 --exclude-mail "./**/*.html"
+          args: --verbose --no-progress --accept 200,206,429 --exclude "mailto:.*" "./**/*.html"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
         uses: devops-actions/actionlint@v0.1.11
+
 
