@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-
 jobs:
   static-site-checks:
     runs-on: ubuntu-latest
@@ -51,4 +50,4 @@ jobs:
 
       # Optional: validate your workflow syntax too
       - name: Lint GitHub Actions workflow files
-        uses: rhysd/actionlint@v1
+        uses: devops-actions/actionlint@v0.1.11
