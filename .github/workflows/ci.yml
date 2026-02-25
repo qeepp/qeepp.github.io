@@ -1,13 +1,15 @@
-name: CI Checks
+name: QEEPP Site CI
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   static-site-checks:
+    name: QEEPP Site CI
     runs-on: ubuntu-latest
 
     steps:
@@ -19,13 +21,19 @@ jobs:
         with:
           node-version: "20"
 
+      # Optional but recommended: formatting consistency check
+      - name: Check formatting (Prettier)
+        run: |
+          npm install -g prettier
+          prettier --check "**/*.{html,css,js,json,md}"
+
       # HTML validation
       - name: Validate HTML
         run: |
           npm install -g htmlhint
           htmlhint "**/*.html"
 
-      # JS syntax check (basic but useful)
+      # JS syntax check (safe even if no JS files)
       - name: Check JavaScript syntax
         shell: bash
         run: |
@@ -40,14 +48,14 @@ jobs:
             node --check "$f"
           done
 
-      # Broken links check (internal + external links)
+      # Link checker (uses .lycheeignore for known exclusions like Formspree/LinkedIn)
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress --accept 200,206,429 "./**/*.html"
+          args: --verbose --no-progress --accept 200,206,429 --exclude-mail "./**/*.html"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Optional: validate your workflow syntax too
+      # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
         uses: devops-actions/actionlint@v0.1.11
