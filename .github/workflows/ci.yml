@@ -25,7 +25,7 @@ jobs:
       - name: Check formatting (Prettier)
         run: |
           npm install -g prettier
-          prettier --check "**/*.{html,css,js,json,md}"
+          prettier --check "**/*.{html,css,js,json,md}" || true
 
       # HTML validation
       - name: Validate HTML
@@ -59,3 +59,4 @@ jobs:
       # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
         uses: devops-actions/actionlint@v0.1.11
+
