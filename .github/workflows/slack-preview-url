@@ -1,0 +1,44 @@
+name: Send Cloudflare Preview Link to Slack
+
+on:
+  check_run:
+    types: [completed]   # GitHub supports running workflows when a check_run completes. :contentReference[oaicite:2]{index=2}
+
+permissions:
+  checks: read
+
+jobs:
+  notify:
+    if: ${{ github.event.check_run.name == 'Cloudflare Pages' && github.event.check_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build message
+        id: msg
+        run: |
+          # Try to extract a pages.dev URL from the Cloudflare check output (if present)
+          SUMMARY="${{ github.event.check_run.output.summary }}"
+          TEXT="${{ github.event.check_run.output.text }}"
+          DETAILS="${{ github.event.check_run.details_url }}"
+
+          URL=$(printf "%s\n%s\n" "$SUMMARY" "$TEXT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[^ )\n]*' | head -n 1 || true)
+
+          if [ -z "$URL" ]; then
+            URL="$DETAILS"
+          fi
+
+          echo "preview_url=$URL" >> $GITHUB_OUTPUT
+
+      - name: Post to Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.check_run.head_sha }}
+          URL: ${{ steps.msg.outputs.preview_url }}
+        run: |
+          payload=$(cat <<EOF
+          {
+            "text": "✅ Cloudflare Pages preview ready\nRepo: ${REPO}\nCommit: ${SHA}\nPreview: ${URL}"
+          }
+          EOF
+          )
+          curl -sS -X POST -H "Content-Type: application/json" -d "$payload" "$SLACK_WEBHOOK_URL"
