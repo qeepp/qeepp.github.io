@@ -1,0 +1,54 @@
+name: CI Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  static-site-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # HTML validation
+      - name: Validate HTML
+        run: |
+          npm install -g htmlhint
+          htmlhint "**/*.html"
+
+      # JS syntax check (basic but useful)
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          shopt -s globstar nullglob
+          files=(**/*.js)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No JS files found."
+            exit 0
+          fi
+          for f in "${files[@]}"; do
+            echo "Checking $f"
+            node --check "$f"
+          done
+
+      # Broken links check (internal + external links)
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress --accept 200,206,429 "./**/*.html"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Optional: validate your workflow syntax too
+      - name: Lint GitHub Actions workflow files
+        uses: rhysd/actionlint@v1
