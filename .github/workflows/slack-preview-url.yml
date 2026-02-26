@@ -10,10 +10,10 @@ permissions:
 
 jobs:
   notify:
-    if: ${{ startsWith(github.event.check_run.name, 'Cloudflare Pages') && github.event.check_run.conclusion == 'success' && github.event.check_run.check_suite.event == 'pull_request' }}
+    if: ${{ startsWith(github.event.check_run.name, 'Cloudflare Pages') && github.event.check_run.conclusion == 'success' && github.event.check_run.pull_requests && github.event.check_run.pull_requests[0] }}
     runs-on: ubuntu-latest
     steps:
-      - name: Skip if only .github changed
+      - name: Skip if only non-site files changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -28,10 +28,14 @@ jobs:
 
           echo "$files"
 
-          if echo "$files" | grep -qv '^\.github/'; then
-            echo "Non-.github changes detected. Continue."
+          # Skip Slack notifications when ONLY these paths/files change:
+          # - .github/ (workflows, CI)
+          # - README.md / LICENSE*
+          # - .gitignore
+          if echo "$files" | grep -Eqv '^(\.github/|README\.md$|LICENSE$|LICENSE\.txt$|\.gitignore$)'; then
+            echo "Site-relevant changes detected. Continue."
           else
-            echo "Only .github changes detected. Skipping Slack notification."
+            echo "Only non-site files changed (.github/README/LICENSE/etc). Skipping Slack notification."
             exit 0
           fi
 
