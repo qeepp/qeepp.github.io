@@ -32,7 +32,7 @@ jobs:
           # - .github/ (workflows, CI)
           # - README.md / LICENSE*
           # - .gitignore
-          if echo "$files" | grep -Eqv '^(\.github/|README\.md$|LICENSE$|LICENSE\.txt$|\.gitignore$)'; then
+          if echo "$files" | grep -Eqv '^(\.github/|README.*$|LICENSE.*$|\.gitignore$)'; then
             echo "Site-relevant changes detected. Continue."
           else
             echo "Only non-site files changed (.github/README/LICENSE/etc). Skipping Slack notification."
