@@ -65,7 +65,7 @@ CI checks may include:
 5. Open the Cloudflare Preview URL and verify changes.
 6. Click **Squash and merge**.
 
-## Finding the Cloudflare Preview URL (Staging)
+## Finding the Cloudflare Preview URL (Staging/UAT)
 
 On the Pull Request page:
 
@@ -89,13 +89,16 @@ Known false positives are excluded via `.lycheeignore` (e.g., Formspree endpoint
 
 ## Slack Notifications (Optional)
 
-This repo can post preview/staging notifications to Slack via an incoming webhook.
+The CI/CD workflow can post preview/staging notifications to Slack via an incoming webhook.  
+When a Cloudflare Pages preview deployment is ready, it can send the Preview URL to a Slack channel for UAT and review.
 
 ### Setup
 
-1. Create a Slack Incoming Webhook URL in Slack.
+1. Create an Incoming Webhook URL in Slack.
 2. Add it as a GitHub Actions secret:
    - `SLACK_WEBHOOK_URL`
+3. Add (or update) the Slack notification workflow:
+   - `.github/workflows/slack-preview-url.yml`
 
 ## Security
 
@@ -106,6 +109,3 @@ This repo can post preview/staging notifications to Slack via an incoming webhoo
 - If a secret is ever exposed **Regenerate/rotate it immediately**
 - Treat webhook URLs like passwords: anyone with the URL can post messages
 
-## License
-
-© 2026 Rado Dimitrov.
