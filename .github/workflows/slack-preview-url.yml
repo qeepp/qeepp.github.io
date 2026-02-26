@@ -6,12 +6,35 @@ on:
 
 permissions:
   checks: read
+  contents: read
 
 jobs:
   notify:
-    if: ${{ contains(github.event.check_run.name, 'Cloudflare') && github.event.check_run.conclusion == 'success' }}
+    if: ${{ startsWith(github.event.check_run.name, 'Cloudflare Pages') && github.event.check_run.conclusion == 'success' && github.event.check_run.check_suite.event == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Skip if only .github changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          sha="${{ github.event.check_run.head_sha }}"
+          repo="${{ github.repository }}"
+
+          files=$(curl -sS -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$repo/commits/$sha" \
+            | jq -r '.files[].filename')
+
+          echo "$files"
+
+          if echo "$files" | grep -qv '^\.github/'; then
+            echo "Non-.github changes detected. Continue."
+          else
+            echo "Only .github changes detected. Skipping Slack notification."
+            exit 0
+          fi
+
       - name: Build message
         id: msg
         run: |
