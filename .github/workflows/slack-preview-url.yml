@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   notify:
-    if: ${{ contains(github.event.check_run.name, 'Cloudflare') && github.event.check_run.conclusion == 'success' }}
+    if: ${{ contains(github.event.check_run.name, 'Cloudflare') && github.event.check_run.conclusion == 'success' && github.event.check_run.check_suite.event == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Build message
