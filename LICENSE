@@ -1,5 +1,5 @@
 QEEPP Website Repository — LICENSE
-
+==================================================
 Copyright (c) 2026 Rado Dimitrov
 All rights reserved unless expressly stated below.
 
@@ -19,7 +19,7 @@ redistribution, or commercial use.
 
 You MAY:
 - View the source code for personal reference
-- Fork the repository and submit Pull Requests back to the upstream repository
+- Fork the repository solely to submit Pull Requests back to the upstream repository
 
 You MAY NOT:
 - Copy, reuse, modify, distribute, publish, or sell the website code or assets
@@ -38,7 +38,7 @@ written materials, diagrams, and educational resources) is licensed under:
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 You may share and adapt the content for any purpose, including commercial use,
-as long as you provide appropriate attribution.
+as long as you provide appropriate attribution and indicate if changes were made.
 
 License summary: https://creativecommons.org/licenses/by/4.0/
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
@@ -49,7 +49,7 @@ Attribution should include (as applicable):
 - A note if changes were made
 
 --------------------------------------------------------------------
-3) TRADEMARKS / BRAND IDENTIFIERS (NOT LICENSED)
+3) TRADEMARKS / BRAND IDENTIFIERS (NOT GRANTED)
 --------------------------------------------------------------------
 
 “QEEPP”, the QEEPP name, logos, and any associated brand identifiers are NOT
@@ -59,16 +59,7 @@ You may not use the QEEPP name/logo in a way that suggests sponsorship,
 endorsement, or affiliation without prior written permission.
 
 --------------------------------------------------------------------
-4) EXCLUDED MATERIALS (NOT COVERED BY CC BY 4.0)
---------------------------------------------------------------------
-
-The QEEPP Assessment method and tools (including any assessment instruments,
-templates, questionnaires, calculators, scoring tools, or similar materials)
-are NOT covered by CC BY 4.0 and may not be redistributed without prior
-written permission.
-
---------------------------------------------------------------------
-5) THIRD-PARTY MATERIALS
+4) THIRD-PARTY MATERIALS
 --------------------------------------------------------------------
 
 Third-party code, libraries, assets, or trademarks (if any) remain subject to
