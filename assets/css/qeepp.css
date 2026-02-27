@@ -55,7 +55,7 @@
 	.logo {
 	  width: 34px;
 	  height: 34px;
-	  background-image: url('qeepp.logo');
+	  background-image: url('../icons/qeepp-logo.png');
 	  background-size: contain;
 	  background-repeat: no-repeat;
 	  background-position: center;
