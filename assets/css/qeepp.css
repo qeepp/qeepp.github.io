@@ -1,4 +1,3 @@
-  <style>
     :root{
       --bg:#0b0f14;
       --panel:#0f1620;
@@ -333,4 +332,3 @@
       gap:14px;
     }
     @media (max-width: 940px){ .cards{grid-template-columns:1fr} }
-  </style>
