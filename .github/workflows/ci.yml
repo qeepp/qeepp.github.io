@@ -71,11 +71,24 @@ jobs:
 
       # Link checker (uses .lycheeignore for known exclusions like Formspree/LinkedIn)
       - name: Check links
-        uses: lycheeverse/lychee-action@v2
-        with:
-          args: --verbose --no-progress --accept 200,206,429 --exclude "mailto:.*" "./**/*.html"
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Collecting HTML pages (excluding ./partials/)..."
+          mapfile -t files < <(find . -type f -name "*.html" ! -path "./partials/*")
+
+          echo "Pages to scan: ${#files[@]}"
+          printf '%s\n' "${files[@]}" | sed 's|^\./||' | head -n 200
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No HTML files found."
+            exit 0
+          fi
+
+          lychee --verbose --no-progress --accept 200,206,429 --exclude "mailto:.*" "${files[@]}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
