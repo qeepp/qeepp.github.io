@@ -72,6 +72,8 @@ jobs:
       # Link checker (uses .lycheeignore for known exclusions like Formspree/LinkedIn)
       - name: Check links
         shell: bash
+        env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
 
@@ -87,8 +89,6 @@ jobs:
           fi
 
           lychee --verbose --no-progress --accept 200,206,429 --exclude "mailto:.*" "${files[@]}"
-        env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
