@@ -29,10 +29,16 @@ jobs:
 
       # HTML validation
       - name: Validate HTML
+        shell: bash
         run: |
           npm install -g htmlhint
-          # Lint full pages, exclude HTML fragments/partials
-          htmlhint "**/*.html" --exclude "partials/**/*.html"
+          # Lint all HTML files except partial fragments
+          mapfile -t files < <(find . -type f -name "*.html" ! -path "./partials/*")
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No HTML files found."
+            exit 0
+          fi
+          htmlhint "${files[@]}"
 
       # JS syntax check (safe even if no JS files)
       - name: Check JavaScript syntax
