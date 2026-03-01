@@ -27,19 +27,33 @@ jobs:
           npm install -g prettier
           prettier --check "**/*.{html,css,js,json,md}" || true
 
-      # HTML validation
+      # HTML validation (verbose)
       - name: Validate HTML
         shell: bash
         run: |
+          set -euo pipefail
           npm install -g htmlhint
-          # Lint all HTML files except partial fragments
-          mapfile -t files < <(find . -type f -name "*.html" ! -path "./partials/*")
+
+          echo "Collecting HTML files (excluding ./partials/)..."
+          mapfile -t files < <(find . -type f -name "*.html" ! -path "./partials/*" -print)
+
+          echo "HTML files found: ${#files[@]}"
+          printf '%s\n' "${files[@]}" | sed 's|^\./||' | head -n 200
+
           if [ ${#files[@]} -eq 0 ]; then
             echo "No HTML files found."
             exit 0
           fi
-          htmlhint "${files[@]}"
 
+          echo "Running htmlhint..."
+          htmlhint "${files[@]}" || {
+            echo "htmlhint failed. Re-running one file at a time to pinpoint the offender..."
+            for f in "${files[@]}"; do
+              echo "---- $f ----"
+              htmlhint "$f" || exit 1
+            done
+          }
+  
       # JS syntax check (safe even if no JS files)
       - name: Check JavaScript syntax
         shell: bash
