@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QEEPP | Transformation, Disciplined.</title>
+  <meta name="description" content="QEEPP Framework. Visit the production site at qeepp.com." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="qeepp-fav.ico">
+  <link rel="canonical" href="https://qeepp.com/">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --text:#e8eef6;
+      --muted:#a9b6c6;
+      --line:#233244;
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 900px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(125,211,252,.12), transparent 55%),
+        radial-gradient(900px 700px at 90% 20%, rgba(167,139,250,.12), transparent 55%),
+        var(--bg);
+      padding:28px;
+    }
+    .wrap{max-width:var(--max); width:100%}
+    .panel{
+      background: rgba(15,22,32,.65);
+      border:1px solid rgba(35,50,68,.65);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .logo-img{
+      width:44px;
+      height:44px;
+      display:block;
+      object-fit:contain;
+    }
+    .logo::before{
+      content:"";
+      position:absolute;
+      inset:-45% -45%;
+      background: radial-gradient(circle at 30% 35%, rgba(255,255,255,.22), transparent 45%);
+      transform: rotate(10deg);
+    }
+    h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.2px;
+      line-height:1.15;
+    }
+    .tag{
+      margin-top:4px;
+      color:rgba(232,238,246,.78);
+      font-size:13px;
+      font-family:var(--mono);
+    }
+    p{
+      margin:12px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      max-width:70ch;
+    }
+    .cta{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(35,50,68,.75);
+      background: rgba(15,22,32,.65);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .btn:hover{
+      border-color: rgba(125,211,252,.55);
+      background: rgba(15,22,32,.9);
+    }
+    .btn.primary{
+      border-color: rgba(125,211,252,.55);
+      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.16));
+    }
+    .note{
+      margin-top:14px;
+      font-size:12px;
+      color:rgba(169,182,198,.9);
+    }
+    .note a{color:var(--accent); text-decoration:none}
+    .note a:hover{text-decoration:underline}
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="panel" aria-label="QEEPP landing">
+      <div class="brand">
+
+        <!-- Replace this div with your SVG/PNG if desired -->
+        <!--div class="logo" aria-hidden="true"></div-->
+        <img src="qeepp-logo.png" alt="QEEPP" class="logo-img">
+        <div>
+          <h1>QEEPP</h1>
+          <div class="tag">Transformation, Disciplined.</div>
+        </div>
+      </div>
+
+      <p>
+        You are viewing the GitHub Pages entry point for QEEPP. The production site is hosted on qeepp.com.
+      </p>
+
+      <p>
+        QEEPP is a structural discipline framework for digital transformation, organized across five interlocking layers:
+        Quality, Effectiveness, Efficiency, Performance, and Productivity.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="https://qeepp.com" rel="noopener">Go to qeepp.com</a>
+        <a class="btn" href="https://qeepp.com/#model" rel="noopener">View the model</a>
+      </div>
+
+      <div class="note">
+        If you expected content here, visit <a href="https://qeepp.com" rel="noopener">qeepp.com</a>.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
