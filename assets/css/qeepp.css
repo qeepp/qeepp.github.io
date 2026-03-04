@@ -165,6 +165,7 @@
     box-shadow: var(--shadow);
     padding:18px;
   }
+/*  .panel p strong { color: var(--text); }*/
   .panel h3{margin:0 0 10px; font-size:14px; color:var(--muted); font-weight:700; letter-spacing:.25px}
   .panel p{margin:0; color:var(--text)}
   .mini{
