@@ -2,6 +2,7 @@
 
 For an overview of the QEEPP framework, start here: https://qeepp.com
 ---
+---
 
 QEEPP is an authored framework, and its core conceptual structure remains under the author’s direction.
 
