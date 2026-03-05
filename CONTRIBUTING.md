@@ -1,6 +1,6 @@
 # Contributing and Feedback
 
-For an overview of the QEEPP framework, start here: https://qeepp.com
+For an overview of the QEEPP framework, start here: www.qeepp.com
 
 ---
 
@@ -18,7 +18,7 @@ You can contribute in any of these ways:
 
 ## Where to send feedback
 
-- **Website contact**: https://qeepp.com (use the contact form)
+- **Website contact**: https://qeepp.com/#contact (use the contact form)
 - **Email**: contact@qeepp.com
 
 ## What to include (recommended)
