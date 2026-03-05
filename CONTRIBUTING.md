@@ -1,6 +1,6 @@
 # Contributing and Feedback
 
-For an overview of the [QEEPP framework](https://qeepp.com), start here:  www.qeepp.com
+For an overview of the QEEPP framework, start here:  www.qeepp.com
 
 ---
 
@@ -32,3 +32,6 @@ When sharing a case or suggestion, please include:
 - What you would change if doing it again
 
 Thank you for helping pressure-test QEEPP in real-world environments.
+
+---
+For an overview of the [QEEPP framework](https://qeepp.com)
