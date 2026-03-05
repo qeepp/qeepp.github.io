@@ -1,6 +1,6 @@
 # Contributing and Feedback
 
-> ** For an overview of the QEEPP framework, start here: https://qeepp.com
+For an overview of the QEEPP framework, start here: https://qeepp.com
 
 ---
 
