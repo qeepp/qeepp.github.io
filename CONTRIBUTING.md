@@ -34,4 +34,4 @@ When sharing a case or suggestion, please include:
 Thank you for helping pressure-test QEEPP in real-world environments.
 
 ---
-For an overview of the [QEEPP framework](https://qeepp.com)
+For an overview  → [QEEPP framework](https://qeepp.com)
