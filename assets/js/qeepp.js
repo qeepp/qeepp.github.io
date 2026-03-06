@@ -281,3 +281,14 @@ function initModals() {
   initModals();
   initContactForms();
 })();
+
+function handleHashOpen() {
+  if (location.hash === "#contact") {
+    // open contact modal using your existing trigger
+    const btn = document.querySelector('[data-modal="contact"]');
+    btn?.click();
+  }
+}
+window.addEventListener("hashchange", handleHashOpen);
+handleHashOpen();
+

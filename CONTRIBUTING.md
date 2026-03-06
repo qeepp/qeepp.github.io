@@ -18,8 +18,8 @@ You can contribute in any of these ways:
 
 ## Where to send feedback
 
-- **Website contact**: [Talk to us](https://qeepp.com/#contact) (use the contact form)
-- **Email**: contact@qeepp.com
+- **Website contact form**: [QEEPP](https://qeepp.com/#contact) (Talk To Us)
+- **Direct Email**: contact@qeepp.com
 
 ## What to include (recommended)
 
