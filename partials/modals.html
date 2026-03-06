@@ -1,0 +1,146 @@
+<div class="modal" id="slideKitModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="QEEPP Slide Kit">
+    <div class="modal-bar">
+      <div class="modal-title">QEEPP Slide Kit</div>
+      <div class="modal-actions">
+        <button class="btn small" type="button" id="slideKitFullscreen">Full screen</button>
+        <button class="btn small" type="button" id="slideKitClose" aria-label="Close">Close</button>
+      </div>
+    </div>
+
+    <div class="modal-body" id="slideKitFrameWrap">
+      <iframe
+        id="slideKitFrame"
+        src="https://www.canva.com/design/DAHDI36wXE8/MgjdJj8bR-HXYEo7f-tYKg/view?embed"
+        allowfullscreen="allowfullscreen"
+        loading="lazy"
+        title="QEEPP Slide Kit"
+        tabindex="0">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="pdfModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Document viewer">
+    <div class="modal-bar">
+      <div class="modal-title" id="pdfTitle">Document</div>
+      <div class="modal-actions">
+        <button class="btn small" type="button" id="pdfFullscreen">Full screen</button>
+        <a class="btn small" id="pdfOpenNew" href="#" target="_blank" rel="noopener">Open</a>
+        <button class="btn small" type="button" id="pdfClose" aria-label="Close">Close</button>
+      </div>
+    </div>
+
+    <div class="modal-body" id="pdfFrameWrap">
+      <iframe id="pdfFrame" title="PDF document" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Modal
+<div class="modal" id="contactModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Talk to us">
+    <div class="modal-bar">
+      <div class="modal-title">Talk to us</div>
+      <div class="modal-actions">
+        <button class="btn small" type="button" data-modal-action="contact-close" aria-label="Close">Close</button>
+      </div>
+    </div>
+
+    <div class="modal-body" style="padding:16px; height: calc(100% - 46px); overflow:auto;">
+      <p style="color:var(--muted); margin:0 0 14px;">
+        Share a few details and we’ll respond shortly.
+      </p>
+
+      <form id="contactForm" action="YOUR_FORMSPREE_URL" method="POST">
+        <div style="display:grid; gap:10px;">
+          <input class="input" type="text" name="name" placeholder="Name" required>
+          <input class="input" type="email" name="email" placeholder="Email" required>
+          <textarea class="input" name="message" placeholder="Message" rows="6" required></textarea>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
+            <button class="btn primary" type="submit">Send</button>
+            <button class="btn" type="button" data-modal-action="contact-close">Cancel</button>
+          </div>
+
+          <div id="contactStatus" style="color:var(--muted); font-size:13px; display:none;"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div-->
+
+<!-- Contact Modal (full section, as-is) -->
+<div class="modal" id="contactModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+
+  <div class="modal-dialog modal-dialog--contact" role="dialog" aria-modal="true" aria-label="Talk to us">
+    <div class="modal-bar">
+      <div class="modal-title">Contact</div>
+      <div class="modal-actions">
+        <button class="btn small" type="button" data-modal-action="contact-close" aria-label="Close">Close</button>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: modal-body here is scrollable so your full section fits -->
+    <div class="modal-body modal-body--scroll">
+      <!-- Your section content, unchanged except we remove outer <section id="contact"> wrapper -->
+      <div class="wrap">
+        <div class="sectionHeader" style="margin-bottom:14px;">
+          <div>
+            <h2 style="margin:0; font-size:22px; letter-spacing:-.2px;">Talk to us</h2>
+            <div class="sub">Transform without chaos</div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Engagement options</h3>
+            <ul class="bullets" style="margin-top:0;">
+              <li>Executive Briefing → 45 minutes (alignment + fit)</li>
+              <li>QEEPP Maturity Assessment → 2-4 weeks (score, gaps, roadmap)</li>
+              <li>Transformation Governance Setup → 4-8 weeks (operating model + controls)</li>
+              <li>Ongoing Advisory → monthly cadence (governance, sequencing, outcomes)</li>
+            </ul>
+            <p style="margin:12px 0 0; color:var(--muted); font-size:14px;">
+              QEEPP it structured.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3>Contact form</h3>
+            <form id="contactForm" data-contact-form action="https://formspree.io/f/mykdbokp" method="POST">
+              <label style="display:block; font-size:13px; color:var(--muted); margin:8px 0 6px;">Name</label>
+              <input name="name" required type="text" placeholder="Your name"
+                style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
+
+              <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">Email</label>
+              <input name="email" required type="email" placeholder="you@company.com"
+                style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none;" />
+
+              <label style="display:block; font-size:13px; color:var(--muted); margin:10px 0 6px;">What would you like help with?</label>
+              <textarea name="message" required rows="4" placeholder="Briefly describe the initiative and current challenges"
+                style="width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(35,50,68,.75); background: rgba(11,15,20,.45); color:var(--text); outline:none; resize:vertical;"></textarea>
+
+              <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+                <button class="btn primary" type="submit">Send</button>
+                <a class="btn" href="mailto:contact@qeepp.com">Email instead</a>
+              </div>
+
+              <input type="hidden" name="_subject" value="New QEEPP Inquiry">
+              <div data-contact-status style="display:none; margin-top:10px; font-size:13px; color:var(--muted);"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- end wrap -->
+    </div>
+  </div>
+</div>
