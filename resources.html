@@ -27,23 +27,24 @@
 			  <h3>QEEPP whitepaper</h3>
 			  <p>Definition, model, implementation guidance, and executive narrative.</p>
 			  <div style="margin-top:12px;">
-				<a class="btn primary" href="assets/docs/QEEPP_Whitepaper_v1.1.pdf" target="wp-pdf" aria-label="Download whitepaper">Download PDF</a>
+				<!--a class="btn primary" href="assets/docs/QEEPP_Whitepaper_v1.1.pdf" target="wp-pdf" aria-label="Download whitepaper">Download PDF</a-->
+        <a class="btn" href="#" data-pdf="assets/docs/QEEPP_Whitepaper_v1.1.pdf" data-title="QEEPP Whitepaper v1.1">Download PDF</a>
 			  </div>
 			</div>
 			<div class="card">
 			  <h3>Assessment checklist</h3>
 			  <p>A single-page scorecard for portfolio governance across the five dimensions.</p>
 			  <div style="margin-top:12px;">
-				<a class="btn" href="assets/docs/QEEPP_Assesment_Scorecard_v1.1.pdf" target="as-pdf" aria-label="Get checklist">Get checklist</a>
-			  </div>
+				<!--a class="btn" href="assets/docs/QEEPP_Assesment_Scorecard_v1.1.pdf" target="as-pdf" aria-label="Get checklist">Get checklist</a-->
+        <a class="btn" href="#" data-pdf="assets/docs/QEEPP_Assesment_Scorecard_v1.1.pdf" data-title="QEEPP Assessment Scorecard v1.1">Get checklist</a>
+      </div>
 			</div>
 			<div class="card">
 			  <h3>Slide kit</h3>
 			  <p>Problem, model, outcome narrative for steering committees and leadership updates.</p>
 			  <div style="margin-top:12px;">
-				<!--a class="btn" href="#" aria-label="Get slide kit">Get slide kit</a-->
-          <span class="pill">In progress</span>
-			  </div>
+        <a class="btn" href="#" id="openSlideKit" aria-label="Open slide kit">Open slide kit</a>
+      </div>
       </div>
 		  </div>
 		</div>
@@ -92,7 +93,9 @@
   </div>
 </section>
 
+  <div id="site-modals"></div>
   <div id="site-footer"></div>
   <script defer src="assets/js/qeepp.js"></script>
+
 </body>
 </html>
