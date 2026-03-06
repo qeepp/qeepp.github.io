@@ -1,6 +1,6 @@
 /* =======================================================
    QEEPP Global Scripts
-   Version: 1.1
+   Version: 1.2
    ======================================================= */
 
 /* =======================================================
@@ -39,7 +39,7 @@ function initStickyShadow() {
 }
 
 /* =======================================================
-   Contact Form (supports modal + page)
+   Contact Forms (supports modal + page)
    - Prefer: form[data-contact-form]
    - Fallback: #contactForm
    ======================================================= */
@@ -65,7 +65,9 @@ function initContactForms() {
         if (!statusEl) return;
         statusEl.style.display = "block";
         statusEl.textContent = msg;
-        statusEl.style.color = isError ? "rgba(248,113,113,.95)" : "rgba(169,182,198,.95)";
+        statusEl.style.color = isError
+          ? "rgba(248,113,113,.95)"
+          : "rgba(169,182,198,.95)";
       };
 
       try {
@@ -92,14 +94,8 @@ function initContactForms() {
 
 /* =======================================================
    Modals (Slide Kit + PDFs + Contact)
-   Triggers:
-   - Slide kit: [data-modal="slidekit"] (or legacy #openSlideKit)
-   - PDFs:      [data-pdf="..."] + optional [data-title="..."]
-   - Contact:   [data-modal="contact"]
-   Actions inside modal (optional):
-   - data-modal-action="slidekit-close" / "slidekit-fullscreen"
-   - data-modal-action="pdf-close"      / "pdf-fullscreen"
-   - data-modal-action="contact-close"
+   Exposes:
+   - window.QEEPP.openContact() for deep links (#contact)
    ======================================================= */
 function initModals() {
   // Slide kit modal elements
@@ -117,7 +113,6 @@ function initModals() {
   // Contact modal elements
   const contactModal = document.getElementById("contactModal");
 
-  // Nothing to init if no modals are present
   if (!slideModal && !pdfModal && !contactModal) return;
 
   function openModal(el) {
@@ -177,7 +172,10 @@ function initModals() {
     closeModal(contactModal);
   }
 
-  // One delegated click handler for the whole site (capture-phase so other scripts can't block)
+  // Expose for deep link handler
+  window.QEEPP = window.QEEPP || {};
+  window.QEEPP.openContact = openContact;
+
   document.addEventListener(
     "click",
     async (e) => {
@@ -215,7 +213,7 @@ function initModals() {
         return;
       }
 
-      // Modal action buttons (supports data-modal-action and legacy IDs)
+      // Modal action buttons
       const actionEl = e.target.closest("[data-modal-action]");
       const action = actionEl ? actionEl.getAttribute("data-modal-action") : null;
 
@@ -269,8 +267,20 @@ function initModals() {
 }
 
 /* =======================================================
+   Hash handler (deep links)
+   - Supports: #contact
+   ======================================================= */
+function handleHashOpen() {
+  if (location.hash === "#contact") {
+    // Open directly (does not depend on a trigger button existing)
+    window.QEEPP?.openContact?.();
+  }
+}
+
+/* =======================================================
    Boot
-   Ensure modals are loaded before initModals/initContactForms
+   Ensure modals are loaded before initModals/initContactForms.
+   IMPORTANT: hash handler runs after initModals so window.QEEPP exists.
    ======================================================= */
 (async function initSite() {
   await loadPartial("site-header", "partials/header.html");
@@ -280,15 +290,8 @@ function initModals() {
   initStickyShadow();
   initModals();
   initContactForms();
+
+  // Deep link support
+  handleHashOpen();
+  window.addEventListener("hashchange", handleHashOpen);
 })();
-
-function handleHashOpen() {
-  if (location.hash === "#contact") {
-    // open contact modal using your existing trigger
-    const btn = document.querySelector('[data-modal="contact"]');
-    btn?.click();
-  }
-}
-window.addEventListener("hashchange", handleHashOpen);
-handleHashOpen();
-
