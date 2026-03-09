@@ -7,18 +7,23 @@
   </url>
 
   <url>
-    <loc>https://qeepp.com/premature-scaling.html</loc>
+    <loc>https://qeepp.com/premature-scaling</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://qeepp.com/resources.html</loc>
+    <loc>https://qeepp.com/resources</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://qeepp.com/about.html</loc>
+    <loc>https://qeepp.com/about</loc>
     <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/starfish-diagram</loc>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
