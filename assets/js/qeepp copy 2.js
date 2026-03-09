@@ -1,6 +1,6 @@
 /* =======================================================
    QEEPP Global Scripts
-   Version: 1.4
+   Version: 1.2
    ======================================================= */
 
 /* =======================================================
@@ -39,77 +39,6 @@ function initStickyShadow() {
 }
 
 /* =======================================================
-   Mobile Menu
-   Expects:
-   - #menuToggle
-   - #primaryNav
-   ======================================================= */
-function initMobileMenu() {
-  const toggle = document.getElementById("menuToggle");
-  const nav = document.getElementById("primaryNav");
-  const headerRoot = document.getElementById("site-header");
-
-  if (!toggle || !nav || !headerRoot) return;
-
-  function isMobile() {
-    return window.matchMedia("(max-width: 940px)").matches;
-  }
-
-  function openMenu() {
-    nav.classList.add("open");
-    toggle.setAttribute("aria-expanded", "true");
-  }
-
-  function closeMenu() {
-    nav.classList.remove("open");
-    toggle.setAttribute("aria-expanded", "false");
-  }
-
-  function toggleMenu() {
-    if (nav.classList.contains("open")) closeMenu();
-    else openMenu();
-  }
-
-  toggle.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!isMobile()) return;
-    toggleMenu();
-  });
-
-  nav.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (!link) return;
-    if (!isMobile()) return;
-    closeMenu();
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!isMobile()) return;
-    if (!nav.classList.contains("open")) return;
-
-    const clickedInsideNav = nav.contains(e.target);
-    const clickedToggle = toggle.contains(e.target);
-
-    if (!clickedInsideNav && !clickedToggle) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav.classList.contains("open")) {
-      closeMenu();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (!isMobile()) {
-      closeMenu();
-    }
-  });
-}
-
-/* =======================================================
    Contact Forms (supports modal + page)
    - Prefer: form[data-contact-form]
    - Fallback: #contactForm
@@ -121,6 +50,7 @@ function initContactForms() {
   if (forms.length === 0) return;
 
   forms.forEach((form) => {
+    // Prevent double-binding
     if (form.dataset.bound === "1") return;
     form.dataset.bound = "1";
 
@@ -168,16 +98,19 @@ function initContactForms() {
    - window.QEEPP.openContact() for deep links (#contact)
    ======================================================= */
 function initModals() {
+  // Slide kit modal elements
   const slideModal = document.getElementById("slideKitModal");
   const slideFrameWrap = document.getElementById("slideKitFrameWrap");
   const slideFrame = document.getElementById("slideKitFrame");
 
+  // PDF modal elements
   const pdfModal = document.getElementById("pdfModal");
   const pdfFrameWrap = document.getElementById("pdfFrameWrap");
   const pdfFrame = document.getElementById("pdfFrame");
   const pdfTitle = document.getElementById("pdfTitle");
   const pdfOpenNew = document.getElementById("pdfOpenNew");
 
+  // Contact modal elements
   const contactModal = document.getElementById("contactModal");
 
   if (!slideModal && !pdfModal && !contactModal) return;
@@ -239,12 +172,14 @@ function initModals() {
     closeModal(contactModal);
   }
 
+  // Expose for deep link handler
   window.QEEPP = window.QEEPP || {};
   window.QEEPP.openContact = openContact;
 
   document.addEventListener(
     "click",
     async (e) => {
+      // Open slide kit modal
       const slideTrigger = e.target.closest('[data-modal="slidekit"], #openSlideKit');
       if (slideTrigger) {
         e.preventDefault();
@@ -252,6 +187,7 @@ function initModals() {
         return;
       }
 
+      // Open contact modal
       const contactTrigger = e.target.closest('[data-modal="contact"]');
       if (contactTrigger) {
         e.preventDefault();
@@ -259,6 +195,7 @@ function initModals() {
         return;
       }
 
+      // Open PDF modal
       const pdfTrigger = e.target.closest("[data-pdf]");
       if (pdfTrigger) {
         e.preventDefault();
@@ -268,6 +205,7 @@ function initModals() {
         return;
       }
 
+      // Backdrop closes whichever modal is open
       if (e.target && e.target.dataset && e.target.dataset.close === "true") {
         if (slideModal?.classList.contains("is-open")) closeSlideKit();
         if (pdfModal?.classList.contains("is-open")) closePdf();
@@ -275,27 +213,28 @@ function initModals() {
         return;
       }
 
+      // Modal action buttons
       const actionEl = e.target.closest("[data-modal-action]");
       const action = actionEl ? actionEl.getAttribute("data-modal-action") : null;
 
+      // Close actions
       if (action === "slidekit-close" || e.target.id === "slideKitClose") {
         e.preventDefault();
         closeSlideKit();
         return;
       }
-
       if (action === "pdf-close" || e.target.id === "pdfClose") {
         e.preventDefault();
         closePdf();
         return;
       }
-
       if (action === "contact-close") {
         e.preventDefault();
         closeContact();
         return;
       }
 
+      // Fullscreen actions
       if (action === "slidekit-fullscreen" || e.target.id === "slideKitFullscreen") {
         e.preventDefault();
         try {
@@ -317,6 +256,7 @@ function initModals() {
     true
   );
 
+  // ESC closes whichever modal is open
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
 
@@ -327,108 +267,20 @@ function initModals() {
 }
 
 /* =======================================================
-   Interactive Starfish
-   Expects:
-   - .star-inner
-   - #qualityScore
-   - #effectivenessScore
-   - #efficiencyScore
-   - #performanceScore
-   - #productivityScore
-   ======================================================= */
-function initInteractiveStarfish() {
-  const starInner = document.querySelector(".star-inner");
-  if (!starInner) return;
-
-  const fields = {
-    quality: document.getElementById("qualityScore"),
-    effectiveness: document.getElementById("effectivenessScore"),
-    efficiency: document.getElementById("efficiencyScore"),
-    performance: document.getElementById("performanceScore"),
-    productivity: document.getElementById("productivityScore"),
-  };
-
-  const hasAllFields = Object.values(fields).every(Boolean);
-  if (!hasAllFields) return;
-
-  const points = {
-    quality: {
-      5: "50% 100%",
-      4: "50% 90%",
-      3: "50% 80%",
-      2: "50% 70%",
-      1: "50% 60%",
-    },
-    effectiveness: {
-      5: "20.61% 9.55%",
-      4: "26.49% 17.64%",
-      3: "32.37% 25.73%",
-      2: "38.24% 33.82%",
-      1: "44.12% 41.91%",
-    },
-    efficiency: {
-      5: "97.55% 65.45%",
-      4: "88.04% 62.36%",
-      3: "78.53% 59.27%",
-      2: "69.02% 56.18%",
-      1: "59.51% 53.09%",
-    },
-    performance: {
-      5: "2.45% 65.45%",
-      4: "11.96% 62.36%",
-      3: "21.47% 59.27%",
-      2: "30.98% 56.18%",
-      1: "40.49% 53.09%",
-    },
-    productivity: {
-      5: "79.39% 9.55%",
-      4: "73.51% 17.64%",
-      3: "67.63% 25.73%",
-      2: "61.76% 33.82%",
-      1: "55.88% 41.91%",
-    },
-  };
-
-  function updateStarfish() {
-    const q = fields.quality.value;
-    const e1 = fields.effectiveness.value;
-    const e2 = fields.efficiency.value;
-    const p1 = fields.performance.value;
-    const p2 = fields.productivity.value;
-
-    const polygon = [
-      points.quality[q],
-      points.effectiveness[e1],
-      points.efficiency[e2],
-      points.performance[p1],
-      points.productivity[p2],
-    ].join(", ");
-
-    starInner.style.clipPath = `polygon(${polygon})`;
-    starInner.style.webkitClipPath = `polygon(${polygon})`;
-  }
-
-  Object.values(fields).forEach((field) => {
-    field.addEventListener("change", updateStarfish);
-    field.addEventListener("input", updateStarfish);
-  });
-
-  updateStarfish();
-}
-
-/* =======================================================
-   Hash Handler (deep links)
+   Hash handler (deep links)
    - Supports: #contact
    ======================================================= */
 function handleHashOpen() {
   if (location.hash === "#contact") {
+    // Open directly (does not depend on a trigger button existing)
     window.QEEPP?.openContact?.();
   }
 }
 
 /* =======================================================
    Boot
-   Ensure partials are loaded before initializing features
+   Ensure modals are loaded before initModals/initContactForms.
+   IMPORTANT: hash handler runs after initModals so window.QEEPP exists.
    ======================================================= */
 (async function initSite() {
   await loadPartial("site-header", "partials/header.html");
@@ -436,18 +288,16 @@ function handleHashOpen() {
   await loadPartial("site-modals", "partials/modals.html");
 
   initStickyShadow();
-  initMobileMenu();
   initModals();
   initContactForms();
 
-  /* Run once immediately */
-  initInteractiveStarfish();
-
-  /* Run again on next frame in case page-specific DOM settled late */
-  requestAnimationFrame(() => {
-    initInteractiveStarfish();
-  });
-
+  // Deep link support
   handleHashOpen();
   window.addEventListener("hashchange", handleHashOpen);
 })();
+
+const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
+toggle.addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
