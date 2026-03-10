@@ -59,6 +59,44 @@
       position: absolute;
       inset: 0;
       background: rgba(125, 211, 252, 0.2);
+      clip-path: polygon(
+
+      /* STABILITY ZONE: Quality - Stabilized */
+      /*50% 100%, /*5*/
+      /*50% 90%, /*4*/
+      50% 80%, /*3*/
+      /*50% 70%, /*2*/
+      /*50% 60%, /*1*/
+
+      /* GOVERNANCE ZONE: Effectiveness - Aligned */
+      /*20.61% 9.55%, /*5*/
+      26.49% 17.64%, /*4*/
+      /*32.37% 25.73%, /*3*/
+      /*38.24% 33.82%, /*2*/
+      /*44.12% 41.91%, /*1*/
+
+      /* AMBITION ZONE: Efficiency - Optimized */
+      /*97.55% 65.45%, /*5*/
+      /*88.04% 62.36%, /*4*/
+      /*78.53% 59.27%, /*3*/
+      69.02% 56.18%, /*2*/
+      /*59.51% 53.09%, /*1*/
+
+      /* GOVERNANCE ZONE: Performance - Measured */
+      /*2.45% 65.45%, /*5*/
+      /*11.96% 62.36%, /*4*/
+      21.47% 59.27%, /*3*/
+      /*30.98% 56.18%, /*2*/
+      /*40.49% 53.09%, /*1*/
+
+      /* AMBITION ZONE: Productivity - Scaled */
+      /*79.39% 9.55% /*5*/
+      /*73.51% 17.64% /*4*/
+      /*67.63% 25.73% /*3*/
+      /*61.76% 33.82% /*2*/
+      55.88% 41.91% /*1*/
+
+      );
       pointer-events: none;
       z-index: 0;
     }
@@ -204,7 +242,6 @@
             alt="QEEPP Starfish Diagram Logo"
             class="hero-starfish"
           />
-          <!-- #6cc9ff 80% -->
         </section>
 
         <section class="panel starfish-diag">
@@ -221,70 +258,6 @@
           <span class="label productivity">Productivity<br>Scaled</span>
           <div class="star-inner"></div>
         </section>
-
-
-<div class="panel">
-  <h3>Interactive QEEPP Starfish Assessment</h3>
-
-  <form id="starfishForm" class="starfish-form">
-    <label>
-      Quality
-      <select id="qualityScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-
-    <label>
-      Effectiveness
-      <select id="effectivenessScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4" selected>4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-
-    <label>
-      Efficiency
-      <select id="efficiencyScore">
-        <option value="1">1</option>
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-
-    <label>
-      Performance
-      <select id="performanceScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-
-    <label>
-      Productivity
-      <select id="productivityScore">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-  </form>
-  <h3>QEEPP values from the scorecard</h3>
-</div>
-
 
         <section class="panel">
           <h3>Understanding the QEEPP Starfish Diagram</h3>
@@ -382,8 +355,5 @@
   <div id="site-modals"></div>
   <div id="site-footer"></div>
   <script defer src="assets/js/qeepp.js"></script>
-
-  
-
 </body>
 </html>
