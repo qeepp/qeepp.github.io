@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QEEPP | Radar Chart</title>
-  <meta name="description" content="QEEPP is a structural discipline model for governing complex digital transformation across Quality, Effectiveness, Efficiency, Performance, and Productivity." />
+  <meta
+    name="description"
+    content="QEEPP is a structural discipline model for governing complex digital transformation across Quality, Effectiveness, Efficiency, Performance, and Productivity."
+  />
   <link rel="icon" href="assets/icons/qeepp-fav.ico" />
   <link rel="stylesheet" href="assets/css/qeepp.css" />
   <link rel="canonical" href="https://qeepp.com/radar-chart.html" />
@@ -24,24 +27,30 @@
       align-items: start;
     }
 
-    .radar-diag {
-      position: relative;
-      overflow: hidden;
+    .radar-diag,
+    .radar-controls {
       width: 100%;
-      max-width: 880px;
+      max-width: 640px;
       margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      background: transparent;
+      box-sizing: border-box;
+    }
+
+    .panel.radar-diag {
+      padding: 8px 10px 10px;
+    }
+
+    .radar-panel-title {
+      margin: 0 0 2px !important;
+      padding: 0 !important;
+      line-height: 1.1 !important;
+      text-align: center;
     }
 
     .radar-svg {
       width: 100%;
       height: auto;
       display: block;
-      overflow: visible;
+      margin: 0;
     }
 
     .radar-guide {
@@ -62,7 +71,7 @@
     }
 
     .radar-letter {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
       text-anchor: middle;
       dominant-baseline: middle;
@@ -72,56 +81,86 @@
     }
 
     .radar-center-title {
-    font-size: 28px;
-    font-weight: 600;
-    fill: var(--text);
-    text-anchor: middle;
+      font-size: 22px;
+      font-weight: 600;
+      fill: var(--text);
+      text-anchor: middle;
     }
 
     .radar-center-sub {
-    font-size: 25px;
-    font-weight: 400;
-    fill: var(--text);
-    text-anchor: middle;
+      font-size: 18px;
+      font-weight: 400;
+      fill: var(--text);
+      text-anchor: middle;
     }
 
     .radar-legend {
-    width: 100%;
-    max-width: 880px;
-    margin: 12px auto 0;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px 14px;
+      width: 100%;
+      margin: 2px 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 14px;
     }
 
     .radar-legend-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 14px;
+      justify-content: center;
+      gap: 6px;
+      font-size: 13px;
+      line-height: 1.1;
       color: var(--text);
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      white-space: nowrap;
     }
 
     .radar-legend-swatch {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      flex: 0 0 12px;
+      flex: 0 0 10px;
     }
 
-    .radar-info-grid {
+    #radarForm {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    #radarForm label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #radarForm select {
+      width: 100%;
     }
 
     @media (max-width: 940px) {
-      .radar-diag {
-        min-height: 0;
+      .radar-letter {
+        font-size: 16px;
       }
 
-      .radar-letter {
-        font-size: 18px;
+      .radar-legend {
+        flex-wrap: wrap;
+        gap: 10px 14px;
+      }
+
+      #radarForm {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      #radarForm {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -147,10 +186,9 @@
               <h1>QEEPP Radar Chart</h1>
 
               <p class="lead">
-                The QEEPP Radar is visualizing the maturity level of each QEEPP dimension across a transformation assessment.
+                The QEEPP Radar visualizes the maturity level of each QEEPP dimension across a transformation assessment.
                 <br><br>
                 The chart is particularly useful for current-state assessment, target-state planning, and identifying structural priorities for improvement.
-                <br><br>
               </p>
             </div>
           </div>
@@ -163,17 +201,25 @@
         </section>
 
         <section class="panel radar-diag">
-          <svg id="qeeppRadarSvg" class="radar-svg" viewBox="0 0 880 880" role="img" aria-label="QEEPP Radar Diagram"></svg>
+          <h3 class="radar-panel-title">The QEEPP Radar</h3>
+
+          <svg
+            id="qeeppRadarSvg"
+            class="radar-svg"
+            viewBox="0 40 700 620"
+            role="img"
+            aria-label="QEEPP Radar Diagram"
+          ></svg>
+
+          <div class="radar-legend" id="qeeppRadarLegend"></div>
         </section>
 
-        <div class="radar-legend" id="qeeppRadarLegend"></div>
-
-        <div class="panel">
-          <h3>Interactive QEEPP Radar Assessment</h3>
+        <div class="panel radar-controls">
+          <h3>Interactive Assessment Input</h3>
 
           <form id="radarForm" class="starfish-form">
             <label>
-              Quality
+              <span>Quality</span>
               <select id="qualityScore" data-dimension="quality">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -184,7 +230,7 @@
             </label>
 
             <label>
-              Effectiveness
+              <span>Effectiveness</span>
               <select id="effectivenessScore" data-dimension="effectiveness">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -195,7 +241,7 @@
             </label>
 
             <label>
-              Efficiency
+              <span>Efficiency</span>
               <select id="efficiencyScore" data-dimension="efficiency">
                 <option value="1">1</option>
                 <option value="2" selected>2</option>
@@ -206,7 +252,7 @@
             </label>
 
             <label>
-              Performance
+              <span>Performance</span>
               <select id="performanceScore" data-dimension="performance">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -217,7 +263,7 @@
             </label>
 
             <label>
-              Productivity
+              <span>Productivity</span>
               <select id="productivityScore" data-dimension="productivity">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
@@ -253,13 +299,13 @@
       ];
 
       const config = {
-        cx: 440,
-        cy: 440,
+        cx: 350,
+        cy: 350,
         startAngle: -45,
         axisCount: 8,
-        innerRadius: 140,
-        ringThickness: 38,
-        ringGap: 8
+        innerRadius: 100,
+        ringThickness: 26,
+        ringGap: 6
       };
 
       function createSvg(tag, attrs = {}) {
@@ -375,7 +421,7 @@
 
         const sub = createSvg("text", {
           x: config.cx,
-          y: config.cy + 22,
+          y: config.cy + 18,
           class: "radar-center-sub"
         });
         sub.textContent = "Radar";
@@ -396,7 +442,7 @@
           swatch.style.background = dim.color;
 
           const text = document.createElement("span");
-          text.textContent = `${dim.label}: ${dim.score}/5`;
+          text.textContent = dim.label;
 
           item.appendChild(swatch);
           item.appendChild(text);
