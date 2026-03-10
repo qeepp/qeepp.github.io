@@ -27,32 +27,38 @@
       align-items: start;
     }
 
-    .radar-diag,
-    .radar-controls {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-      box-sizing: border-box;
+    .panel.radar-diag {
+      padding: 0px 0px 0px;
     }
 
-    .panel.radar-diag {
-      padding: 8px 10px 10px;
+    .radar-diag {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 0;
+      display: grid;
+      gap: 0px;
+      background: transparent;
     }
 
     .radar-panel-title {
-      margin: 0 0 2px !important;
-      padding: 0 !important;
-      line-height: 1.1 !important;
+      display: block;
+      margin: 0;
+      padding 0;
+      line-height: 3;
       text-align: center;
     }
 
     .radar-svg {
       width: 100%;
       height: auto;
+      aspect-ratio: 1 / 1;
       display: block;
       margin: 0;
     }
-
+    
     .radar-guide {
       fill: none;
       stroke: #eef2f6;
@@ -96,29 +102,31 @@
 
     .radar-legend {
       width: 100%;
-      margin: 2px 0 0;
-      display: flex;
-      justify-content: center;
+      margin: -150px 0 0 0;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0px;
+      height: auto;
+      min-height: 0;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 14px;
     }
 
     .radar-legend-item {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       font-size: 13px;
-      line-height: 1.1;
+      line-height: 3;
       color: var(--text);
       text-align: center;
-      margin: 0;
-      padding: 0;
       min-width: 0;
-      white-space: nowrap;
-    }
-
+      height: auto;
+      min-height: 0;
+      padding: 0;
+      margin: 0;
+}
+    
     .radar-legend-swatch {
       width: 10px;
       height: 10px;
@@ -126,21 +134,24 @@
       flex: 0 0 10px;
     }
 
+    .radar-controls {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .radar-label {
+      display: inline-block;
+    }
+
     #radarForm {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    #radarForm label {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      gap: auto;
     }
 
     #radarForm select {
-      width: 100%;
+      width: 70%;
     }
 
     @media (max-width: 940px) {
@@ -149,8 +160,7 @@
       }
 
       .radar-legend {
-        flex-wrap: wrap;
-        gap: 10px 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       #radarForm {
@@ -159,6 +169,10 @@
     }
 
     @media (max-width: 560px) {
+      .radar-legend {
+        grid-template-columns: 1fr;
+      }
+
       #radarForm {
         grid-template-columns: 1fr;
       }
@@ -206,7 +220,7 @@
           <svg
             id="qeeppRadarSvg"
             class="radar-svg"
-            viewBox="0 40 700 620"
+            viewBox="0 80 700 700"
             role="img"
             aria-label="QEEPP Radar Diagram"
           ></svg>
@@ -215,11 +229,11 @@
         </section>
 
         <div class="panel radar-controls">
-          <h3>Interactive Assessment Input</h3>
+          <h3>Interactive QEEPP Radar Assessment</h3>
 
           <form id="radarForm" class="starfish-form">
             <label>
-              <span>Quality</span>
+              <span class="radar-label">Quality</span>
               <select id="qualityScore" data-dimension="quality">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -230,7 +244,7 @@
             </label>
 
             <label>
-              <span>Effectiveness</span>
+              <span class="radar-label">Effectiveness</span>
               <select id="effectivenessScore" data-dimension="effectiveness">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -241,7 +255,7 @@
             </label>
 
             <label>
-              <span>Efficiency</span>
+              <span class="radar-label">Efficiency</span>
               <select id="efficiencyScore" data-dimension="efficiency">
                 <option value="1">1</option>
                 <option value="2" selected>2</option>
@@ -252,7 +266,7 @@
             </label>
 
             <label>
-              <span>Performance</span>
+              <span class="radar-label">Performance</span>
               <select id="performanceScore" data-dimension="performance">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -263,7 +277,7 @@
             </label>
 
             <label>
-              <span>Productivity</span>
+              <span class="radar-label">Productivity</span>
               <select id="productivityScore" data-dimension="productivity">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
