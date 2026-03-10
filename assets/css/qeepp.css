@@ -1014,6 +1014,12 @@ textarea.input{
   }
 }
 
+@media (max-width: 560px) {
+  .starfish-form {
+    grid-template-columns: 1fr;
+  }
+}
+
 .starfish-form label {
   display: flex;
   flex-direction: column;
