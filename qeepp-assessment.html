@@ -1,0 +1,1532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QEEPP | Assessment</title>
+  <meta
+    name="description"
+    content="Interactive QEEPP assessment for scoring transformation maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity."
+  />
+  <link rel="icon" href="assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="assets/css/qeepp.css" />
+  <link rel="canonical" href="https://qeepp.com/qeepp-assessment.html" />
+
+  <style>
+    :root {
+      --quality: #2563EB;
+      --effectiveness: #16A34A;
+      --efficiency: #F59E0B;
+      --performance: #DC2626;
+      --productivity: #9333EA;
+
+      --trend-line: rgba(255, 255, 255, 0.12);
+      --trend-text: #e5e7eb;
+      --trend-muted: #94a3b8;
+      --trend-muted-2: #cbd5e1;
+      --trend-bg-dark: #0b1220;
+      --trend-radius: 18px;
+      --trend-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-intro {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .assessment-summary-sticky {
+      position: sticky;
+      top: 72px;
+      z-index: 40;
+      padding: 12px 14px;
+    }
+
+    .assessment-summary-bar {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-areas:
+        "name scores"
+        "status status";
+      gap: 12px 14px;
+      align-items: start;
+    }
+
+    .assessment-name-wrap {
+      grid-area: name;
+      min-width: 0;
+    }
+
+    .summary-inline-grid {
+      grid-area: scores;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .summary-status-inline {
+      grid-area: status;
+      display: grid;
+      gap: 2px;
+      justify-items: start;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .summary-status-inline strong,
+    .manual-note strong,
+    .risk-note strong,
+    .dependency-note strong,
+    .history-note strong,
+    .mini-chart-note strong {
+      color: var(--text);
+    }
+
+    .assessment-name-input,
+    .score-select,
+    .check-select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: #000;
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .assessment-name-input::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    .check-select option,
+    .score-select option {
+      background: #000;
+      color: #fff;
+    }
+
+    .score-select:disabled,
+    .check-select:disabled {
+      opacity: 0.72;
+      cursor: not-allowed;
+    }
+
+    .summary-inline-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      min-width: 0;
+    }
+
+    .summary-inline-card strong {
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .summary-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .assessment-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .assessment-dimensions {
+      display: grid;
+      gap: 16px;
+    }
+
+    .dimension-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .dimension-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .dimension-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .dimension-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .dimension-objective {
+      margin: 8px 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .dimension-score-wrap {
+      min-width: 170px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .manual-note,
+    .risk-note,
+    .dependency-note,
+    .history-note,
+    .mini-chart-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .checklist-grid {
+      display: grid;
+      gap: 8px;
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .check-label {
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .check-select,
+    .score-select {
+      width: 170px;
+      min-width: 170px;
+      max-width: 170px;
+    }
+
+    .assessment-side {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mini-btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+    }
+
+    .mini-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.26);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .mini-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .history-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+      max-height: 250px;
+      overflow: auto;
+    }
+
+    .history-item {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .history-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .chart-card {
+      min-height: 320px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .chart-card h3 {
+      margin: 0;
+    }
+
+    .chart-caption {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Mini Starfish */
+    .mini-starfish-wrap {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .mini-starfish-diag {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: 300px;
+    }
+
+    .mini-starfish-diag::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(125, 211, 252, 0.16);
+      clip-path: polygon(
+        50% 100%,
+        61.23% 65.45%,
+        97.55% 65.45%,
+        68.16% 44.10%,
+        79.39% 9.55%,
+        50% 30.90%,
+        20.61% 9.55%,
+        31.84% 44.10%,
+        2.45% 65.45%,
+        38.77% 65.45%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .mini-star-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .mini-star-inner-polygon {
+      fill: rgba(125, 211, 252, 0.35);
+    }
+
+    .mini-label {
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+      line-height: 1.15;
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .mini-success {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      letter-spacing: 0.2px;
+    }
+
+    .mini-governance {
+      top: 39%;
+      left: 4%;
+    }
+
+    .mini-ambition {
+      top: 39%;
+      right: 4%;
+    }
+
+    .mini-stability1 {
+      top: 79%;
+      left: 13%;
+    }
+
+    .mini-stability2 {
+      top: 79%;
+      right: 13%;
+    }
+
+    .mini-quality {
+      top: 78%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .mini-effectiveness {
+      top: 25%;
+      left: 21%;
+    }
+
+    .mini-efficiency {
+      top: 58%;
+      right: 10%;
+    }
+
+    .mini-performance {
+      top: 58%;
+      left: 10%;
+    }
+
+    .mini-productivity {
+      top: 25%;
+      right: 21%;
+    }
+
+    /* Mini Radar */
+    .mini-radar-wrap {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .mini-radar-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+    }
+
+    .radar-guide {
+      fill: none;
+      stroke: #eef2f6;
+      stroke-width: 1.2;
+    }
+
+    .radar-axis {
+      stroke: #d7dee7;
+      stroke-width: 1.1;
+    }
+
+    .radar-ring {
+      fill: none;
+      stroke-linecap: round;
+      opacity: 0.85;
+    }
+
+    .radar-letter {
+      font-size: 18px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: rgba(255, 255, 255, 0.82);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .radar-center-title {
+      font-size: 22px;
+      font-weight: 600;
+      fill: var(--text);
+      text-anchor: middle;
+    }
+
+    .radar-center-sub {
+      font-size: 18px;
+      font-weight: 400;
+      fill: var(--text);
+      text-anchor: middle;
+    }
+
+    .radar-legend {
+      width: 100%;
+      margin: 2px 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    .radar-legend-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      line-height: 1.1;
+      color: var(--text);
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    .radar-legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 10px;
+    }
+
+    /* Mini Trends */
+    .mini-trends-wrap {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-trend-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini-matrix {
+      padding: 0.8rem;
+      border-radius: 16px;
+      border: 1px solid var(--trend-line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    }
+
+    .mini-matrix-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .mini-matrix-title h4 {
+      margin: 0;
+      font-size: 0.92rem;
+      letter-spacing: -0.02em;
+    }
+
+    .mini-matrix-score {
+      color: var(--trend-muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .mini-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 0.25rem;
+      align-items: stretch;
+      aspect-ratio: 1 / 1;
+    }
+
+    .mini-cell {
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .mini-cell.filled {
+      border-color: rgba(255,255,255,0.14);
+      box-shadow:
+        inset 0 -10px 18px rgba(255,255,255,0.08),
+        0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .mini-x-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      font-weight: 700;
+    }
+
+    .mini-x-label.q  { color: var(--quality); }
+    .mini-x-label.ef { color: var(--effectiveness); }
+    .mini-x-label.ec { color: var(--efficiency); }
+    .mini-x-label.pf { color: var(--performance); }
+    .mini-x-label.pr { color: var(--productivity); }
+
+    .mini-legend {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--trend-line);
+    }
+
+    .mini-legend-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      min-width: 0;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--trend-muted-2);
+    }
+
+    .mini-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 1220px) {
+      .assessment-summary-bar {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "name"
+          "scores"
+          "status";
+      }
+
+      .summary-inline-grid {
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .assessment-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .dimension-head,
+      .check-row {
+        grid-template-columns: 1fr;
+      }
+
+      .dimension-score-wrap {
+        min-width: 0;
+      }
+
+      .summary-inline-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .assessment-summary-sticky {
+        top: 64px;
+      }
+
+      .check-select,
+      .score-select {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+      }
+
+      .mini-trend-board,
+      .mini-legend {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-label {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="section">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Assessment Applies Structural Maturity Scoring</span>
+                </div>
+              </div>
+              <h1>QEEPP Assessment</h1>
+              <div class="assessment-intro">
+                The QEEPP assessment is a recurring structural assessment used to evaluate transformation maturity, identify imbalance, and guide disciplined progression from stability to scale.
+                <br><br>
+                Assess each checklist element using the five maturity states. Each dimension score is populated automatically using the lowest checklist level in that group. Manual score adjustment is enabled only when all five checklist elements for that dimension are at Defined or above.
+              </div>
+            </div>
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="assessment-methodology.html">QEEPP Assessment Methodology</a>
+
+        <section class="panel assessment-summary-sticky">
+          <div class="assessment-summary-bar">
+            <div class="assessment-name-wrap">
+              <input
+                id="assessmentName"
+                class="assessment-name-input"
+                type="text"
+                placeholder="Assessment name"
+                aria-label="Assessment name"
+              />
+            </div>
+
+            <div id="summaryInlineGrid" class="summary-inline-grid"></div>
+            <div id="summaryStatusInline" class="summary-status-inline"></div>
+          </div>
+        </section>
+
+        <section class="assessment-main">
+          <div class="panel">
+            <h3>Interactive assessment input</h3>
+            <div id="assessmentDimensions" class="assessment-dimensions"></div>
+          </div>
+
+          <div class="assessment-side">
+            <section class="panel">
+              <h3>Saved assessment history</h3>
+              <div class="history-note">
+                Save the completed scorecard to build recurring QEEPP Trends history.
+              </div>
+
+              <div class="action-row">
+                <button id="saveAssessmentBtn" class="mini-btn" type="button" disabled>Save assessment point</button>
+                <button id="clearHistoryBtn" class="mini-btn" type="button">Clear saved history</button>
+              </div>
+
+              <div id="historyList" class="history-list"></div>
+            </section>
+
+            <section class="panel chart-card">
+              <h3>QEEPP Starfish</h3>
+              <div class="chart-caption">Current structural maturity versus full target state.</div>
+              <div class="mini-starfish-wrap">
+                <div id="miniStarfish" class="mini-starfish-diag">
+                  <span class="mini-label mini-success">SUCCESSFUL<br>TRANSFORMATION</span>
+                  <span class="mini-label mini-governance">GOVERNANCE<br>ZONE</span>
+                  <span class="mini-label mini-ambition">AMBITION<br>ZONE</span>
+                  <span class="mini-label mini-stability1">STABILITY<br>ZONE</span>
+                  <span class="mini-label mini-stability2">STABILITY<br>ZONE</span>
+                  <span class="mini-label mini-quality">Quality<br>Stabilized</span>
+                  <span class="mini-label mini-effectiveness">Effectiveness<br>Aligned</span>
+                  <span class="mini-label mini-efficiency">Efficiency<br>Optimized</span>
+                  <span class="mini-label mini-performance">Performance<br>Measured</span>
+                  <span class="mini-label mini-productivity">Productivity<br>Scaled</span>
+
+                  <svg class="mini-star-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon id="miniStarInnerPolygon" class="mini-star-inner-polygon" points=""></polygon>
+                  </svg>
+                </div>
+              </div>
+              <div id="miniStarfishNote" class="mini-chart-note"></div>
+            </section>
+
+            <section class="panel chart-card">
+              <h3>QEEPP Radar</h3>
+              <div class="chart-caption">Dimension balance across the five interdependent dimensions.</div>
+              <div class="mini-radar-wrap">
+                <svg
+                  id="miniRadarSvg"
+                  class="mini-radar-svg"
+                  viewBox="0 40 700 620"
+                  role="img"
+                  aria-label="QEEPP Radar Diagram"
+                ></svg>
+                <div class="radar-legend" id="miniRadarLegend"></div>
+              </div>
+              <div id="miniRadarNote" class="mini-chart-note"></div>
+            </section>
+
+            <section class="panel chart-card">
+              <h3>QEEPP Trends</h3>
+              <div class="chart-caption">The last 4 saved scorecards only.</div>
+              <div class="mini-trends-wrap">
+                <div id="miniTrendBoard" class="mini-trend-board"></div>
+                <div class="mini-legend">
+                  <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--quality)"></span>Quality</div>
+                  <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--effectiveness)"></span>Effectiveness</div>
+                  <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--efficiency)"></span>Efficiency</div>
+                  <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--performance)"></span>Performance</div>
+                  <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--productivity)"></span>Productivity</div>
+                </div>
+                <div class="mini-chart-note"><strong>Note:</strong> QEEPP Trends is populated only from the last 4 saved assessments.</div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+  <script defer src="assets/js/qeepp.js"></script>
+
+  <script>
+    const MATURITY_OPTIONS = [
+      { value: 1, label: "Ad hoc" },
+      { value: 2, label: "Emerging" },
+      { value: 3, label: "Defined" },
+      { value: 4, label: "Managed" },
+      { value: 5, label: "Institutionalized" }
+    ];
+
+    const DIMENSIONS = [
+      {
+        key: "quality",
+        title: "Quality",
+        subtitle: "Structural Integrity",
+        objective: "Ensure foundational stability before acceleration.",
+        risk: "Scale amplifies instability and structural fragility.",
+        color: "#2563EB",
+        short: "Q",
+        xClass: "q",
+        items: [
+          "Architecture standards defined and enforced",
+          "Security controls embedded and monitored",
+          "Data quality ownership clearly defined",
+          "Technical debt identified and tracked",
+          "Operational platform reliability meets defined thresholds"
+        ]
+      },
+      {
+        key: "effectiveness",
+        title: "Effectiveness",
+        subtitle: "Strategic Alignment",
+        objective: "Ensure transformation efforts drive measurable business value.",
+        risk: "Efficiency and scale amplify irrelevant or low-value activity.",
+        color: "#16A34A",
+        short: "E",
+        xClass: "ef",
+        items: [
+          "Clear business outcomes defined",
+          "Capabilities mapped to strategic priorities",
+          "Value streams identified and stakeholders aligned",
+          "Success metrics agreed and documented",
+          "Initiative prioritization aligned to business impact"
+        ]
+      },
+      {
+        key: "efficiency",
+        title: "Efficiency",
+        subtitle: "Operational Optimization",
+        objective: "Remove structural waste after alignment is secured.",
+        risk: "Operational friction constrains performance.",
+        color: "#F59E0B",
+        short: "E",
+        xClass: "ec",
+        items: [
+          "Cost transparency established (FinOps visibility)",
+          "Redundant systems identified and rationalized",
+          "Automation opportunities implemented",
+          "Process bottlenecks measured and addressed",
+          "Resource allocation aligned to priorities"
+        ]
+      },
+      {
+        key: "performance",
+        title: "Performance",
+        subtitle: "Measurement & Governance",
+        objective: "Institutionalize accountability and visibility.",
+        risk: "Scale proceeds without accountability or visibility.",
+        color: "#DC2626",
+        short: "P",
+        xClass: "pf",
+        items: [
+          "KPIs and OKRs formally defined",
+          "Performance dashboards operational",
+          "Governance cadence established",
+          "SLA/SLO compliance monitored",
+          "Risk and compliance reporting standardized"
+        ]
+      },
+      {
+        key: "productivity",
+        title: "Productivity",
+        subtitle: "Sustainable Scale",
+        objective: "Expand capability without structural degradation.",
+        risk: "Scale increases cost and complexity without net productivity gain.",
+        color: "#9333EA",
+        short: "P",
+        xClass: "pr",
+        items: [
+          "Reusable platforms and components leveraged",
+          "Self-service capabilities enabled",
+          "Automation scaled across teams",
+          "Workforce enablement structured",
+          "Growth does not degrade quality or control"
+        ]
+      }
+    ];
+
+    const STORAGE_KEY = "qeeppAssessmentHistoryV5";
+
+    const state = {
+      dimensionItems: {},
+      manualScores: {},
+      dimensionScores: {}
+    };
+
+    function loadHistory() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveHistory(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function optionMarkup(selectedValue) {
+      const blankSelected = selectedValue === "" || selectedValue === null || selectedValue === undefined
+        ? "selected"
+        : "";
+
+      return `
+        <option value="" ${blankSelected}>Select</option>
+        ${MATURITY_OPTIONS.map(option => {
+          const selected = Number(selectedValue) === option.value ? "selected" : "";
+          return `<option value="${option.value}" ${selected}>${option.value} • ${option.label}</option>`;
+        }).join("")}
+      `;
+    }
+
+    function renderDimensions() {
+      const container = document.getElementById("assessmentDimensions");
+
+      const markup = DIMENSIONS.map((dimension) => {
+        const defaultValues = dimension.items.map(() => "");
+        state.dimensionItems[dimension.key] = defaultValues.slice();
+        state.manualScores[dimension.key] = null;
+        state.dimensionScores[dimension.key] = "";
+
+        const checklistMarkup = dimension.items.map((item, itemIndex) => `
+          <div class="check-row">
+            <div class="check-label">${item}</div>
+            <select
+              class="check-select"
+              data-dimension="${dimension.key}"
+              data-item-index="${itemIndex}"
+              aria-label="${dimension.title} item ${itemIndex + 1}"
+            >
+              ${optionMarkup("")}
+            </select>
+          </div>
+        `).join("");
+
+        return `
+          <section class="dimension-card">
+            <div class="dimension-head">
+              <div>
+                <h3 class="dimension-title">
+                  ${dimension.title}
+                  <span class="dimension-subtitle">${dimension.subtitle}</span>
+                </h3>
+                <div class="dimension-objective"><strong>Objective:</strong> ${dimension.objective}</div>
+              </div>
+
+              <div class="dimension-score-wrap">
+                <label for="${dimension.key}ScoreSelect"><strong>${dimension.title} Score</strong></label>
+                <select
+                  id="${dimension.key}ScoreSelect"
+                  class="score-select"
+                  data-score-dimension="${dimension.key}"
+                  aria-label="${dimension.title} score"
+                >
+                  ${optionMarkup("")}
+                </select>
+                <div id="${dimension.key}ManualNote" class="manual-note"></div>
+              </div>
+            </div>
+
+            <div class="checklist-grid">${checklistMarkup}</div>
+
+            <div class="risk-note" style="margin-top:10px;">
+              <strong>Risk if weak:</strong> ${dimension.risk}
+            </div>
+          </section>
+        `;
+      }).join("");
+
+      container.innerHTML = markup;
+    }
+
+    function updateDimensionState(dimensionKey) {
+      const values = state.dimensionItems[dimensionKey];
+      const scoreSelect = document.querySelector(`[data-score-dimension="${dimensionKey}"]`);
+      const manualNote = document.getElementById(`${dimensionKey}ManualNote`);
+
+      const hasBlanks = values.some(value => value === "" || value === null || value === undefined);
+
+      if (hasBlanks) {
+        state.manualScores[dimensionKey] = null;
+        state.dimensionScores[dimensionKey] = "";
+        scoreSelect.value = "";
+        scoreSelect.disabled = true;
+        manualNote.innerHTML = "Complete all five checklist selections to calculate the dimension score.";
+        return;
+      }
+
+      const numericValues = values.map(Number);
+      const minScore = Math.min(...numericValues);
+      const unlocked = numericValues.every(value => value >= 3);
+
+      if (!unlocked) {
+        state.manualScores[dimensionKey] = null;
+      }
+
+      const finalScore = unlocked && state.manualScores[dimensionKey] !== null
+        ? Number(state.manualScores[dimensionKey])
+        : minScore;
+
+      state.dimensionScores[dimensionKey] = finalScore;
+      scoreSelect.value = String(finalScore);
+      scoreSelect.disabled = !unlocked;
+
+      manualNote.innerHTML = unlocked
+        ? "Manual adjustment enabled because all five checklist elements are <strong>Defined</strong> or above."
+        : "Auto-scored from the lowest checklist level in this dimension. Manual adjustment unlocks only when all five checklist elements are at <strong>Level 3</strong> or above.";
+    }
+
+    function readinessLabel(scores) {
+      const values = Object.values(scores);
+      const lowest = Math.min(...values);
+      const allFive = values.every(value => value === 5);
+
+      if (allFive) return "Ready to Scale";
+      if (lowest >= 3) return "Ready with Constraints";
+      if (lowest === 2) return "Partially Ready";
+      return "Not Ready";
+    }
+
+    function dependencyMessage(scores) {
+      if (scores.quality < 3) return "Quality below Level 3. Constrain scaling initiatives.";
+      if (scores.effectiveness < 3) return "Effectiveness below Level 3. Pause optimization efforts.";
+      if (scores.efficiency < 3) return "Efficiency below Level 3. Limit performance expansion.";
+      if (scores.performance < 3) return "Performance below Level 3. Restrict productivity acceleration.";
+      if (scores.productivity < 3) return "Productivity still emerging. Sustainable scale is not yet fully established.";
+      return "All foundational dimensions are at Level 3 or above.";
+    }
+
+    function isAssessmentComplete() {
+      return DIMENSIONS.every(d => state.dimensionScores[d.key] !== "" && state.dimensionScores[d.key] !== null && state.dimensionScores[d.key] !== undefined);
+    }
+
+    function updateSaveButtonState() {
+      const btn = document.getElementById("saveAssessmentBtn");
+      btn.disabled = !isAssessmentComplete();
+    }
+
+    function renderSummary() {
+      const summaryInlineGrid = document.getElementById("summaryInlineGrid");
+      const summaryStatusInline = document.getElementById("summaryStatusInline");
+
+      summaryInlineGrid.innerHTML = DIMENSIONS.map(dimension => `
+        <div class="summary-inline-card">
+          <strong>${dimension.title}</strong>
+          <span class="summary-pill">${state.dimensionScores[dimension.key] === "" ? "–" : state.dimensionScores[dimension.key]}</span>
+        </div>
+      `).join("");
+
+      const scoreValues = Object.values(state.dimensionScores);
+      const hasIncomplete = scoreValues.some(v => v === "" || v === null || v === undefined);
+
+      if (hasIncomplete) {
+        summaryStatusInline.innerHTML = `
+          <strong>Assessment in progress</strong>
+          <span>Complete all checklist selections to calculate all dimension scores.</span>
+          <span>Structural readiness will appear once the assessment is complete.</span>
+        `;
+        updateSaveButtonState();
+        return;
+      }
+
+      const lowestDimension = DIMENSIONS.reduce((lowest, current) => {
+        return state.dimensionScores[current.key] < state.dimensionScores[lowest.key] ? current : lowest;
+      }, DIMENSIONS[0]);
+
+      const status = readinessLabel(state.dimensionScores);
+
+      summaryStatusInline.innerHTML = `
+        <strong>${status}</strong>
+        <span>Lowest dimension: ${lowestDimension.title} (${state.dimensionScores[lowestDimension.key]})</span>
+        <span>${dependencyMessage(state.dimensionScores)}</span>
+      `;
+
+      updateSaveButtonState();
+    }
+
+    function updateMiniStarfish() {
+      const note = document.getElementById("miniStarfishNote");
+      const polygon = document.getElementById("miniStarInnerPolygon");
+
+      if (!isAssessmentComplete()) {
+        polygon.setAttribute("points", "");
+        note.innerHTML = "<strong>Complete the assessment</strong> to generate the current-state inner starfish.";
+        return;
+      }
+
+      const scores = {
+        quality: Number(state.dimensionScores.quality),
+        effectiveness: Number(state.dimensionScores.effectiveness),
+        efficiency: Number(state.dimensionScores.efficiency),
+        performance: Number(state.dimensionScores.performance),
+        productivity: Number(state.dimensionScores.productivity)
+      };
+
+      const scalePoint = (x, y, score) => {
+        const cx = 50;
+        const cy = 50;
+        const factor = score / 5;
+        return [
+          cx + (x - cx) * factor,
+          cy + (y - cy) * factor
+        ];
+      };
+
+      const scoredPoints = [
+        scalePoint(50.00, 100.00, scores.quality),
+        scalePoint(61.23, 65.45, scores.quality),
+        scalePoint(97.55, 65.45, scores.efficiency),
+        scalePoint(68.16, 44.10, scores.productivity),
+        scalePoint(79.39, 9.55,  scores.productivity),
+        scalePoint(50.00, 30.90, scores.productivity),
+        scalePoint(20.61, 9.55,  scores.effectiveness),
+        scalePoint(31.84, 44.10, scores.effectiveness),
+        scalePoint(2.45, 65.45,  scores.performance),
+        scalePoint(38.77, 65.45, scores.quality)
+      ];
+
+      polygon.setAttribute(
+        "points",
+        scoredPoints.map(([x, y]) => `${x},${y}`).join(" ")
+      );
+
+      note.textContent = "";
+    }
+
+    function createSvg(tag, attrs = {}) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+      return el;
+    }
+
+    function polar(cx, cy, r, angleDeg) {
+      const rad = angleDeg * Math.PI / 180;
+      return {
+        x: cx + r * Math.cos(rad),
+        y: cy + r * Math.sin(rad)
+      };
+    }
+
+    function arcPath(cx, cy, r, startAngle, endAngle) {
+      const start = polar(cx, cy, r, startAngle);
+      const end = polar(cx, cy, r, endAngle);
+      const delta = endAngle - startAngle;
+      const largeArcFlag = delta > 180 ? 1 : 0;
+
+      return [
+        "M", start.x, start.y,
+        "A", r, r, 0, largeArcFlag, 1, end.x, end.y
+      ].join(" ");
+    }
+
+    function renderMiniRadar() {
+      const svg = document.getElementById("miniRadarSvg");
+      const legend = document.getElementById("miniRadarLegend");
+      const note = document.getElementById("miniRadarNote");
+
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      legend.innerHTML = "";
+
+      const dims = [
+        { key: "quality",       label: "Quality",       letter: "Q", color: "#2563EB", score: state.dimensionScores.quality },
+        { key: "effectiveness", label: "Effectiveness", letter: "E", color: "#16A34A", score: state.dimensionScores.effectiveness },
+        { key: "efficiency",    label: "Efficiency",    letter: "E", color: "#F59E0B", score: state.dimensionScores.efficiency },
+        { key: "performance",   label: "Performance",   letter: "P", color: "#DC2626", score: state.dimensionScores.performance },
+        { key: "productivity",  label: "Productivity",  letter: "P", color: "#9333EA", score: state.dimensionScores.productivity }
+      ];
+
+      const config = {
+        cx: 350,
+        cy: 350,
+        startAngle: -45,
+        axisCount: 8,
+        innerRadius: 100,
+        ringThickness: 26,
+        ringGap: 6
+      };
+
+      function ringRadius(index) {
+        return config.innerRadius + index * (config.ringThickness + config.ringGap);
+      }
+
+      function outerRadius() {
+        return ringRadius(dims.length - 1) + config.ringThickness / 2;
+      }
+
+      dims.forEach((_, i) => {
+        svg.appendChild(createSvg("circle", {
+          cx: config.cx,
+          cy: config.cy,
+          r: ringRadius(i),
+          class: "radar-guide"
+        }));
+      });
+
+      const outer = outerRadius();
+
+      for (let i = 0; i < config.axisCount; i++) {
+        const angle = config.startAngle + i * (360 / config.axisCount);
+        const p = polar(config.cx, config.cy, outer, angle);
+
+        svg.appendChild(createSvg("line", {
+          x1: config.cx,
+          y1: config.cy,
+          x2: p.x,
+          y2: p.y,
+          class: "radar-axis"
+        }));
+      }
+
+      const complete = isAssessmentComplete();
+
+      if (complete) {
+        dims.forEach((dim, i) => {
+          const r = ringRadius(i);
+          const percent = Math.max(1, Math.min(5, Number(dim.score))) * 20;
+          const endAngle = config.startAngle + (360 * percent / 100);
+
+          if (percent === 100) {
+            svg.appendChild(createSvg("circle", {
+              cx: config.cx,
+              cy: config.cy,
+              r,
+              stroke: dim.color,
+              "stroke-width": config.ringThickness,
+              class: "radar-ring"
+            }));
+          } else {
+            svg.appendChild(createSvg("path", {
+              d: arcPath(config.cx, config.cy, r, config.startAngle, endAngle),
+              stroke: dim.color,
+              "stroke-width": config.ringThickness,
+              class: "radar-ring"
+            }));
+          }
+
+          const letterPos = polar(config.cx, config.cy, r, config.startAngle);
+          const letter = createSvg("text", {
+            x: letterPos.x,
+            y: letterPos.y,
+            class: "radar-letter"
+          });
+          letter.textContent = dim.letter;
+          svg.appendChild(letter);
+        });
+
+        note.textContent = "";
+      } else {
+        dims.forEach((dim, i) => {
+          const r = ringRadius(i);
+          const letterPos = polar(config.cx, config.cy, r, config.startAngle);
+          const letter = createSvg("text", {
+            x: letterPos.x,
+            y: letterPos.y,
+            class: "radar-letter"
+          });
+          letter.textContent = dim.letter;
+          svg.appendChild(letter);
+        });
+
+        note.innerHTML = "<strong>Complete the assessment</strong> to render the maturity arcs.";
+      }
+
+      const title = createSvg("text", {
+        x: config.cx,
+        y: config.cy - 8,
+        class: "radar-center-title"
+      });
+      title.textContent = "QEEPP";
+
+      const sub = createSvg("text", {
+        x: config.cx,
+        y: config.cy + 18,
+        class: "radar-center-sub"
+      });
+      sub.textContent = "Radar";
+
+      svg.appendChild(title);
+      svg.appendChild(sub);
+
+      dims.forEach((dim) => {
+        const item = document.createElement("div");
+        item.className = "radar-legend-item";
+
+        const swatch = document.createElement("span");
+        swatch.className = "radar-legend-swatch";
+        swatch.style.background = dim.color;
+
+        const text = document.createElement("span");
+        text.textContent = dim.label;
+
+        item.appendChild(swatch);
+        item.appendChild(text);
+        legend.appendChild(item);
+      });
+    }
+
+    function buildTrendPeriods() {
+      const history = loadHistory();
+      const latest = history.slice(-4);
+
+      return latest.map((item, index) => ({
+        label: item.name || item.shortLabel || `A${index + 1}`,
+        quality: item.scores.quality,
+        effectiveness: item.scores.effectiveness,
+        efficiency: item.scores.efficiency,
+        performance: item.scores.performance,
+        productivity: item.scores.productivity
+      }));
+    }
+
+    function totalScore(period) {
+      return DIMENSIONS.reduce((sum, d) => sum + Number(period[d.key]), 0);
+    }
+
+    function renderMiniTrends() {
+      const board = document.getElementById("miniTrendBoard");
+      const periods = buildTrendPeriods();
+
+      if (!periods.length) {
+        board.innerHTML = `
+          <div class="history-item">
+            <strong>No saved assessments yet</strong>
+            Save scorecards to populate the QEEPP Trends view. The chart displays only the last 4 saved scorecards.
+          </div>
+        `;
+        return;
+      }
+
+      board.innerHTML = periods.map((period) => {
+        const total = totalScore(period);
+        let gridHtml = "";
+
+        for (let row = 5; row >= 1; row--) {
+          DIMENSIONS.forEach(d => {
+            const filled = Number(period[d.key]) >= row;
+            gridHtml += `
+              <div
+                class="mini-cell ${filled ? "filled" : ""}"
+                style="${filled ? `background:${d.color};` : ""}"
+                title="${d.title}: ${period[d.key]}"
+              ></div>
+            `;
+          });
+        }
+
+        DIMENSIONS.forEach(d => {
+          gridHtml += `<div class="mini-x-label ${d.xClass}" title="${d.title}">${d.short}</div>`;
+        });
+
+        return `
+          <article class="mini-matrix">
+            <div class="mini-matrix-title">
+              <h4>${period.label}</h4>
+              <div class="mini-matrix-score">${total}/25</div>
+            </div>
+            <div class="mini-matrix-grid">
+              ${gridHtml}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderCharts() {
+      updateMiniStarfish();
+      renderMiniRadar();
+      renderMiniTrends();
+    }
+
+    function renderHistory() {
+      const history = loadHistory();
+      const historyList = document.getElementById("historyList");
+
+      if (!history.length) {
+        historyList.innerHTML = `
+          <div class="history-item">
+            <strong>No saved assessments yet</strong>
+            Save the current assessment to start building the QEEPP Trends history.
+          </div>
+        `;
+        return;
+      }
+
+      historyList.innerHTML = history.slice().reverse().map((item) => `
+        <div class="history-item">
+          <strong>${item.label}</strong>
+          ${item.name ? `${item.name}<br>` : ""}
+          Quality ${item.scores.quality} ·
+          Effectiveness ${item.scores.effectiveness} ·
+          Efficiency ${item.scores.efficiency} ·
+          Performance ${item.scores.performance} ·
+          Productivity ${item.scores.productivity}
+        </div>
+      `).join("");
+    }
+
+    function attachEvents() {
+      document.querySelectorAll(".check-select").forEach(select => {
+        select.addEventListener("change", (event) => {
+          const dimensionKey = event.target.getAttribute("data-dimension");
+          const itemIndex = Number(event.target.getAttribute("data-item-index"));
+          state.dimensionItems[dimensionKey][itemIndex] = event.target.value === "" ? "" : Number(event.target.value);
+          updateDimensionState(dimensionKey);
+          renderSummary();
+          renderCharts();
+        });
+      });
+
+      document.querySelectorAll(".score-select").forEach(select => {
+        select.addEventListener("change", (event) => {
+          const dimensionKey = event.target.getAttribute("data-score-dimension");
+          if (event.target.disabled || event.target.value === "") return;
+          state.manualScores[dimensionKey] = Number(event.target.value);
+          updateDimensionState(dimensionKey);
+          renderSummary();
+          renderCharts();
+        });
+      });
+
+      document.getElementById("saveAssessmentBtn").addEventListener("click", () => {
+        if (!isAssessmentComplete()) return;
+
+        const history = loadHistory();
+        const index = history.length + 1;
+        const now = new Date();
+        const assessmentName = document.getElementById("assessmentName").value.trim();
+
+        history.push({
+          label: now.toLocaleString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+          }),
+          shortLabel: `A${index}`,
+          name: assessmentName,
+          savedAt: now.toISOString(),
+          scores: { ...state.dimensionScores }
+        });
+
+        saveHistory(history);
+        renderHistory();
+        renderCharts();
+      });
+
+      document.getElementById("clearHistoryBtn").addEventListener("click", () => {
+        localStorage.removeItem(STORAGE_KEY);
+        renderHistory();
+        renderCharts();
+      });
+    }
+
+    function updateAllDimensions() {
+      DIMENSIONS.forEach(dimension => updateDimensionState(dimension.key));
+      renderSummary();
+      renderHistory();
+      renderCharts();
+    }
+
+    function init() {
+      renderDimensions();
+      attachEvents();
+      updateAllDimensions();
+    }
+
+    init();
+  </script>
+</body>
+</html>
