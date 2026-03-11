@@ -144,6 +144,16 @@ header.site-header{
 .navlinks a:hover{
   background:rgba(35,50,68,.35);
   color:var(--text);
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  flex:0 0 auto;
+}
+
+.menu-toggle:hover{
+  border-color:rgba(125,211,252,.55);
+  background:rgba(15,22,32,.9);
 }
 
 .nav-actions{
@@ -982,6 +992,64 @@ textarea.input{
   grid-template-columns: repeat(5, minmax(120px, 1fr));
   gap: 12px;
   margin-top: 12px;
+}
+
+.starfish-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.starfish-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(35,50,68,.75);
+  background: rgba(11,15,20,1);
+  color: var(--text);
+  font-size: 14px;
+}
+
+@media (max-width: 940px) {
+  .starfish-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .starfish-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.starfish-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(35,50,68,.75);
+  background: rgba(11,15,20,1);
+  color: var(--text);
+  font-size: 14px;
+}
+
+@media (max-width: 940px) {
+  .starfish-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .starfish-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .starfish-form {
+    grid-template-columns: 1fr;
+  }
 }
 
 .starfish-form label {
