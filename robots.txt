@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://qeepp.com/sitemap.xml
+Host: qeepp.com

@@ -1,16 +1,52 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QEEPP | Assessment</title>
-  <meta
-    name="description"
-    content="Interactive QEEPP assessment for scoring transformation maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity."
-  />
-  <link rel="icon" href="assets/icons/qeepp-fav.ico" />
-  <link rel="stylesheet" href="assets/css/qeepp.css" />
-  <link rel="canonical" href="https://qeepp.com/qeepp-assessment.html" />
+
+  <title>QEEPP Assessment | Interactive Transformation Maturity Assessment</title>
+  <meta name="description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-assessment" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Assessment | Interactive Transformation Maturity Assessment" />
+  <meta property="og:description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-assessment" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Assessment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Assessment | Interactive Transformation Maturity Assessment" />
+  <meta name="twitter:description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QEEPP Assessment",
+    "url": "https://qeepp.com/qeepp-assessment",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "description": "Interactive QEEPP assessment for evaluating digital transformation structural maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity.",
+    "creator": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
 
   <style>
     :root {
@@ -52,7 +88,7 @@
       top: 72px;
       z-index: 40;
       padding: 12px 14px;
-      background: rgba(8, 13, 22, 0.94);
+      background: rgba(8, 13, 22, 0.65);
       border: 1px solid rgba(255,255,255,0.10);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -334,7 +370,7 @@
     /* Starfish */
     .mini-starfish-wrap {
       width: 100%;
-      max-width: 340px;
+      max-width: 400px;
       margin: 0 auto;
     }
 
@@ -391,7 +427,7 @@
     }
 
     .mini-success {
-      top: 10%;
+      top: 7%;
       left: 50%;
       transform: translateX(-50%);
       font-size: 10px;
@@ -411,7 +447,7 @@
     /* Radar */
     .mini-radar-wrap {
       width: 100%;
-      max-width: 340px;
+      max-width: 454px;
       margin: 0 auto;
     }
 
@@ -483,7 +519,7 @@
     /* Trends */
     .current-matrix-wrap {
       width: 100%;
-      max-width: 420px;
+      max-width: 320px;
       margin: 0 auto;
     }
 
@@ -734,7 +770,7 @@
         </section>
 
         <div class="assessment-actions">
-          <a class="btn" href="assessment-methodology.html">QEEPP Assessment Methodology</a>
+          <a class="btn" href="assessment-methodology">QEEPP Assessment Methodology</a>
         </div>
 
         <section class="panel assessment-summary-sticky">
@@ -801,7 +837,7 @@
 
             <section class="panel chart-card">
               <h3>QEEPP Radar</h3>
-              <div class="chart-caption">Dimension balance across the five interdependent dimensions.</div>
+              <div class="chart-caption">Dimension balance, maturity depth and strength of each dimension</div>
               <div class="mini-radar-wrap">
                 <svg
                   id="miniRadarSvg"
@@ -816,14 +852,14 @@
             </section>
 
             <section class="panel chart-card">
-              <h3>Current Assessment Matrix</h3>
-              <div class="chart-caption">Current assessment state shown separately for immediate interpretation.</div>
+              <h3>QEEPP Matrix</h3>
+              <div class="chart-caption">The current assessment state presented separately for immediate interpretation</div>
               <div class="current-matrix-wrap" id="currentMatrixWrap"></div>
             </section>
 
             <section class="panel chart-card">
-              <h3>Historical Trend Matrices</h3>
-              <div class="chart-caption">Historical snapshots ordered chronologically, with empty placeholders always after the latest saved assessment.</div>
+              <h3>QEEPP Trends</h3>
+              <div class="chart-caption">Historical trends chart for the latest four assessments ordered chronologically</div>
               <div id="historicalTrendBoard" class="trend-board"></div>
               <div class="mini-legend">
                 <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--quality)"></span>Quality</div>
@@ -1166,7 +1202,7 @@
 
     function getCurrentPeriod() {
       return {
-        label: "Current",
+        label: "Current Assessment",
         quality: state.dimensionScores.quality === "" ? 0 : Number(state.dimensionScores.quality),
         effectiveness: state.dimensionScores.effectiveness === "" ? 0 : Number(state.dimensionScores.effectiveness),
         efficiency: state.dimensionScores.efficiency === "" ? 0 : Number(state.dimensionScores.efficiency),
@@ -1181,7 +1217,7 @@
 
       if (!hasAnyCurrentValues()) {
         path.setAttribute("d", "");
-        note.innerHTML = "<strong>Select checklist scores</strong> to generate the current-state starfish.";
+        //note.innerHTML = "<strong>Select checklist scores</strong> to generate the current-state starfish.";
         return;
       }
 
@@ -1358,8 +1394,7 @@
           letter.textContent = dim.letter;
           svg.appendChild(letter);
         });
-
-        note.innerHTML = "<strong>Select checklist scores</strong> to render the current radar state.";
+        //note.innerHTML = "<strong>Select checklist scores</strong> to render the current radar state.";
       }
 
       const title = createSvg("text", {
@@ -1423,7 +1458,7 @@
       return `
         <article class="mini-matrix ${placeholder ? "placeholder" : ""} ${isCurrentLarge ? "current-large" : ""}">
           <div class="mini-matrix-title">
-            <h4>${period.label}</h4>
+            ${period.label ? `<h4>${period.label}</h4>` : ""}
             <div class="mini-matrix-score">${totalScore(period)}/25</div>
           </div>
           <div class="mini-matrix-grid">
