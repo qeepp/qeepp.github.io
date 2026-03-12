@@ -151,11 +151,6 @@ header.site-header{
   flex:0 0 auto;
 }
 
-.menu-toggle:hover{
-  border-color:rgba(125,211,252,.55);
-  background:rgba(15,22,32,.9);
-}
-
 .nav-actions{
   display:flex;
   gap:10px;
@@ -1015,6 +1010,12 @@ textarea.input{
 @media (max-width: 940px) {
   .starfish-form {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .starfish-form {
+    grid-template-columns: 1fr;
   }
 }
 
