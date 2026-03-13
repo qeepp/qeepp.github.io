@@ -1,6 +1,6 @@
 /* =======================================================
    QEEPP Global Scripts
-   Version: 1.4
+   Version: 1.5
    ======================================================= */
 
 /* =======================================================
@@ -50,9 +50,19 @@ function initMobileMenu() {
   const headerRoot = document.getElementById("site-header");
 
   if (!toggle || !nav || !headerRoot) return;
+  if (toggle.dataset.bound === "1") return;
+  toggle.dataset.bound = "1";
 
   function isMobile() {
     return window.matchMedia("(max-width: 940px)").matches;
+  }
+
+  function closeAllSubmenus() {
+    nav.querySelectorAll(".nav-item.has-submenu.open").forEach((item) => {
+      item.classList.remove("open");
+      const btn = item.querySelector(".submenu-toggle");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
   }
 
   function openMenu() {
@@ -63,6 +73,7 @@ function initMobileMenu() {
   function closeMenu() {
     nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
+    closeAllSubmenus();
   }
 
   function toggleMenu() {
@@ -110,6 +121,83 @@ function initMobileMenu() {
 }
 
 /* =======================================================
+   Submenus
+   Supports:
+   - .nav-item.has-submenu
+   - .submenu-toggle
+   - desktop hover via CSS
+   - mobile click via JS
+   ======================================================= */
+function initSubmenus() {
+  const nav = document.getElementById("primaryNav");
+  if (!nav) return;
+
+  const submenuItems = nav.querySelectorAll(".nav-item.has-submenu");
+  if (!submenuItems.length) return;
+
+  function isMobile() {
+    return window.matchMedia("(max-width: 980px)").matches;
+  }
+
+  function closeItem(item) {
+    item.classList.remove("open");
+    const toggle = item.querySelector(".submenu-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  }
+
+  function openItem(item) {
+    item.classList.add("open");
+    const toggle = item.querySelector(".submenu-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", "true");
+  }
+
+  function closeAll(exceptItem = null) {
+    submenuItems.forEach((item) => {
+      if (item !== exceptItem) closeItem(item);
+    });
+  }
+
+  submenuItems.forEach((item) => {
+    const toggle = item.querySelector(".submenu-toggle");
+    if (!toggle) return;
+    if (toggle.dataset.bound === "1") return;
+    toggle.dataset.bound = "1";
+
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!isMobile()) {
+        const isOpen = item.classList.contains("open");
+        closeAll();
+        if (!isOpen) openItem(item);
+        return;
+      }
+
+      const isOpen = item.classList.contains("open");
+      closeAll(item);
+      if (isOpen) closeItem(item);
+      else openItem(item);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("#primaryNav")) return;
+    closeAll();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeAll();
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobile()) {
+      closeAll();
+    }
+  });
+}
+
+/* =======================================================
    Contact Forms (supports modal + page)
    - Prefer: form[data-contact-form]
    - Fallback: #contactForm
@@ -145,7 +233,7 @@ function initContactForms() {
         const response = await fetch(form.action, {
           method: "POST",
           body: data,
-          headers: { Accept: "application/json" },
+          headers: { Accept: "application/json" }
         });
 
         if (response.ok) {
@@ -345,7 +433,7 @@ function initInteractiveStarfish() {
     effectiveness: document.getElementById("effectivenessScore"),
     efficiency: document.getElementById("efficiencyScore"),
     performance: document.getElementById("performanceScore"),
-    productivity: document.getElementById("productivityScore"),
+    productivity: document.getElementById("productivityScore")
   };
 
   const hasAllFields = Object.values(fields).every(Boolean);
@@ -357,36 +445,36 @@ function initInteractiveStarfish() {
       4: "50% 90%",
       3: "50% 80%",
       2: "50% 70%",
-      1: "50% 60%",
+      1: "50% 60%"
     },
     effectiveness: {
       5: "20.61% 9.55%",
       4: "26.49% 17.64%",
       3: "32.37% 25.73%",
       2: "38.24% 33.82%",
-      1: "44.12% 41.91%",
+      1: "44.12% 41.91%"
     },
     efficiency: {
       5: "97.55% 65.45%",
       4: "88.04% 62.36%",
       3: "78.53% 59.27%",
       2: "69.02% 56.18%",
-      1: "59.51% 53.09%",
+      1: "59.51% 53.09%"
     },
     performance: {
       5: "2.45% 65.45%",
       4: "11.96% 62.36%",
       3: "21.47% 59.27%",
       2: "30.98% 56.18%",
-      1: "40.49% 53.09%",
+      1: "40.49% 53.09%"
     },
     productivity: {
       5: "79.39% 9.55%",
       4: "73.51% 17.64%",
       3: "67.63% 25.73%",
       2: "61.76% 33.82%",
-      1: "55.88% 41.91%",
-    },
+      1: "55.88% 41.91%"
+    }
   };
 
   function updateStarfish() {
@@ -401,7 +489,7 @@ function initInteractiveStarfish() {
       points.effectiveness[e1],
       points.efficiency[e2],
       points.performance[p1],
-      points.productivity[p2],
+      points.productivity[p2]
     ].join(", ");
 
     starInner.style.clipPath = `polygon(${polygon})`;
@@ -409,6 +497,8 @@ function initInteractiveStarfish() {
   }
 
   Object.values(fields).forEach((field) => {
+    if (field.dataset.boundStarfish === "1") return;
+    field.dataset.boundStarfish = "1";
     field.addEventListener("change", updateStarfish);
     field.addEventListener("input", updateStarfish);
   });
@@ -437,13 +527,11 @@ function handleHashOpen() {
 
   initStickyShadow();
   initMobileMenu();
+  initSubmenus();
   initModals();
   initContactForms();
 
-  /* Run once immediately */
   initInteractiveStarfish();
-
-  /* Run again on next frame in case page-specific DOM settled late */
   requestAnimationFrame(() => {
     initInteractiveStarfish();
   });
