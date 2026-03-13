@@ -18,22 +18,84 @@
       </button>
 
       <nav class="navlinks" id="primaryNav" aria-label="Primary">
-        <a href="../index.html">Framework</a>
-        <a href="../index.html#problem">Problem</a>
-        <a href="../index.html#model">Model</a>
-        <a href="../index.html#method">Method</a>
-        <a href="../index.html#use">Use cases</a>
-        <!--a href="../resources.html">Resources</a-->
-        <a href="../about.html">About</a>
+        <div class="nav-item has-submenu">
+          <a href="../index.html">Framework</a>
+          <button
+            class="submenu-toggle"
+            type="button"
+            aria-label="Open Framework submenu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div class="submenu">
+            <a href="../index.html#model">QEEPP Model</a>
+            <a href="../starfish-diagram.html">Starfish Diagram</a>
+            <a href="../radar-chart.html">Radar Chart</a>
+            <a href="../trends-chart.html">Trends Matrix</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <a href="../assessment-methodology.html">Assessment</a>
+          <button
+            class="submenu-toggle"
+            type="button"
+            aria-label="Open Assessment submenu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div class="submenu">
+            <a href="../assessment-methodology.html">Assessment Methodology</a>
+            <a href="../qeepp-assessment-checklist.html">Assessment Checklist</a>
+            <a href="../qeepp-practical-assessment-framework.html">Practical Assessment Framework</a>
+            <a href="../qeepp-diagnostic-interview.html">Diagnostic Interview</a>
+            <a href="../qeepp-case-azure-modernization.html">Case Example</a>
+            <a href="../qeepp-assessment.html">Run QEEPP Assessment</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <a href="../resources.html">Resources</a>
+          <button
+            class="submenu-toggle"
+            type="button"
+            aria-label="Open Resources submenu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div class="submenu">
+            <a href="../resources.html">Resources Overview</a>
+            <a href="../qeepp-maturity-model.html">QEEPP Maturity Model</a>
+            <a href="../qeepp-transformation-playbook.html">Transformation Playbook</a>
+            <a href="../faq.html">FAQ</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <a href="../qeepp-about.html">About</a>
+          <button
+            class="submenu-toggle"
+            type="button"
+            aria-label="Open About submenu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div class="submenu">
+            <a href="../qeepp-about.html">About QEEPP</a>
+            <a href="../contact.html">Contact</a>
+          </div>
+        </div>
 
         <div class="nav-actions mobile-only">
-          <a class="btn" href="../resources.html">Download</a>
           <a class="btn primary" href="#" data-modal="contact">Talk to us</a>
         </div>
       </nav>
 
       <div class="nav-actions desktop-only">
-        <a class="btn" href="../resources.html">Resources</a>
         <a class="btn primary" href="#" data-modal="contact">Talk to us</a>
       </div>
     </div>
