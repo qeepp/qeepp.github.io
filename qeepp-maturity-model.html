@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>QEEPP Maturity Model | Five Levels of Structural Transformation Maturity</title>
+  <meta name="description" content="Understand the QEEPP Maturity Model and its five levels of structural transformation maturity from fragmented conditions to scalable capability." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-maturity-model" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Maturity Model | Five Levels of Structural Transformation Maturity" />
+  <meta property="og:description" content="Understand the QEEPP Maturity Model and its five levels of structural transformation maturity from fragmented conditions to scalable capability." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-maturity-model" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Maturity Model" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Maturity Model | Five Levels of Structural Transformation Maturity" />
+  <meta name="twitter:description" content="Understand the QEEPP Maturity Model and its five levels of structural transformation maturity from fragmented conditions to scalable capability." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QEEPP Maturity Model",
+    "url": "https://qeepp.com/qeepp-maturity-model",
+    "description": "The QEEPP Maturity Model explains five levels of structural transformation maturity aligned with the framework sequence from Stabilize to Scale.",
+    "author": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <style>
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .assessment-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .assessment-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th,
+    .assessment-scale-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .assessment-scale-table td strong {
+      color: var(--text);
+    }
+
+    .assessment-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-note strong {
+      color: var(--text);
+    }
+
+    .assessment-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .assessment-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .assessment-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-link strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .assessment-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .assessment-sequence {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 920px) {
+      .assessment-grid,
+      .assessment-method-grid,
+      .assessment-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="page trends-page">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Maturity Model for Structural Transformation Progression</span>
+                </div>
+              </div>
+              <h1>QEEPP Maturity Model</h1>
+              <p class="lead">
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Maturity Model describes five levels of structural transformation maturity aligned with the progression of the framework from stability to scale.
+                <br><br>
+                It is used to interpret assessment results, explain readiness for advancement, and provide a common maturity language across transformation governance conversations.
+                <br><br>
+                The model does not replace the five dimensions. It interprets the maturity profile created by them and helps determine how far transformation capability has progressed in a disciplined sequence.
+              </p>
+              </p>
+            </div>
+
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="qeepp-assessment">Run QEEPP Assessment</a>
+
+        <section class="panel">
+          <h3>How the maturity model is used</h3>
+
+          <div class="assessment-grid">
+            <div class="stack" aria-label="How the QEEPP maturity model is used">
+              <div class="layer">
+                <div>
+                  <strong>Interpret assessment outcomes</strong>
+                  <span>
+                    The model translates dimension scores into a clearer maturity narrative for leadership and governance use.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Set realistic progression</strong>
+                  <span>
+                    It helps determine what the next disciplined step should be instead of assuming every organization should pursue scale immediately.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Support readiness thresholds</strong>
+                  <span>
+                    The model works with QEEPP assessment logic to show when lower-dimension weakness should constrain advancement.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Improve governance consistency</strong>
+                  <span>
+                    It provides a simple language for comparing maturity across initiatives, programs, or portfolios without losing structural context.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <h3>Maturity reference scale</h3>
+
+              <table class="assessment-scale-table" aria-label="QEEPP maturity levels">
+                <thead>
+                  <tr>
+                    <th>Level</th>
+                    <th>Name</th>
+                    <th>Structural Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1</strong></td>
+                    <td>Fragmented</td>
+                    <td>Transformation conditions are reactive, uneven, and structurally unstable</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td>Structured</td>
+                    <td>Early controls and alignment patterns exist, but maturity remains partial</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong></td>
+                    <td>Managed</td>
+                    <td>Core practices are defined, repeatable, and increasingly governed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong></td>
+                    <td>Measured</td>
+                    <td>Execution is visible, accountable, and actively managed through evidence</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong></td>
+                    <td>Scalable</td>
+                    <td>Transformation capability can expand sustainably without degrading structural control</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="assessment-note">
+            <strong>Maturity rule:</strong>
+            In QEEPP, an organization is not considered fully scalable only because it moves quickly. Scale is valid only when lower dimensions are mature enough to support it.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Level 1 | Fragmented</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural condition</strong>
+                <span>
+                  Transformation is reactive, uneven, and vulnerable to instability. Controls may be local, informal, or missing entirely.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Typical signals</strong>
+                <span>
+                  Weak architecture discipline, inconsistent security, poor visibility, fragmented delivery, and initiative activity without structural control.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Primary focus</strong>
+                <span>
+                  Stabilize Quality before attempting optimization or scale.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance implication</strong>
+                <span>
+                  Scaling should be constrained. Foundational weaknesses should be addressed first.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Level 2 | Structured</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural condition</strong>
+                <span>
+                  Initial patterns and controls are visible. Some discipline exists, but consistency across scope is still limited.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Typical signals</strong>
+                <span>
+                  Baseline architecture, governance, and alignment practices are emerging, yet they remain uneven or dependent on specific teams.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Primary focus</strong>
+                <span>
+                  Align transformation with strategy, capabilities, value streams, and measurable outcomes.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance implication</strong>
+                <span>
+                  The organization can progress, but should avoid mistaking partial structure for operational maturity.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Level 3 | Managed</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural condition</strong>
+                <span>
+                  Core practices are defined, repeatable, and increasingly governed. Execution is becoming more reliable.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Typical signals</strong>
+                <span>
+                  Clearer operating models, stronger delivery flow, more consistent automation, and reduced waste across platforms or programs.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Primary focus</strong>
+                <span>
+                  Optimize efficiency while preserving strategic alignment and structural integrity.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance implication</strong>
+                <span>
+                  The organization can improve velocity, but should not overstate scale readiness until measurement discipline is stronger.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Level 4 | Measured</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural condition</strong>
+                <span>
+                  Transformation execution is visible, measurable, and governed through clear performance signals and accountability rhythm.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Typical signals</strong>
+                <span>
+                  KPIs, SLA or SLO tracking, review cadence, dashboard visibility, and proactive handling of risk and exceptions.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Primary focus</strong>
+                <span>
+                  Measure performance systematically and use evidence to guide decisions before broader scaling.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance implication</strong>
+                <span>
+                  The organization is approaching scale readiness, but only if quality, alignment, and efficiency remain healthy.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Level 5 | Scalable</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural condition</strong>
+                <span>
+                  Transformation capability can expand without degrading control, reliability, alignment, or operational coherence.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Typical signals</strong>
+                <span>
+                  Internal platforms, self-service, reusable components, scaled enablement, and strong control mechanisms that hold under growth.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Primary focus</strong>
+                <span>
+                  Scale productivity as a disciplined outcome of the preceding dimensions.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance implication</strong>
+                <span>
+                  The organization can expand transformation scope and capacity without amplifying structural weakness.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-sequence">Stabilize → Align → Optimize → Measure → Scale</div>
+        </section>
+
+        <section class="panel">
+          <h3>How to interpret maturity in QEEPP</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Maturity is structural</strong>
+                <span>
+                  It reflects readiness of the system, not just effort, spend, or delivery volume.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Maturity is sequential</strong>
+                <span>
+                  Advancement should respect dependency across the five dimensions.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Maturity is evidence-based</strong>
+                <span>
+                  Claimed maturity should be challenged if documented, repeatable practice is missing.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Maturity is governable</strong>
+                <span>
+                  It is used to sequence effort, set thresholds, and constrain premature scaling.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Related QEEPP assessment pages</h3>
+
+          <div class="assessment-links">
+            <a class="assessment-link" href="assessment-methodology">
+              <strong>Assessment Methodology</strong>
+              <span>Scoring logic, structural dependency, and maturity interpretation.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-assessment-checklist">
+              <strong>Assessment Checklist</strong>
+              <span>Twenty-five structural controls for current-state and target-state scoring.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-transformation-playbook">
+              <strong>Transformation Playbook</strong>
+              <span>Recommended actions when one or more dimensions score low.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+  <script defer src="assets/js/qeepp.js"></script>
+</body>
+</html>

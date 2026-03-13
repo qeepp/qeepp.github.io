@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QEEPP Matrix Test</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" href="assets/css/qeepp-charts.css" />
+
+  <style>
+    :root { --text: #e8eef7; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b1220;
+      color: #e8eef7;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body { padding: 28px 18px 40px; }
+    .test-wrap { max-width: 420px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+    <div class="box-sm" id="caseMatrix"></div>
+    <div class="box-xl" id="largeMatrix"></div>
+    <div id="trends"></div>
+
+  <script src="assets/js/qeepp-charts.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      QEEPPCharts.matrix("caseMatrix", {
+        data: {
+          label: "Current",
+          quality: 3,
+          effectiveness: 4,
+          efficiency: 3,
+          performance: 3,
+          productivity: 4
+        },
+      });
+      QEEPPCharts.matrix("largeMatrix", {
+        data: {
+          label: "Current",
+          quality: 3,
+          effectiveness: 4,
+          efficiency: 3,
+          performance: 3,
+          productivity: 4
+        },
+      });
+        QEEPPCharts.trends("trends", {
+            data: [
+            { label: "•1", quality: 2, effectiveness: 2, efficiency: 1, performance: 2, productivity: 1 },
+            { label: "•2", quality: 2, effectiveness: 3, efficiency: 2, performance: 2, productivity: 2 },
+            ],
+            showLegend: false,
+            showAnalysis: false,
+            fillEmpty: false
+        });
+     });
+
+
+
+</script>
+</body>
+</html>

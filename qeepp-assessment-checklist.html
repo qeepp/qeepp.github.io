@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>QEEPP Assessment Checklist | 25 Structural Assessment Controls</title>
+  <meta name="description" content="Use the QEEPP Assessment Checklist to score transformation maturity across 25 structural controls spanning Quality, Effectiveness, Efficiency, Performance, and Productivity." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-assessment-checklist" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Assessment Checklist | 25 Structural Assessment Controls" />
+  <meta property="og:description" content="Use the QEEPP Assessment Checklist to score transformation maturity across 25 structural controls spanning Quality, Effectiveness, Efficiency, Performance, and Productivity." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-assessment-checklist" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Assessment Checklist" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Assessment Checklist | 25 Structural Assessment Controls" />
+  <meta name="twitter:description" content="Use the QEEPP Assessment Checklist to score transformation maturity across 25 structural controls spanning Quality, Effectiveness, Efficiency, Performance, and Productivity." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QEEPP Assessment Checklist",
+    "url": "https://qeepp.com/qeepp-assessment-checklist",
+    "description": "The QEEPP Assessment Checklist provides 25 structural controls for assessing transformation maturity across the five dimensions of the framework.",
+    "author": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <style>
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .assessment-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .assessment-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th,
+    .assessment-scale-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .assessment-scale-table td strong {
+      color: var(--text);
+    }
+
+    .assessment-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-note strong {
+      color: var(--text);
+    }
+
+    .assessment-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .assessment-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .assessment-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-link strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .assessment-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .assessment-sequence {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+    }
+
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .checklist-table th,
+    .checklist-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .checklist-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section-label {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+
+    @media (max-width: 920px) {
+      .assessment-grid,
+      .assessment-method-grid,
+      .assessment-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="page trends-page">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Assessment Checklist for 25 Structural Controls</span>
+                </div>
+              </div>
+              <h1>QEEPP Assessment Checklist</h1>
+              <p class="lead">
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Assessment Checklist is a structured worksheet used to score transformation maturity across the five interdependent dimensions of the framework: Quality, Effectiveness, Efficiency, Performance, and Productivity.
+                <br><br>
+                It organizes the assessment into 25 structural controls, with five controls under each dimension, aligned to the QEEPP progression from Stabilize to Scale.
+                <br><br>
+                The checklist supports both initial and recurring assessments and is intended to strengthen scoring consistency across initiatives, platforms, portfolios, and operating models.
+              </p>
+              </p>
+            </div>
+
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="qeepp-assessment">Run QEEPP Assessment</a>
+
+        <section class="panel">
+          <h3>How to use the checklist</h3>
+
+          <div class="assessment-grid">
+            <div class="stack" aria-label="How the QEEPP checklist is used">
+              <div class="layer">
+                <div>
+                  <strong>Score each control</strong>
+                  <span>
+                    Rate each control from 1 to 5 based on demonstrated maturity within the assessed scope.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Use evidence, not confidence</strong>
+                  <span>
+                    Scores should reflect repeatable, visible practice supported by evidence rather than aspiration or isolated success.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Assess current state first</strong>
+                  <span>
+                    Use current-state scores to reveal structural balance, weak dependencies, and risk of premature scaling.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Set target state carefully</strong>
+                  <span>
+                    Target scores should reflect the next realistic stage of disciplined progression, not an abstract ambition.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <h3>QEEPP maturity scale</h3>
+
+              <table class="assessment-scale-table" aria-label="QEEPP maturity scale">
+                <thead>
+                  <tr>
+                    <th>Score</th>
+                    <th>Maturity State</th>
+                    <th>Structural Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1</strong></td>
+                    <td>Ad hoc</td>
+                    <td>Reactive, unstable, and inconsistent practices</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td>Emerging</td>
+                    <td>Initial structures exist but remain inconsistent</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong></td>
+                    <td>Defined</td>
+                    <td>Processes and controls are established and repeatable</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong></td>
+                    <td>Managed</td>
+                    <td>Execution is measured, monitored, and actively governed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong></td>
+                    <td>Institutionalized</td>
+                    <td>Practices are embedded, standardized, and self-sustaining</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="assessment-note">
+            <strong>Checklist rule:</strong>
+            A strong score in a higher dimension should be challenged if foundational controls in a lower dimension remain weak. In QEEPP, sequence matters as much as maturity depth.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Quality | Stabilize</h3>
+          <p class="section-sub">Structural integrity before velocity.</p>
+
+          <table class="checklist-table" aria-label="QEEPP Quality checklist">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment checkpoint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Architecture baseline</strong></td>
+                <td>Is a clear target architecture defined and used to guide transformation decisions?</td>
+              </tr>
+              <tr>
+                <td><strong>Security guardrails</strong></td>
+                <td>Are security controls and guardrails embedded into design, delivery, and deployment practices?</td>
+              </tr>
+              <tr>
+                <td><strong>Data foundations</strong></td>
+                <td>Are data ownership, governance, quality expectations, and stewardship responsibilities clearly established?</td>
+              </tr>
+              <tr>
+                <td><strong>Reliability engineering</strong></td>
+                <td>Are reliability expectations, resilience mechanisms, and recovery procedures defined and tested?</td>
+              </tr>
+              <tr>
+                <td><strong>Technical debt and risk</strong></td>
+                <td>Is technical debt identified, quantified, prioritized, and governed alongside delivery pressure?</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Effectiveness | Align</h3>
+          <p class="section-sub">Relevance before optimization.</p>
+
+          <table class="checklist-table" aria-label="QEEPP Effectiveness checklist">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment checkpoint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Strategy alignment</strong></td>
+                <td>Are transformation initiatives directly linked to strategic business objectives?</td>
+              </tr>
+              <tr>
+                <td><strong>Capability mapping</strong></td>
+                <td>Are business capabilities mapped to technology initiatives, dependencies, and transformation scope?</td>
+              </tr>
+              <tr>
+                <td><strong>Value streams</strong></td>
+                <td>Are value streams clearly defined and used to organize change, ownership, or investment focus?</td>
+              </tr>
+              <tr>
+                <td><strong>Outcome definition</strong></td>
+                <td>Are measurable business outcomes or OKRs defined for the initiatives being assessed?</td>
+              </tr>
+              <tr>
+                <td><strong>Portfolio prioritization</strong></td>
+                <td>Are initiatives prioritized according to business value, impact, and structural readiness?</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Efficiency | Optimize</h3>
+          <p class="section-sub">Lean before expansion.</p>
+
+          <table class="checklist-table" aria-label="QEEPP Efficiency checklist">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment checkpoint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Operating model</strong></td>
+                <td>Is the operating model clearly defined with understood roles, responsibilities, and decision ownership?</td>
+              </tr>
+              <tr>
+                <td><strong>FinOps discipline</strong></td>
+                <td>Are cloud, infrastructure, or platform costs actively baselined, monitored, and optimized?</td>
+              </tr>
+              <tr>
+                <td><strong>Application rationalization</strong></td>
+                <td>Are redundant systems being reduced and platform sprawl being governed intentionally?</td>
+              </tr>
+              <tr>
+                <td><strong>DevSecOps flow</strong></td>
+                <td>Are delivery pipelines standardized, automated, and consistently applied across teams?</td>
+              </tr>
+              <tr>
+                <td><strong>Automation</strong></td>
+                <td>Are repetitive delivery and operations activities automated through approved tooling and infrastructure as code?</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Performance | Measure</h3>
+          <p class="section-sub">Measurement before momentum.</p>
+
+          <table class="checklist-table" aria-label="QEEPP Performance checklist">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment checkpoint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>KPI framework</strong></td>
+                <td>Are transformation KPIs clearly defined and used to monitor maturity and execution health?</td>
+              </tr>
+              <tr>
+                <td><strong>Service metrics</strong></td>
+                <td>Are service expectations expressed through SLA or SLO definitions and reviewed consistently?</td>
+              </tr>
+              <tr>
+                <td><strong>Execution cadence</strong></td>
+                <td>Are governance reviews, delivery checkpoints, and accountability rhythm established and followed?</td>
+              </tr>
+              <tr>
+                <td><strong>Risk reporting</strong></td>
+                <td>Are risk, compliance, and delivery exceptions surfaced, tracked, and communicated proactively?</td>
+              </tr>
+              <tr>
+                <td><strong>Operational transparency</strong></td>
+                <td>Are dashboards and performance signals visible to decision-makers and relevant delivery stakeholders?</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Productivity | Scale</h3>
+          <p class="section-sub">Scale without degradation.</p>
+
+          <table class="checklist-table" aria-label="QEEPP Productivity checklist">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment checkpoint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Platform enablement</strong></td>
+                <td>Do internal platforms or shared services help teams deliver faster with stronger consistency and control?</td>
+              </tr>
+              <tr>
+                <td><strong>Self-service infrastructure</strong></td>
+                <td>Can teams provision approved infrastructure or platform capabilities through governed self-service mechanisms?</td>
+              </tr>
+              <tr>
+                <td><strong>Reusable components</strong></td>
+                <td>Are templates, patterns, services, and components reused to reduce duplicated effort?</td>
+              </tr>
+              <tr>
+                <td><strong>Delivery enablement</strong></td>
+                <td>Do teams have the standards, tooling, and support needed to deliver consistently at scale?</td>
+              </tr>
+              <tr>
+                <td><strong>Scalable capacity</strong></td>
+                <td>Can delivery capacity expand without increasing fragmentation, instability, or loss of governance control?</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>What the checklist should reveal</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Current structural maturity</strong>
+                <span>
+                  A clear view of where the assessed scope is stable, aligned, optimized, measured, and ready to scale.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Weak dependencies</strong>
+                <span>
+                  Any lower-dimension weakness that should constrain ambition in higher dimensions.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Target-state realism</strong>
+                <span>
+                  Whether the desired next stage of maturity is supported by actual structural readiness.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Recurring assessment consistency</strong>
+                <span>
+                  A repeatable scorecard foundation for follow-up assessments and trends analysis.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Related QEEPP assessment pages</h3>
+
+          <div class="assessment-links">
+            <a class="assessment-link" href="assessment-methodology">
+              <strong>Assessment Methodology</strong>
+              <span>Scoring logic, dependency structure, and interpretation of transformation maturity.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-diagnostic-interview">
+              <strong>Structural Diagnostic Interview</strong>
+              <span>Executive and practitioner interview questions for evidence-based scoring.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-maturity-model">
+              <strong>QEEPP Maturity Model</strong>
+              <span>Five maturity levels aligned to the QEEPP structural progression.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+  <script defer src="assets/js/qeepp.js"></script>
+</body>
+</html>
