@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>QEEPP Structural Diagnostic Interview | Executive Questions for Transformation Assessment</title>
+  <meta name="description" content="Use the QEEPP Structural Diagnostic Interview to assess transformation maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity through structured executive questions." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-diagnostic-interview" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Structural Diagnostic Interview | Executive Questions for Transformation Assessment" />
+  <meta property="og:description" content="Use the QEEPP Structural Diagnostic Interview to assess transformation maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity through structured executive questions." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-diagnostic-interview" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Structural Diagnostic Interview" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Structural Diagnostic Interview | Executive Questions for Transformation Assessment" />
+  <meta name="twitter:description" content="Use the QEEPP Structural Diagnostic Interview to assess transformation maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity through structured executive questions." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QEEPP Structural Diagnostic Interview",
+    "url": "https://qeepp.com/qeepp-diagnostic-interview",
+    "description": "The QEEPP Structural Diagnostic Interview provides executive and practitioner questions for assessing transformation maturity across the five dimensions of the framework.",
+    "author": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <style>
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+    }
+
+    .assessment-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .assessment-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th,
+    .assessment-scale-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .assessment-scale-table td strong {
+      color: var(--text);
+    }
+
+    .assessment-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-note strong {
+      color: var(--text);
+    }
+
+    .assessment-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .assessment-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .assessment-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-link strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .assessment-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .assessment-sequence {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+    }
+
+    .dimension-block {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .dimension-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .dimension-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .question-list li {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+      .assessment-grid,
+      .assessment-method-grid,
+      .assessment-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="page trends-page">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Structural Diagnostic Interview for Executive and Transformation Assessment</span>
+                </div>
+              </div>
+              <h1>QEEPP Structural Diagnostic Interview</h1>
+              <p class="lead">
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Structural Diagnostic Interview is a guided assessment conversation used to evaluate transformation maturity through the five interdependent dimensions of the framework: Quality, Effectiveness, Efficiency, Performance, and Productivity.
+                <br><br>
+                It is intended for executive sponsors, transformation leaders, enterprise architects, platform leaders, and delivery governance stakeholders who need a disciplined way to identify structural weakness, scoring bias, and premature scaling risk.
+                <br><br>
+                The interview is aligned to the QEEPP maturity sequence and is designed to support both initial and recurring assessments across initiatives, programs, platforms, portfolios, and operating models.
+              </p>
+              </p>
+            </div>
+
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="qeepp-assessment">Run QEEPP Assessment</a>
+
+        <section class="panel">
+          <h3>How the interview is used</h3>
+
+          <div class="assessment-grid">
+            <div class="stack" aria-label="How the QEEPP diagnostic interview is used">
+              <div class="layer">
+                <div>
+                  <strong>Executive calibration</strong>
+                  <span>
+                    Use the interview to align executive and delivery perspectives before assigning maturity scores.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Evidence-based scoring</strong>
+                  <span>
+                    The purpose is not to collect opinions alone. The questions are intended to surface concrete practices, controls, outcomes, and evidence.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Initial and recurring use</strong>
+                  <span>
+                    The interview can be used at the start of a transformation and repeated over time to validate progression from stability to scale.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Governance discipline</strong>
+                  <span>
+                    The results should guide where transformation effort is reinforced first, especially when lower dimensions lag behind higher ambitions.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <h3>Interview scoring posture</h3>
+
+              <table class="assessment-scale-table" aria-label="QEEPP interview scoring posture">
+                <thead>
+                  <tr>
+                    <th>Score</th>
+                    <th>Maturity State</th>
+                    <th>Interview Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1</strong></td>
+                    <td>Ad hoc</td>
+                    <td>Answers are reactive, inconsistent, and unsupported by repeatable practice</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td>Emerging</td>
+                    <td>Initial structures exist, but they are partial, informal, or unevenly applied</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong></td>
+                    <td>Defined</td>
+                    <td>Practices are documented, understood, and repeatable across the assessed scope</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong></td>
+                    <td>Managed</td>
+                    <td>Practices are measured, reviewed, and actively governed through regular cadence</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong></td>
+                    <td>Institutionalized</td>
+                    <td>Practices are embedded, scaled, and sustained without depending on individual effort</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="assessment-note">
+            <strong>Interview rule:</strong>
+            Higher-dimension confidence should be challenged whenever lower-dimension evidence is weak. In QEEPP, scale is treated as the outcome of disciplined progression, not as an isolated ambition. :contentReference[oaicite:1]{index=1}
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>QEEPP sequence used in the interview</h3>
+
+          <div class="stack" aria-label="QEEPP interview sequence">
+            <div class="layer">
+              <div>
+                <strong>Quality</strong>
+                <span>Stabilize through architecture, security, data, reliability, and quantified technical debt and risk.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Effectiveness</strong>
+                <span>Align strategy to capabilities and value streams, define measurable outcomes, and prioritize initiatives by impact.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Efficiency</strong>
+                <span>Optimize operating flow through FinOps, application rationalization, operating model changes, automation, and DevSecOps improvements.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Performance</strong>
+                <span>Measure execution using KPI, SLA, and SLO definitions, dashboards, accountability rhythm, and automated reporting.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Productivity</strong>
+                <span>Scale platforms, self-service, reusable components, automation, and enablement without degrading quality or control.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-sequence">Stabilize → Align → Optimize → Measure → Scale</div>
+        </section>
+
+        <section class="panel">
+          <h3>Executive and practitioner interview questions</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>1. Quality | Stabilize</strong>
+                <span>
+                  Use these questions to test whether structural integrity exists before acceleration.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">Architecture, security, data, reliability, debt and risk</h4>
+                  <p class="dimension-subtitle">Focus on baseline integrity and structural control.</p>
+                  <ul class="question-list">
+                    <li>Is there a clearly defined target architecture guiding current transformation decisions?</li>
+                    <li>What guardrails exist for security, reference patterns, standards, and policy enforcement?</li>
+                    <li>How are data ownership, quality, and governance responsibilities defined across the scope?</li>
+                    <li>What evidence exists that reliability objectives, resilience practices, and recovery readiness are in place?</li>
+                    <li>How is technical debt identified, quantified, and prioritized alongside delivery pressure?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>2. Effectiveness | Align</strong>
+                <span>
+                  Use these questions to confirm that transformation effort is connected to value and strategic intent.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">Strategy, capabilities, value streams, outcomes, prioritization</h4>
+                  <p class="dimension-subtitle">Focus on relevance before optimization.</p>
+                  <ul class="question-list">
+                    <li>How are current transformation initiatives linked to strategic business objectives?</li>
+                    <li>Which business capabilities are being strengthened, and how are they mapped to technology change?</li>
+                    <li>Are value streams clearly defined and used to organize work, ownership, or investment decisions?</li>
+                    <li>What measurable outcomes or OKRs define success beyond delivery activity?</li>
+                    <li>How are initiatives prioritized when strategic importance, risk, and capacity compete?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>3. Efficiency | Optimize</strong>
+                <span>
+                  Use these questions to test whether operational friction is being reduced systematically.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">Operating model, FinOps, rationalization, DevSecOps, automation</h4>
+                  <p class="dimension-subtitle">Focus on lean flow and waste reduction.</p>
+                  <ul class="question-list">
+                    <li>Is the operating model clearly defined, including responsibilities, handoffs, and decision ownership?</li>
+                    <li>How are infrastructure and platform costs baselined, monitored, and optimized over time?</li>
+                    <li>What evidence shows application or platform rationalization is reducing duplication and sprawl?</li>
+                    <li>How standardized are CI/CD and DevSecOps practices across teams and delivery paths?</li>
+                    <li>Which repetitive processes are automated today, and where does manual friction still dominate?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>4. Performance | Measure</strong>
+                <span>
+                  Use these questions to validate execution visibility and accountability rhythm.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">KPI, SLA/SLO, dashboards, cadence, risk and compliance reporting</h4>
+                  <p class="dimension-subtitle">Focus on measured execution, not reported noise.</p>
+                  <ul class="question-list">
+                    <li>Which KPIs are used to assess transformation progress and structural maturity?</li>
+                    <li>Are service expectations expressed through SLA or SLO definitions and reviewed consistently?</li>
+                    <li>What dashboards are used by leadership and delivery stakeholders to guide action?</li>
+                    <li>How frequently are execution reviews held, and what decisions are driven by that cadence?</li>
+                    <li>How are risk, compliance, and delivery exceptions surfaced before they become structural issues?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>5. Productivity | Scale</strong>
+                <span>
+                  Use these questions to determine whether scale increases capability rather than complexity.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">Platforms, self-service, reusable components, enablement, scale control</h4>
+                  <p class="dimension-subtitle">Focus on sustainable expansion without degradation.</p>
+                  <ul class="question-list">
+                    <li>Which internal platforms or shared services enable teams to deliver faster with stronger control?</li>
+                    <li>How much infrastructure or platform provisioning can teams perform through approved self-service mechanisms?</li>
+                    <li>What reusable components, templates, or patterns reduce duplicated effort across the organization?</li>
+                    <li>How are teams enabled through standards, tooling, knowledge, and governance support?</li>
+                    <li>What evidence shows that delivery capacity can expand without increasing instability, fragmentation, or loss of control?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Interview completion guidance</strong>
+                <span>
+                  After the discussion, convert findings into evidence-backed maturity scores and challenge any score that is not supported by documented, repeatable practice.
+                </span>
+                <div class="dimension-block">
+                  <h4 class="dimension-title">Recommended post-interview actions</h4>
+                  <p class="dimension-subtitle">Use the interview as input to the formal assessment and visual models.</p>
+                  <ul class="question-list">
+                    <li>Capture supporting evidence, not only verbal confidence.</li>
+                    <li>Record disagreements between executive, architectural, and delivery perspectives.</li>
+                    <li>Assign provisional scores per dimension using the QEEPP maturity scale.</li>
+                    <li>Compare current-state and target-state assumptions using the assessment tool.</li>
+                    <li>Use recurring interviews to validate whether progression remains in sequence over time.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>What this interview should reveal</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Structural weakness</strong>
+                <span>
+                  Whether baseline controls in lower dimensions are weaker than current transformation ambition.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Scoring inflation</strong>
+                <span>
+                  Whether maturity claims are based on aspiration, isolated success, or undocumented practice instead of repeatable structure.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Premature scaling risk</strong>
+                <span>
+                  Whether productivity or efficiency expectations are outpacing quality, alignment, or measured accountability.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Governance priorities</strong>
+                <span>
+                  Which structural gaps should be strengthened first before wider expansion is pursued.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Related QEEPP assessment pages</h3>
+
+          <div class="assessment-links">
+            <a class="assessment-link" href="assessment-methodology">
+              <strong>Assessment Methodology</strong>
+              <span>Scoring logic, structural dependency, and interpretation of maturity progression.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-assessment">
+              <strong>QEEPP Assessment</strong>
+              <span>Interactive scoring of transformation maturity across the five dimensions.</span>
+            </a>
+
+            <a class="assessment-link" href="starfish-diagram">
+              <strong>Visual Models</strong>
+              <span>Use the Starfish, Radar, and Trends views to interpret current state, target state, and progression.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+  <script defer src="assets/js/qeepp.js"></script>
+</body>
+</html>

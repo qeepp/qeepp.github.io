@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>QEEPP Practical Assessment Framework | Questions, Checkpoints, and Scoring Guidance</title>
+  <meta name="description" content="Use the QEEPP Practical Assessment Framework to assess transformation maturity through practical questions, checkpoints, assessment actions, and scoring guidance across the five dimensions." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-practical-assessment-framework" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Practical Assessment Framework | Questions, Checkpoints, and Scoring Guidance" />
+  <meta property="og:description" content="Use the QEEPP Practical Assessment Framework to assess transformation maturity through practical questions, checkpoints, assessment actions, and scoring guidance across the five dimensions." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-practical-assessment-framework" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Practical Assessment Framework" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Practical Assessment Framework | Questions, Checkpoints, and Scoring Guidance" />
+  <meta name="twitter:description" content="Use the QEEPP Practical Assessment Framework to assess transformation maturity through practical questions, checkpoints, assessment actions, and scoring guidance across the five dimensions." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QEEPP Practical Assessment Framework",
+    "url": "https://qeepp.com/qeepp-practical-assessment-framework",
+    "description": "The QEEPP Practical Assessment Framework provides assessment questions, checkpoints, practical assessment actions, and scoring guidance across the five dimensions of the framework.",
+    "author": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <style>
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .assessment-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .assessment-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th,
+    .assessment-scale-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .assessment-scale-table td strong {
+      color: var(--text);
+    }
+
+    .assessment-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-note strong {
+      color: var(--text);
+    }
+
+    .assessment-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .assessment-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .assessment-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-link strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .assessment-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .assessment-sequence {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+    }
+
+    .framework-section {
+      display: grid;
+      gap: 12px;
+    }
+
+    .framework-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .framework-table th,
+    .framework-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      line-height: 1.55;
+    }
+
+    .framework-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .framework-table td strong {
+      color: var(--text);
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .mini-list li {
+      margin: 0 0 6px;
+    }
+
+    .framework-kicker {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -2px;
+    }
+
+    @media (max-width: 920px) {
+      .assessment-grid,
+      .assessment-method-grid,
+      .assessment-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="page trends-page">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Practical Assessment Framework for Questions, Checkpoints, and Scoring Guidance</span>
+                </div>
+              </div>
+              <h1>QEEPP Practical Assessment Framework</h1>
+              <p class="lead">
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Practical Assessment Framework expands the structural maturity assessment into practical diagnostic guidance that can be used in workshops, interviews, and governance reviews.
+                <br><br>
+                It translates each of the five QEEPP dimensions into concrete assessment questions, observable checkpoints, practical assessment actions, and scoring guidance to improve consistency and reduce subjective scoring.
+                <br><br>
+                The framework is intended to support both initial and recurring assessments of digital transformation initiatives, platforms, portfolios, and operating models.
+              </p>
+              </p>
+            </div>
+
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="qeepp-assessment">Run QEEPP Assessment</a>
+
+        <section class="panel">
+          <h3>How the practical framework is used</h3>
+
+          <div class="assessment-grid">
+            <div class="stack" aria-label="How the QEEPP practical assessment framework is used">
+              <div class="layer">
+                <div>
+                  <strong>From scoring to evidence</strong>
+                  <span>
+                    The practical framework helps move the assessment from intuitive scoring toward observable structural evidence.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Workshop and interview support</strong>
+                  <span>
+                    It can be used during executive interviews, architecture reviews, transformation workshops, or recurring governance checkpoints.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Consistency across scope</strong>
+                  <span>
+                    The same framework can be applied to an initiative, a program, a platform, a portfolio, or a broader operating model.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Practical scoring guidance</strong>
+                  <span>
+                    Each element includes indicators to help distinguish between Ad hoc, Emerging, Defined, Managed, and Institutionalized maturity.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <h3>QEEPP maturity scale</h3>
+
+              <table class="assessment-scale-table" aria-label="QEEPP maturity scale">
+                <thead>
+                  <tr>
+                    <th>Score</th>
+                    <th>Maturity State</th>
+                    <th>Structural Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1</strong></td>
+                    <td>Ad hoc</td>
+                    <td>Reactive, unstable, and inconsistent practices</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td>Emerging</td>
+                    <td>Initial structures exist but remain inconsistent</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong></td>
+                    <td>Defined</td>
+                    <td>Processes and controls are established and repeatable</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong></td>
+                    <td>Managed</td>
+                    <td>Execution is measured, monitored, and actively governed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong></td>
+                    <td>Institutionalized</td>
+                    <td>Practices are embedded, standardized, and self-sustaining</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="assessment-note">
+            <strong>Structural dependency rule:</strong>
+            If a lower dimension scores below Level 3, scaling in higher dimensions should be constrained. The practical assessment framework should therefore be used to test the strength of lower-dimension evidence before accepting higher-dimension maturity claims.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>QEEPP structural sequence used in the framework</h3>
+
+          <div class="stack" aria-label="QEEPP practical assessment sequence">
+            <div class="layer">
+              <div>
+                <strong>Quality</strong>
+                <span>Stabilize structural integrity through architecture, security, data, reliability, and technical debt and risk control.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Effectiveness</strong>
+                <span>Align transformation effort with strategy, capabilities, value streams, measurable outcomes, and prioritized value.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Efficiency</strong>
+                <span>Optimize the operating model through FinOps, rationalization, DevSecOps flow, and automation discipline.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Performance</strong>
+                <span>Measure execution through KPI, SLA and SLO definition, dashboards, cadence, and proactive risk visibility.</span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Productivity</strong>
+                <span>Scale through enablement, self-service, reusable components, delivery support, and sustainable capacity growth.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-sequence">Stabilize → Align → Optimize → Measure → Scale</div>
+        </section>
+
+        <section class="panel framework-section">
+          <h3>Quality | Stabilize</h3>
+          <p class="framework-kicker">Structural integrity before velocity</p>
+
+          <table class="framework-table" aria-label="QEEPP practical assessment framework for Quality">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment questions</th>
+                <th>Checkpoints</th>
+                <th>Practical assessment actions</th>
+                <th>Scoring guidance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Architecture baseline</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Is there a defined target architecture for the transformation?</li>
+                    <li>Are reference architectures and standards documented?</li>
+                    <li>Are architectural decisions governed consistently?</li>
+                  </ul>
+                </td>
+                <td>
+                  Target architecture exists, standards are visible, review mechanisms are used, and platform sprawl is understood.
+                </td>
+                <td>
+                  Review architecture documents, inspect standards, examine review decisions, and compare deployed patterns against the intended architecture baseline.
+                </td>
+                <td>
+                  <strong>1:</strong> no architecture discipline<br>
+                  <strong>2:</strong> isolated or inconsistent standards<br>
+                  <strong>3:</strong> documented and repeatable standards<br>
+                  <strong>4:</strong> architecture is governed and monitored<br>
+                  <strong>5:</strong> architecture discipline is embedded across the assessed scope
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Security guardrails</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are security controls integrated into delivery practices?</li>
+                    <li>Are security guardrails defined and understood?</li>
+                    <li>Is vulnerability management active and visible?</li>
+                  </ul>
+                </td>
+                <td>
+                  Security expectations are defined, pipeline controls exist, and vulnerabilities are monitored and acted on.
+                </td>
+                <td>
+                  Inspect security policies, review pipeline controls, examine vulnerability dashboards, and confirm whether security reviews occur during delivery.
+                </td>
+                <td>
+                  <strong>1:</strong> security is reactive<br>
+                  <strong>2:</strong> controls exist but are partial or informal<br>
+                  <strong>3:</strong> security practices are defined and repeatable<br>
+                  <strong>4:</strong> security is actively governed and measured<br>
+                  <strong>5:</strong> security guardrails are embedded and self-sustaining
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Data foundations</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Is data ownership clearly defined?</li>
+                    <li>Are governance responsibilities and quality expectations visible?</li>
+                    <li>Are data standards applied consistently?</li>
+                  </ul>
+                </td>
+                <td>
+                  Ownership is assigned, governance is defined, and data quality is treated as an operational discipline rather than an afterthought.
+                </td>
+                <td>
+                  Review data ownership and stewardship, inspect governance artifacts, and verify whether quality issues are monitored and escalated consistently.
+                </td>
+                <td>
+                  <strong>1:</strong> fragmented data management<br>
+                  <strong>2:</strong> limited governance with inconsistent ownership<br>
+                  <strong>3:</strong> governance is defined and repeatable<br>
+                  <strong>4:</strong> data quality and governance are actively managed<br>
+                  <strong>5:</strong> data foundations are embedded at scale
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Reliability engineering</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are uptime and service expectations defined?</li>
+                    <li>Are resilience and recovery mechanisms tested?</li>
+                    <li>Are failures reviewed systematically?</li>
+                  </ul>
+                </td>
+                <td>
+                  Reliability targets exist, resilience is designed intentionally, and operational learning is visible after incidents.
+                </td>
+                <td>
+                  Review SLA or SLO records, inspect resilience patterns, evaluate outage history, and verify the presence of recovery testing and post-incident review.
+                </td>
+                <td>
+                  <strong>1:</strong> frequent or unmanaged instability<br>
+                  <strong>2:</strong> reactive recovery with partial controls<br>
+                  <strong>3:</strong> reliability practices are defined<br>
+                  <strong>4:</strong> resilience is managed and monitored<br>
+                  <strong>5:</strong> reliability is engineered and institutionally governed
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Technical debt and risk</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Is technical debt visible and quantified?</li>
+                    <li>Are structural risks captured and reviewed?</li>
+                    <li>Does delivery planning account for debt reduction?</li>
+                  </ul>
+                </td>
+                <td>
+                  Technical debt is not hidden, risk is visible, and structural remediation competes credibly with feature pressure.
+                </td>
+                <td>
+                  Inspect risk registers, review backlog tagging, examine remediation plans, and confirm whether debt is discussed in governance conversations.
+                </td>
+                <td>
+                  <strong>1:</strong> debt and risk are unmanaged<br>
+                  <strong>2:</strong> acknowledged but not governed<br>
+                  <strong>3:</strong> tracked and reviewed periodically<br>
+                  <strong>4:</strong> actively governed and prioritized<br>
+                  <strong>5:</strong> embedded discipline with sustained structural control
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel framework-section">
+          <h3>Effectiveness | Align</h3>
+          <p class="framework-kicker">Relevance before optimization</p>
+
+          <table class="framework-table" aria-label="QEEPP practical assessment framework for Effectiveness">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment questions</th>
+                <th>Checkpoints</th>
+                <th>Practical assessment actions</th>
+                <th>Scoring guidance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Strategy alignment</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are initiatives explicitly tied to strategic objectives?</li>
+                    <li>Is strategic intent visible in the transformation scope?</li>
+                    <li>Can leadership explain why this work matters in business terms?</li>
+                  </ul>
+                </td>
+                <td>
+                  Strategy is visible in the assessment scope and transformation effort is not disconnected from business priorities.
+                </td>
+                <td>
+                  Review strategic plans, roadmaps, and executive messaging. Test whether initiatives can be traced clearly to strategic objectives.
+                </td>
+                <td>
+                  <strong>1:</strong> disconnected initiative activity<br>
+                  <strong>2:</strong> weak or inconsistent linkage to strategy<br>
+                  <strong>3:</strong> strategy alignment is defined<br>
+                  <strong>4:</strong> alignment is governed and reviewed<br>
+                  <strong>5:</strong> transformation is consistently strategy-led
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Capability mapping</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are business capabilities mapped to the transformation scope?</li>
+                    <li>Are dependencies visible across business and technology?</li>
+                    <li>Is the change framed in capability terms, not only project terms?</li>
+                  </ul>
+                </td>
+                <td>
+                  Capability language is used consistently and dependencies are visible enough to guide decisions.
+                </td>
+                <td>
+                  Review capability maps, dependency views, and transformation roadmaps. Confirm whether capability strengthening is explicit and traceable.
+                </td>
+                <td>
+                  <strong>1:</strong> no meaningful capability mapping<br>
+                  <strong>2:</strong> partial and inconsistent mapping<br>
+                  <strong>3:</strong> capability mapping is defined<br>
+                  <strong>4:</strong> capabilities drive planning and dependency decisions<br>
+                  <strong>5:</strong> capability mapping is embedded in transformation governance
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Value stream alignment</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are value streams clearly identified?</li>
+                    <li>Do teams and initiatives align to value delivery?</li>
+                    <li>Is work organized beyond functional silos?</li>
+                  </ul>
+                </td>
+                <td>
+                  Value streams are explicit enough to influence ownership, decision-making, and prioritization.
+                </td>
+                <td>
+                  Review value stream maps, product ownership structures, and operating model decisions to see whether value flow shapes delivery.
+                </td>
+                <td>
+                  <strong>1:</strong> siloed work with little value visibility<br>
+                  <strong>2:</strong> value streams discussed but weakly applied<br>
+                  <strong>3:</strong> value stream alignment is defined<br>
+                  <strong>4:</strong> value streams shape governance and delivery<br>
+                  <strong>5:</strong> value flow is embedded across the assessed scope
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Outcome definition</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are measurable outcomes defined?</li>
+                    <li>Are success criteria framed beyond delivery activity?</li>
+                    <li>Do OKRs or equivalent measures exist?</li>
+                  </ul>
+                </td>
+                <td>
+                  Outcomes are explicit, measurable, and used to distinguish real business progress from mere activity.
+                </td>
+                <td>
+                  Inspect KPI sets, OKRs, or outcome statements. Verify whether outcomes are reviewed and influence decisions.
+                </td>
+                <td>
+                  <strong>1:</strong> activity without outcome definition<br>
+                  <strong>2:</strong> partial metrics with weak business meaning<br>
+                  <strong>3:</strong> outcomes are defined and repeatable<br>
+                  <strong>4:</strong> outcomes are reviewed and governed<br>
+                  <strong>5:</strong> outcomes consistently drive transformation decisions
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Initiative prioritization</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are initiatives prioritized by value and structural readiness?</li>
+                    <li>Is prioritization visible and explainable?</li>
+                    <li>Can lower-value work be delayed in favor of more important outcomes?</li>
+                  </ul>
+                </td>
+                <td>
+                  Prioritization is not purely political or reactive and can be explained through strategic and structural logic.
+                </td>
+                <td>
+                  Review governance forums, funding discussions, and portfolio decisions to test how trade-offs are actually made.
+                </td>
+                <td>
+                  <strong>1:</strong> ad hoc prioritization<br>
+                  <strong>2:</strong> inconsistent value-based prioritization<br>
+                  <strong>3:</strong> prioritization is defined and repeatable<br>
+                  <strong>4:</strong> prioritization is governed through evidence<br>
+                  <strong>5:</strong> portfolio choice is disciplined and consistently value-led
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel framework-section">
+          <h3>Efficiency | Optimize</h3>
+          <p class="framework-kicker">Lean before expansion</p>
+
+          <table class="framework-table" aria-label="QEEPP practical assessment framework for Efficiency">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment questions</th>
+                <th>Checkpoints</th>
+                <th>Practical assessment actions</th>
+                <th>Scoring guidance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Operating model</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Is the operating model clearly defined?</li>
+                    <li>Are decision rights and responsibilities understood?</li>
+                    <li>Do handoffs introduce unnecessary friction?</li>
+                  </ul>
+                </td>
+                <td>
+                  Roles, ownership, and governance pathways are clear enough to support efficient execution.
+                </td>
+                <td>
+                  Review operating model artifacts, team boundaries, and decision forums. Test whether ownership is explicit and workable in practice.
+                </td>
+                <td>
+                  <strong>1:</strong> chaotic or unclear operating model<br>
+                  <strong>2:</strong> early structure with frequent friction<br>
+                  <strong>3:</strong> operating model is defined<br>
+                  <strong>4:</strong> operating model is actively managed<br>
+                  <strong>5:</strong> operating model is embedded and scalable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>FinOps discipline</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are costs baselined and visible?</li>
+                    <li>Is optimization continuous rather than occasional?</li>
+                    <li>Do teams understand the cost impact of design choices?</li>
+                  </ul>
+                </td>
+                <td>
+                  Cost transparency exists and operational or platform decisions are influenced by cost insight.
+                </td>
+                <td>
+                  Inspect cost dashboards, showback or chargeback logic, and optimization review cadence to verify whether cost discipline is real.
+                </td>
+                <td>
+                  <strong>1:</strong> limited cost visibility<br>
+                  <strong>2:</strong> cost review is reactive or partial<br>
+                  <strong>3:</strong> FinOps practices are defined<br>
+                  <strong>4:</strong> optimization is governed and ongoing<br>
+                  <strong>5:</strong> cost discipline is embedded in delivery behavior
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Application rationalization</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are redundant applications or platforms being reduced?</li>
+                    <li>Is platform sprawl understood and addressed?</li>
+                    <li>Are rationalization decisions linked to transformation goals?</li>
+                  </ul>
+                </td>
+                <td>
+                  Rationalization is more than inventory. There is visible reduction of duplication and improvement of coherence.
+                </td>
+                <td>
+                  Review application inventories, rationalization plans, and retirement decisions. Confirm whether consolidation activity is real and governed.
+                </td>
+                <td>
+                  <strong>1:</strong> unmanaged sprawl<br>
+                  <strong>2:</strong> inventory exists but action is weak<br>
+                  <strong>3:</strong> rationalization is defined and progressing<br>
+                  <strong>4:</strong> rationalization is managed through governance<br>
+                  <strong>5:</strong> rationalization is embedded in structural decision-making
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>DevSecOps flow</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are delivery pipelines standardized?</li>
+                    <li>Is flow measured and improved over time?</li>
+                    <li>Are security and control integrated into the delivery process?</li>
+                  </ul>
+                </td>
+                <td>
+                  Delivery flow is visible, repeatable, and increasingly standardized across the assessment scope.
+                </td>
+                <td>
+                  Review pipeline designs, cycle-time metrics, control gates, and exception handling to assess the maturity of delivery flow.
+                </td>
+                <td>
+                  <strong>1:</strong> highly manual and inconsistent flow<br>
+                  <strong>2:</strong> partial automation with uneven discipline<br>
+                  <strong>3:</strong> DevSecOps flow is defined and repeatable<br>
+                  <strong>4:</strong> flow is measured and governed<br>
+                  <strong>5:</strong> flow is embedded, standardized, and sustainable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Automation</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are repetitive tasks automated intentionally?</li>
+                    <li>Is infrastructure provisioned through governed mechanisms?</li>
+                    <li>Does automation reduce manual friction materially?</li>
+                  </ul>
+                </td>
+                <td>
+                  Automation is systematic enough to improve consistency, speed, and control rather than merely providing isolated technical convenience.
+                </td>
+                <td>
+                  Inspect infrastructure as code repositories, orchestration patterns, and operational workflows to verify whether automation changes the way work is done.
+                </td>
+                <td>
+                  <strong>1:</strong> mainly manual operations<br>
+                  <strong>2:</strong> isolated automation with limited structural impact<br>
+                  <strong>3:</strong> automation is defined and repeatable<br>
+                  <strong>4:</strong> automation is governed and measurable<br>
+                  <strong>5:</strong> automation is embedded and scaled across the scope
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel framework-section">
+          <h3>Performance | Measure</h3>
+          <p class="framework-kicker">Measurement before momentum</p>
+
+          <table class="framework-table" aria-label="QEEPP practical assessment framework for Performance">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment questions</th>
+                <th>Checkpoints</th>
+                <th>Practical assessment actions</th>
+                <th>Scoring guidance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>KPI framework</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are transformation KPIs clearly defined?</li>
+                    <li>Do the KPIs reflect structural maturity rather than only activity?</li>
+                    <li>Are the KPIs used in governance conversations?</li>
+                  </ul>
+                </td>
+                <td>
+                  KPIs are explicit, relevant, and active in leadership discussions rather than decorative reporting elements.
+                </td>
+                <td>
+                  Review scorecards, governance packs, and reporting definitions to confirm whether KPI language is operationalized.
+                </td>
+                <td>
+                  <strong>1:</strong> little meaningful KPI discipline<br>
+                  <strong>2:</strong> partial metrics with weak governance use<br>
+                  <strong>3:</strong> KPI framework is defined<br>
+                  <strong>4:</strong> KPIs are reviewed and managed<br>
+                  <strong>5:</strong> KPI discipline is embedded across the organization
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Service metrics</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are SLA or SLO expectations defined?</li>
+                    <li>Are reliability and service measures visible?</li>
+                    <li>Do teams respond consistently to service performance data?</li>
+                  </ul>
+                </td>
+                <td>
+                  Service expectations are explicit and used to guide operations, reliability, and governance decisions.
+                </td>
+                <td>
+                  Inspect service definitions, reliability metrics, and operational reviews to verify whether service-level management is functioning consistently.
+                </td>
+                <td>
+                  <strong>1:</strong> little service measurement discipline<br>
+                  <strong>2:</strong> inconsistent service metrics<br>
+                  <strong>3:</strong> service metrics are defined<br>
+                  <strong>4:</strong> service performance is monitored and governed<br>
+                  <strong>5:</strong> service management is embedded and mature
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Execution cadence</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are governance reviews held regularly?</li>
+                    <li>Is there a reliable rhythm for assessing progress?</li>
+                    <li>Do reviews lead to decisions and action?</li>
+                  </ul>
+                </td>
+                <td>
+                  Governance rhythm exists and contributes to accountability rather than producing only ceremonial meetings.
+                </td>
+                <td>
+                  Review governance calendars, meeting outputs, and decision logs to test whether cadence is active and consequential.
+                </td>
+                <td>
+                  <strong>1:</strong> weak or absent cadence<br>
+                  <strong>2:</strong> inconsistent reviews with limited follow-through<br>
+                  <strong>3:</strong> cadence is defined and repeatable<br>
+                  <strong>4:</strong> cadence is managed and action-oriented<br>
+                  <strong>5:</strong> cadence is embedded and structurally reliable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Risk and compliance reporting</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are structural risks visible early?</li>
+                    <li>Is compliance reporting reliable and usable?</li>
+                    <li>Can governance bodies see exceptions before they become crises?</li>
+                  </ul>
+                </td>
+                <td>
+                  Risks and compliance exposures are surfaced in time to support corrective action rather than retrospective explanation.
+                </td>
+                <td>
+                  Review risk registers, control reporting, and escalation practices to confirm that risk visibility is active and not purely formal.
+                </td>
+                <td>
+                  <strong>1:</strong> limited risk visibility<br>
+                  <strong>2:</strong> partial reporting with weak escalation<br>
+                  <strong>3:</strong> reporting is defined and repeatable<br>
+                  <strong>4:</strong> reporting is managed through governance<br>
+                  <strong>5:</strong> risk and compliance visibility is embedded institutionally
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Operational transparency</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are dashboards visible and trusted?</li>
+                    <li>Can relevant stakeholders see performance clearly?</li>
+                    <li>Is transparency sufficient for informed governance decisions?</li>
+                  </ul>
+                </td>
+                <td>
+                  Operational signals are visible enough to support shared understanding and prompt action across leadership and delivery stakeholders.
+                </td>
+                <td>
+                  Inspect dashboards, audience access, and reporting practices to test whether transparency is real, timely, and actionable.
+                </td>
+                <td>
+                  <strong>1:</strong> low visibility and weak transparency<br>
+                  <strong>2:</strong> fragmented reporting<br>
+                  <strong>3:</strong> transparency is defined and available<br>
+                  <strong>4:</strong> transparency is monitored and used in governance<br>
+                  <strong>5:</strong> visibility is embedded and broadly trusted
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel framework-section">
+          <h3>Productivity | Scale</h3>
+          <p class="framework-kicker">Scale without degradation</p>
+
+          <table class="framework-table" aria-label="QEEPP practical assessment framework for Productivity">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Assessment questions</th>
+                <th>Checkpoints</th>
+                <th>Practical assessment actions</th>
+                <th>Scoring guidance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Platform enablement</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Do internal platforms accelerate delivery in a controlled way?</li>
+                    <li>Are teams benefiting from common services and patterns?</li>
+                    <li>Is platform enablement reducing duplication?</li>
+                  </ul>
+                </td>
+                <td>
+                  Platforms are enabling delivery across multiple teams and creating structural leverage rather than isolated technical benefit.
+                </td>
+                <td>
+                  Review platform services, adoption patterns, and team usage. Test whether platform enablement materially changes delivery capability.
+                </td>
+                <td>
+                  <strong>1:</strong> little platform leverage<br>
+                  <strong>2:</strong> partial platform capability with limited adoption<br>
+                  <strong>3:</strong> platform enablement is defined and usable<br>
+                  <strong>4:</strong> platforms are managed and broadly adopted<br>
+                  <strong>5:</strong> platform enablement is embedded and structurally scalable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Self-service infrastructure</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Can teams provision approved capabilities independently?</li>
+                    <li>Is self-service governed by standards and controls?</li>
+                    <li>Does self-service reduce dependence on central bottlenecks?</li>
+                  </ul>
+                </td>
+                <td>
+                  Self-service exists within guardrails and expands capability without reducing governance strength.
+                </td>
+                <td>
+                  Review provisioning models, guardrails, approval patterns, and usage pathways to confirm whether self-service is both real and governed.
+                </td>
+                <td>
+                  <strong>1:</strong> fully dependent manual provisioning<br>
+                  <strong>2:</strong> limited self-service with inconsistent control<br>
+                  <strong>3:</strong> self-service is defined and available<br>
+                  <strong>4:</strong> self-service is governed and effective<br>
+                  <strong>5:</strong> self-service is embedded, trusted, and scalable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Reusable components</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Are patterns, templates, and services reused consistently?</li>
+                    <li>Does reuse reduce delivery time and duplication?</li>
+                    <li>Is reuse intentional rather than accidental?</li>
+                  </ul>
+                </td>
+                <td>
+                  Reuse is visible in architecture and delivery patterns and contributes materially to scale efficiency.
+                </td>
+                <td>
+                  Inspect component catalogs, template libraries, and reference implementations to verify whether reuse is systematic and adopted.
+                </td>
+                <td>
+                  <strong>1:</strong> high duplication and limited reuse<br>
+                  <strong>2:</strong> ad hoc reuse with weak structure<br>
+                  <strong>3:</strong> reusable assets are defined and repeatable<br>
+                  <strong>4:</strong> reuse is governed and broadly applied<br>
+                  <strong>5:</strong> reuse is embedded as a structural operating norm
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Delivery enablement</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Do teams have the standards, tooling, and support needed to deliver well?</li>
+                    <li>Is enablement consistent across the assessed scope?</li>
+                    <li>Can teams onboard and operate without excessive reinvention?</li>
+                  </ul>
+                </td>
+                <td>
+                  Teams are enabled by shared tooling, guidance, and operational support rather than left to build everything independently.
+                </td>
+                <td>
+                  Review onboarding paths, enablement assets, standards, and support models to assess whether delivery capability is being scaled systematically.
+                </td>
+                <td>
+                  <strong>1:</strong> weak delivery support and high reinvention<br>
+                  <strong>2:</strong> partial enablement with inconsistency<br>
+                  <strong>3:</strong> enablement is defined and available<br>
+                  <strong>4:</strong> enablement is managed and broadly useful<br>
+                  <strong>5:</strong> enablement is embedded and structurally scalable
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Scalable capacity</strong></td>
+                <td>
+                  <ul class="mini-list">
+                    <li>Can delivery capacity expand without multiplying complexity?</li>
+                    <li>Does growth preserve control, alignment, and reliability?</li>
+                    <li>Are scale mechanisms visible in practice rather than assumed?</li>
+                  </ul>
+                </td>
+                <td>
+                  Growth in scope or throughput does not automatically produce fragmentation, instability, or governance breakdown.
+                </td>
+                <td>
+                  Review scaling patterns, team growth, operational stability, and governance quality under expansion to determine whether scale is sustainable.
+                </td>
+                <td>
+                  <strong>1:</strong> growth quickly amplifies weakness<br>
+                  <strong>2:</strong> scale is partial and fragile<br>
+                  <strong>3:</strong> scalable capacity is defined and plausible<br>
+                  <strong>4:</strong> scale is managed and supported by structure<br>
+                  <strong>5:</strong> scale is sustainable and institutionally supported
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>How to interpret results from the practical assessment</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Balanced maturity profile</strong>
+                <span>
+                  A balanced score pattern usually indicates that progression is occurring in the right structural order.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Distorted maturity profile</strong>
+                <span>
+                  Large gaps between lower and higher dimensions suggest imbalance, scoring inflation, or premature scaling risk.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Evidence gap</strong>
+                <span>
+                  Strong verbal confidence with weak checkpoints or weak practical evidence should pull the score downward.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Recurring governance use</strong>
+                <span>
+                  Repeating the practical assessment over time helps confirm whether transformation is progressing in sequence and strengthening structurally.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Related QEEPP assessment pages</h3>
+
+          <div class="assessment-links">
+            <a class="assessment-link" href="assessment-methodology">
+              <strong>Assessment Methodology</strong>
+              <span>Scoring logic, dependency structure, and interpretation of structural maturity.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-assessment-checklist">
+              <strong>Assessment Checklist</strong>
+              <span>Twenty-five structural controls for current-state and target-state scoring.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-diagnostic-interview">
+              <strong>Structural Diagnostic Interview</strong>
+              <span>Executive and practitioner questions for evidence-based scoring and governance discussion.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+  <script defer src="assets/js/qeepp.js"></script>
+</body>
+</html>

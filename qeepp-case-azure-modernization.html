@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>QEEPP Case Example | E-Commerce Azure Modernization Assessment</title>
+  <meta name="description" content="A QEEPP case example showing how the Practical Assessment Framework can be applied to an e-commerce transformation migrating from VMware private cloud to an Azure Landing Zone and modernizing to cloud-native microservices." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rado Dimitrov" />
+
+  <link rel="canonical" href="https://qeepp.com/qeepp-case-example-commerce-azure-modernization" />
+  <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
+  <link rel="stylesheet" href="/assets/css/qeepp.css" />
+  <link rel="stylesheet" href="/assets/css/qeepp-charts.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QEEPP" />
+  <meta property="og:title" content="QEEPP Case Example | E-Commerce Azure Modernization Assessment" />
+  <meta property="og:description" content="A QEEPP case example showing how the Practical Assessment Framework can be applied to an e-commerce transformation migrating from VMware private cloud to an Azure Landing Zone and modernizing to cloud-native microservices." />
+  <meta property="og:url" content="https://qeepp.com/qeepp-case-example-commerce-azure-modernization" />
+  <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+  <meta property="og:image:alt" content="QEEPP Case Example for Azure Modernization" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QEEPP Case Example | E-Commerce Azure Modernization Assessment" />
+  <meta name="twitter:description" content="A QEEPP case example showing how the Practical Assessment Framework can be applied to an e-commerce transformation migrating from VMware private cloud to an Azure Landing Zone and modernizing to cloud-native microservices." />
+  <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QEEPP Case Example: E-Commerce Azure Modernization Assessment",
+    "url": "https://qeepp.com/qeepp-case-example-commerce-azure-modernization",
+    "description": "A practical QEEPP case example showing how the framework can assess a transformation program migrating from VMware private cloud to an Azure Landing Zone and modernizing to cloud-native microservices.",
+    "author": {
+      "@type": "Person",
+      "name": "Rado Dimitrov"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QEEPP"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+
+  <style>
+    .assessment-page {
+      display: grid;
+      gap: 18px;
+    }
+
+    .assessment-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-hero .grid2 {
+      align-items: start;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .assessment-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .assessment-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th,
+    .assessment-scale-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .assessment-scale-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .assessment-scale-table td strong {
+      color: var(--text);
+    }
+
+    .assessment-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-note strong {
+      color: var(--text);
+    }
+
+    .assessment-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .assessment-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .assessment-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .assessment-link strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .assessment-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .assessment-sequence {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+    }
+
+    .case-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .case-table th,
+    .case-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      line-height: 1.55;
+    }
+
+    .case-table th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .case-kicker {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -2px;
+    }
+
+    .score-chip {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .case-visual-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .case-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .case-visual-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .case-visual-card h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .case-visual-card p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .case-matrix-trends-stack {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .case-current-matrix-wrap {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .case-trends-wrap {
+      width: 100%;
+    }
+
+    .case-visual-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 920px) {
+      .assessment-grid,
+      .assessment-method-grid,
+      .assessment-links,
+      .case-visual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="content" class="page trends-page">
+    <div class="wrap">
+      <div class="assessment-page">
+        <section class="panel assessment-hero">
+          <div class="grid2">
+            <div>
+              <div class="kicker" title="Transformation Discipline Framework">
+                <div class="kicker-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="kickerText">QEEPP Case Example for E-Commerce Cloud Modernization</span>
+                </div>
+              </div>
+              <h1>QEEPP Case Example</h1>
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                This case example shows how the QEEPP Practical Assessment Framework can be applied to a digital transformation program for an e-commerce service provider migrating from a VMware private cloud to an Azure Landing Zone while modernizing toward cloud-native microservices and containerized architecture.
+                <br><br>
+                The scenario is illustrative, but it reflects the kind of structural questions, maturity signals, and governance decisions that QEEPP is designed to evaluate across complex modernization programs.
+                <br><br>
+                The example demonstrates how QEEPP can be used to assess transformation maturity, identify structural imbalance, and guide disciplined progression from stability to scale.
+              </p>
+            </div>
+            <div></div>
+          </div>
+
+          <img
+            src="assets/icons/qeepp-framework-symbol.svg"
+            alt="QEEPP Framework Symbol"
+            class="hero-starfish"
+          />
+        </section>
+
+        <a class="btn" href="qeepp-assessment">Run QEEPP Assessment</a>
+
+        <section class="panel">
+          <h3>Case scenario overview</h3>
+
+          <div class="assessment-grid">
+            <div class="stack" aria-label="Case scenario overview">
+              <div class="layer">
+                <div>
+                  <strong>Organization</strong>
+                  <span>
+                    A mid-market e-commerce service provider supporting multiple online merchants, payment integrations, order management services, and customer experience workloads.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Transformation objective</strong>
+                  <span>
+                    Migrate Dev, UAT, and Production environments from a VMware private cloud to an Azure Landing Zone and modernize applications toward a cloud-native microservices and containerized model.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Desired outcomes</strong>
+                  <span>
+                    Improve resilience, elasticity, security, governance, deployment speed, and operational visibility while reducing dependency on legacy infrastructure patterns.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Security ambition</strong>
+                  <span>
+                    Implement comprehensive identity and access control with Zero Trust, least privilege, managed identities, stronger segmentation, policy guardrails, and defense-in-depth architecture.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <h3>Target modernization profile</h3>
+
+              <table class="assessment-scale-table" aria-label="Target modernization profile">
+                <thead>
+                  <tr>
+                    <th>Area</th>
+                    <th>Target state</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cloud foundation</strong></td>
+                    <td>Azure Landing Zone with governance, policy, identity, and network guardrails</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Application platform</strong></td>
+                    <td>AKS-based container platform supporting modernized services</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Security model</strong></td>
+                    <td>Zero Trust access, least privilege, managed identities, defense-in-depth controls</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Delivery model</strong></td>
+                    <td>Infrastructure as code, CI/CD, standardized DevSecOps flow</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Operations model</strong></td>
+                    <td>Measured services, stronger observability, scalable platform enablement</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="assessment-note">
+            <strong>Why this case fits QEEPP:</strong>
+            This program combines infrastructure migration, application modernization, security redesign, and governance change. That makes it a good example of why transformation maturity must progress in sequence from stability to scale.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Initial environment and transformation scope</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Current-state environment</strong>
+                <span>
+                  The organization currently runs Dev, UAT, and Production on a VMware-based private cloud with VM-centric provisioning, shared infrastructure patterns, traditional perimeter security assumptions, and limited elasticity during seasonal demand spikes.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Application estate</strong>
+                <span>
+                  Core workloads include a large e-commerce application stack, integration services, merchant onboarding components, order processing services, and reporting capabilities with some tightly coupled legacy patterns.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Transformation scope</strong>
+                <span>
+                  The program covers landing zone design, network and identity guardrails, migration of environments, modernization of selected applications into microservices, container platform implementation, and stronger operational governance.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Key stakeholders</strong>
+                <span>
+                  CIO, Enterprise Architect, Cloud Platform Lead, Security Architect, DevOps Lead, Application Modernization Lead, and business sponsors responsible for digital commerce outcomes.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Assessment method used in the case</h3>
+
+          <div class="stack" aria-label="Assessment method used in the case example">
+            <div class="layer">
+              <div>
+                <strong>Executive interviews</strong>
+                <span>
+                  Leadership and transformation owners were interviewed to understand strategic intent, sequencing assumptions, target-state ambition, and risk perception.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Architecture and platform review</strong>
+                <span>
+                  The assessment reviewed landing zone architecture, network segmentation, identity model, platform design, and migration patterns across Dev, UAT, and Production.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Delivery and operational evidence</strong>
+                <span>
+                  Pipelines, infrastructure as code, security controls, observability practices, operational dashboards, and governance artifacts were inspected to test claimed maturity.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>QEEPP structural scoring</strong>
+                <span>
+                  The program was scored across Quality, Effectiveness, Efficiency, Performance, and Productivity using the five-level maturity scale and the structural dependency rule.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Quality | Stabilize</h3>
+          <p class="case-kicker">Structural integrity before velocity</p>
+
+          <table class="case-table" aria-label="Case example assessment for Quality">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Observed condition</th>
+                <th>Example findings</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Architecture baseline</strong></td>
+                <td>Defined, but not fully enforced</td>
+                <td>
+                  Azure Landing Zone design exists, including subscription structure, hub-and-spoke networking, policy intent, and target application hosting patterns. However, some legacy migration streams still treat Azure as a VM destination rather than a governed target platform.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Security guardrails</strong></td>
+                <td>Defined, with partial operational consistency</td>
+                <td>
+                  Identity design includes Azure AD integration, role-based access control, managed identities, conditional access intent, and stronger segmentation. Container image scanning, secrets handling, and access review discipline are improving but not uniformly mature yet.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Data foundations</strong></td>
+                <td>Emerging</td>
+                <td>
+                  Data migration and modernization planning exists, but ownership and stewardship across newly separated services are not yet consistently defined. Governance for data classification and service-level data boundaries remains incomplete.
+                </td>
+                <td><span class="score-chip">2 · Emerging</span></td>
+              </tr>
+              <tr>
+                <td><strong>Reliability engineering</strong></td>
+                <td>Defined</td>
+                <td>
+                  High-availability intent is visible in the target architecture, including container orchestration, autoscaling ambitions, improved deployment patterns, and stronger platform resilience design. Formal SLO discipline and failure rehearsal are not yet mature.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Technical debt and risk</strong></td>
+                <td>Emerging</td>
+                <td>
+                  The monolithic application has known coupling, legacy dependencies, and operational shortcuts accumulated from the private cloud era. Technical debt is recognized, but not yet fully quantified or governed as a transformation constraint.
+                </td>
+                <td><span class="score-chip">2 · Emerging</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="assessment-note">
+            <strong>Quality interpretation:</strong>
+            The modernization program has credible architectural direction, but its foundations are not yet strong enough to support aggressive scaling. Data governance and technical debt remain the main structural constraints.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Effectiveness | Align</h3>
+          <p class="case-kicker">Relevance before optimization</p>
+
+          <table class="case-table" aria-label="Case example assessment for Effectiveness">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Observed condition</th>
+                <th>Example findings</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Strategy alignment</strong></td>
+                <td>Managed</td>
+                <td>
+                  The program is clearly linked to business goals such as better resilience during peak demand, faster release capability, improved merchant experience, lower infrastructure rigidity, and stronger governance.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Capability mapping</strong></td>
+                <td>Defined</td>
+                <td>
+                  Core business capabilities such as storefront, checkout, order orchestration, merchant onboarding, and reporting are mapped at a meaningful level, though some dependencies remain too application-centric.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Value stream alignment</strong></td>
+                <td>Defined</td>
+                <td>
+                  The transformation is increasingly framed around customer purchase flow, merchant onboarding, and order fulfillment value streams, but some delivery structures still reflect legacy silo boundaries.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Outcome definition</strong></td>
+                <td>Defined</td>
+                <td>
+                  Desired outcomes such as improved deployment frequency, reduced checkout latency, better service resilience, and stronger change confidence are identified, although some remain loosely baselined.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Initiative prioritization</strong></td>
+                <td>Managed</td>
+                <td>
+                  Migration and modernization streams are prioritized based on business impact, merchant sensitivity, seasonal load exposure, and architectural readiness rather than simply technical enthusiasm.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Efficiency | Optimize</h3>
+          <p class="case-kicker">Lean before expansion</p>
+
+          <table class="case-table" aria-label="Case example assessment for Efficiency">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Observed condition</th>
+                <th>Example findings</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Operating model</strong></td>
+                <td>Defined</td>
+                <td>
+                  A cloud platform team, modernization stream, and security governance function have been established. Responsibilities are clearer than before, but the model is still adapting from legacy infrastructure ownership patterns.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>FinOps discipline</strong></td>
+                <td>Emerging</td>
+                <td>
+                  Cost monitoring exists for Azure adoption, but the organization is still early in linking design decisions, Kubernetes usage, and environment consumption to active financial optimization behavior.
+                </td>
+                <td><span class="score-chip">2 · Emerging</span></td>
+              </tr>
+              <tr>
+                <td><strong>Application rationalization</strong></td>
+                <td>Defined</td>
+                <td>
+                  The program has identified which services should be rehosted temporarily, which should be refactored, and which should be decomposed. Rationalization logic is present, though retirement execution is still in progress.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>DevSecOps flow</strong></td>
+                <td>Managed</td>
+                <td>
+                  CI/CD pipelines, infrastructure as code, container build flow, and environment deployment are increasingly standardized. Security controls are joining the flow, although not with full consistency yet.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Automation</strong></td>
+                <td>Managed</td>
+                <td>
+                  Provisioning, policy enforcement, and portions of deployment flow are automated through Terraform and pipeline orchestration. Manual steps remain in some migration and approval paths.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Performance | Measure</h3>
+          <p class="case-kicker">Measurement before momentum</p>
+
+          <table class="case-table" aria-label="Case example assessment for Performance">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Observed condition</th>
+                <th>Example findings</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>KPI framework</strong></td>
+                <td>Defined</td>
+                <td>
+                  The program tracks migration milestones, deployment flow, and selected service indicators, but structural maturity KPIs are still evolving and not yet fully normalized.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Service metrics</strong></td>
+                <td>Emerging</td>
+                <td>
+                  Service reliability targets are discussed, but SLO discipline across modernized services is not yet mature enough to drive stronger operational governance.
+                </td>
+                <td><span class="score-chip">2 · Emerging</span></td>
+              </tr>
+              <tr>
+                <td><strong>Execution cadence</strong></td>
+                <td>Managed</td>
+                <td>
+                  The transformation has regular review cadence across architecture, delivery, and risk forums. Decisions are increasingly evidence-based rather than purely status-driven.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Risk and compliance reporting</strong></td>
+                <td>Defined</td>
+                <td>
+                  Security and migration risk reporting is visible, especially around environment cutover, identity, and application dependency risks, but automated reporting is still developing.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Operational transparency</strong></td>
+                <td>Defined</td>
+                <td>
+                  Dashboards and monitoring are improving, but leadership visibility remains stronger for migration activity than for full service health and maturity progression.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Productivity | Scale</h3>
+          <p class="case-kicker">Scale without degradation</p>
+
+          <table class="case-table" aria-label="Case example assessment for Productivity">
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Observed condition</th>
+                <th>Example findings</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Platform enablement</strong></td>
+                <td>Managed</td>
+                <td>
+                  The AKS-based platform direction is enabling multiple teams to adopt more consistent patterns for deployment and service hosting. Platform leverage is becoming real.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Self-service infrastructure</strong></td>
+                <td>Defined</td>
+                <td>
+                  Teams can consume standardized infrastructure modules and deployment patterns, but full governed self-service is not yet equally mature across all delivery teams.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Reusable components</strong></td>
+                <td>Defined</td>
+                <td>
+                  Shared templates, platform modules, and some common service patterns are emerging, though broader reuse is still maturing as the modernization proceeds.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Delivery enablement</strong></td>
+                <td>Defined</td>
+                <td>
+                  Enablement through platform engineering, standards, and pipeline support exists, but teams still vary in cloud-native readiness and microservice operating discipline.
+                </td>
+                <td><span class="score-chip">3 · Defined</span></td>
+              </tr>
+              <tr>
+                <td><strong>Scalable capacity</strong></td>
+                <td>Managed</td>
+                <td>
+                  The target architecture supports better elasticity and operational scaling than the private cloud model, especially under e-commerce peak events, though this remains partially dependent on foundational maturity still being strengthened.
+                </td>
+                <td><span class="score-chip">4 · Managed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>Resulting maturity profile</h3>
+
+          <table class="assessment-scale-table" aria-label="Case example QEEPP scores">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Average score</th>
+                <th>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Quality</strong></td>
+                <td>2.6</td>
+                <td>Foundations are improving, but still constrain stronger scale ambition</td>
+              </tr>
+              <tr>
+                <td><strong>Effectiveness</strong></td>
+                <td>3.4</td>
+                <td>Transformation is well aligned to business outcomes and modernization purpose</td>
+              </tr>
+              <tr>
+                <td><strong>Efficiency</strong></td>
+                <td>3.2</td>
+                <td>Operating flow is improving through automation and delivery standardization</td>
+              </tr>
+              <tr>
+                <td><strong>Performance</strong></td>
+                <td>3.0</td>
+                <td>Measurement capability is present, but not yet strong enough everywhere</td>
+              </tr>
+              <tr>
+                <td><strong>Productivity</strong></td>
+                <td>3.4</td>
+                <td>Platform-based scale capability is emerging, but somewhat ahead of foundations</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="assessment-note">
+            <strong>Structural reading of the profile:</strong>
+            The program shows strong modernization intent and good business alignment, but Productivity is beginning to rise faster than Quality. Under QEEPP logic, this is a signal to strengthen foundations before wider scaling, especially where Zero Trust, data ownership, service reliability, and technical debt discipline are still maturing.
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Current state vs target state</h3>
+
+          <div class="assessment-grid">
+            <div>
+              <table class="assessment-scale-table" aria-label="Current state versus target state scores for the case example">
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Current state</th>
+                    <th>Target state</th>
+                    <th>Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Quality</strong></td>
+                    <td>2.6</td>
+                    <td>4.0</td>
+                    <td>Strengthen architecture enforcement, Zero Trust controls, data governance, resilience discipline, and technical debt visibility before wider scaling.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Effectiveness</strong></td>
+                    <td>3.4</td>
+                    <td>4.2</td>
+                    <td>Improve capability traceability, value stream ownership, and tighter outcome baselining across the modernization program.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Efficiency</strong></td>
+                    <td>3.2</td>
+                    <td>4.1</td>
+                    <td>Mature FinOps, reduce operating friction, deepen automation, and continue application rationalization as migration progresses.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>3.0</td>
+                    <td>4.1</td>
+                    <td>Strengthen KPI, SLO, observability, and operational transparency so scale is supported by measured accountability.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Productivity</strong></td>
+                    <td>3.4</td>
+                    <td>4.3</td>
+                    <td>Expand platform enablement, governed self-service, reusable components, and scalable delivery only as lower dimensions mature.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="stack" aria-label="How to interpret current state versus target state">
+              <div class="layer">
+                <div>
+                  <strong>Current-state meaning</strong>
+                  <span>
+                    The current-state scores reflect the structural maturity observed during the assessment of the modernization program as it moves from VMware private cloud toward Azure and cloud-native operating patterns.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Target-state meaning</strong>
+                  <span>
+                    The target-state scores represent the maturity profile required for disciplined progression toward a resilient, secure, cloud-native, and governable platform model.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Gap interpretation</strong>
+                  <span>
+                    The largest structural gaps are in Quality and Performance. Under QEEPP, these gaps should be treated as governance priorities before Productivity is expanded further.
+                  </span>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div>
+                  <strong>Governance implication</strong>
+                  <span>
+                    The target state should not be used as a declaration of ambition alone. It should be used as a disciplined maturity profile for sequencing modernization effort across architecture, security, delivery, and operational control.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-note">
+            <strong>How to read these scores:</strong><br><br>
+
+            <strong>Current state</strong> values represent the assessed maturity of the program using the official QEEPP 1–5 scoring scale described in the Assessment Methodology.
+
+            <br><br>
+
+            <strong>Target state</strong> values represent the intended <em>maturity profile</em> for the transformation rather than a scored assessment.  
+            Decimal values are used only to shape the visual profile of the target structure and indicate relative maturity balance between dimensions.
+
+            <br><br>
+
+            In practice, formal QEEPP assessments use integer maturity levels (1–5).  
+            The target profile simply illustrates the structural balance the transformation program should aim to achieve.
+          </div>
+          
+        </section>
+
+        <section class="panel">
+          <p class="case-kicker">
+          The diagrams below visualize the current assessed maturity against the intended target maturity profile for the transformation program.
+          </p>          
+          <h3>Visual interpretation of the case</h3>
+
+          <div class="case-visual-stack">
+            <div class="case-visual-grid">
+              <div class="case-visual-card">
+                <h4>QEEPP Starfish</h4>
+                <p>
+                  Current-state and target-state structural shape for the modernization program.
+                </p>
+                <div id="caseStarfish"></div>
+                <div class="case-visual-note">
+                  The inward pull on Quality shows that structural stability is lagging behind scale ambition.
+                </div>
+              </div>
+
+              <div class="case-visual-card">
+                <h4>QEEPP Radar</h4>
+                <p>
+                  Dimension-by-dimension comparison of current maturity against target maturity.
+                </p>
+                <div id="caseRadar"></div>
+                <div class="case-visual-note">
+                  The largest practical gap remains in Quality, followed by Performance.
+                </div>
+              </div>
+            </div>
+
+            <div class="case-visual-card">
+              <h4>QEEPP Matrix and Trends</h4>
+              <p>
+                Four historical assesments completed for this case.
+              </p>
+
+              <div class="case-matrix-trends-stack">
+                <!--div class="case-current-matrix-wrap">
+                  <div id="caseMatrix"></div>
+                </div-->
+
+                <div class="case-trends-wrap">
+                  <div id="caseTrends"></div>
+                </div>
+              </div>
+              <div class="case-visual-note">
+                The trend matrices represent four sequential QEEPP assessments conducted during the transformation program.  
+                Each matrix reflects the structural maturity of the program at a different stage of the cloud migration and modernization journey.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Key structural insights from the case</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Strong strategic rationale</strong>
+                <span>
+                  The transformation is not modernization for its own sake. It is linked to resilience, merchant experience, release capability, and long-term platform flexibility.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Foundations still constrain scale</strong>
+                <span>
+                  Data governance, technical debt visibility, and reliability discipline are not yet strong enough to fully support aggressive productivity ambitions.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Security posture is improving structurally</strong>
+                <span>
+                  Zero Trust, least privilege, managed identities, and defense-in-depth are becoming part of the architecture rather than being layered on afterward.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Measurement should mature before broader expansion</strong>
+                <span>
+                  Service metrics, SLO discipline, and more mature observability should improve before the organization treats the new platform as fully scalable.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Recommended next actions in the case</h3>
+
+          <div class="stack" aria-label="Recommended next actions for the case example">
+            <div class="layer">
+              <div>
+                <strong>1. Reinforce Quality first</strong>
+                <span>
+                  Formalize service-level data ownership, strengthen secrets and access review discipline, quantify technical debt more explicitly, and improve reliability guardrails before accelerating broader microservice expansion.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>2. Strengthen Performance discipline</strong>
+                <span>
+                  Define clearer SLO targets, increase service health transparency, and turn operational measurement into a more active governance input.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>3. Mature FinOps and operating flow</strong>
+                <span>
+                  Link infrastructure and platform consumption more directly to architectural choices, workload patterns, and environment usage across Dev, UAT, and Production.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>4. Scale platform enablement in sequence</strong>
+                <span>
+                  Continue strengthening reusable platform components and governed self-service, but only as foundational maturity catches up.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-sequence">Stabilize → Align → Optimize → Measure → Scale</div>
+        </section>
+
+        <section class="panel">
+          <h3>Why this case matters</h3>
+
+          <div class="assessment-method-grid">
+            <div class="layer">
+              <div>
+                <strong>Illustrates real transformation tension</strong>
+                <span>
+                  Many modernization programs have strong cloud-native ambition, but their structural foundations are not equally mature.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Shows QEEPP in practice</strong>
+                <span>
+                  The framework does not judge modernization only by technology adoption. It assesses whether the structural conditions for sustainable transformation are actually in place.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Demonstrates sequencing logic</strong>
+                <span>
+                  It shows why lower-dimension weakness should constrain scale even when platform capability and delivery enthusiasm are rising.
+                </span>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div>
+                <strong>Useful as an assessment model</strong>
+                <span>
+                  The same type of case can be used in executive workshops, transformation reviews, proposal discussions, or maturity calibration sessions.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Related QEEPP assessment pages</h3>
+
+          <div class="assessment-links">
+            <a class="assessment-link" href="qeepp-practical-assessment-framework">
+              <strong>Practical Assessment Framework</strong>
+              <span>Detailed questions, checkpoints, actions, and scoring guidance across the five dimensions.</span>
+            </a>
+
+            <a class="assessment-link" href="assessment-methodology">
+              <strong>Assessment Methodology</strong>
+              <span>Scoring logic, dependency structure, and interpretation of maturity progression.</span>
+            </a>
+
+            <a class="assessment-link" href="qeepp-diagnostic-interview">
+              <strong>Structural Diagnostic Interview</strong>
+              <span>Executive and practitioner questions that can be used to assess similar transformation cases.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-modals"></div>
+  <div id="site-footer"></div>
+
+  <script>
+    const qeeppDemoCaseRetailSphere = {
+      id: "retailsphere-azure-modernization",
+      title: "E-Commerce Azure Modernization",
+      subtitle: "VMware private cloud to Azure Landing Zone with cloud-native modernization",
+      description:
+        "Mock QEEPP case showing migration of Dev, UAT, and Production from VMware private cloud to Azure Landing Zone, with modernization toward microservices, AKS, Zero Trust, least privilege, and defense-in-depth architecture.",
+
+      currentAssessment: {
+        label: "Current",
+        quality: 2.6,
+        effectiveness: 3.4,
+        efficiency: 3.2,
+        performance: 3.0,
+        productivity: 3.4
+      },
+
+      targetProfile: {
+        label: "Target",
+        quality: 4.0,
+        effectiveness: 4.2,
+        efficiency: 4.1,
+        performance: 4.1,
+        productivity: 4.3
+      },
+
+      assessmentHistory: [
+      {
+          label: "Private Cloud Baseline",
+          quality: 1.8,
+          effectiveness: 2.4,
+          efficiency: 1.9,
+          performance: 1.7,
+          productivity: 1.8
+        },
+        {
+          label: "Landing Zone Foundation",
+          quality: 2.3,
+          effectiveness: 2.9,
+          efficiency: 2.5,
+          performance: 2.2,
+          productivity: 2.3
+        },
+        {
+          label: "Migration Wave 1",
+          quality: 2.6,
+          effectiveness: 3.2,
+          efficiency: 2.9,
+          performance: 2.6,
+          productivity: 2.8
+        },
+        {
+          label: "Pre-scaling Assessment",
+          quality: 2.6,
+          effectiveness: 3.4,
+          efficiency: 3.2,
+          performance: 3.0,
+          productivity: 3.4
+        }
+      ]
+    };
+  </script>
+
+  <script src="/assets/js/qeepp-charts.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      QEEPPCharts.starfish("caseStarfish", {
+        current: qeeppDemoCaseRetailSphere.currentAssessment,
+        target: qeeppDemoCaseRetailSphere.targetProfile,
+        currentFill: "rgba(125, 211, 252, 0.40)",
+        targetFill: "rgba(125, 211, 252, 0.58)",
+        showCurrentPentagon: false
+      });
+
+      QEEPPCharts.radar("caseRadar", {
+        current: qeeppDemoCaseRetailSphere.currentAssessment,
+        target: qeeppDemoCaseRetailSphere.targetProfile
+      });
+
+      QEEPPCharts.matrix("caseMatrix", {
+        data: qeeppDemoCaseRetailSphere.currentAssessment,
+        large: false
+      });
+
+      QEEPPCharts.trends("caseTrends", {
+        data: qeeppDemoCaseRetailSphere.assessmentHistory,
+        fillEmpty: true,
+        showLegend: true,
+        showAnalysis: true
+      });
+    });
+  </script>
+
+  <script defer src="/assets/js/qeepp.js"></script>
+</body>
+</html>
+
+
