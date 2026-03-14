@@ -90,8 +90,7 @@ jobs:
             --no-progress
             --root-dir .
             --accept 200,206,429
-            --exclude-mail
+            --exclude "mailto:.*"
             "./*.html"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
