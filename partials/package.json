@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build:footer": "node assets/js/build-footer.js",
+    "build:sitemap": "node assets/js/generate-sitemap.js",
+    "build": "npm run build:footer && npm run build:sitemap"
+  }
+}

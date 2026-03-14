@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Build footer into HTML
+        run: node assets/js/build-footer.js
+
       - name: Generate sitemap
         run: node assets/js/generate-sitemap.js
 
