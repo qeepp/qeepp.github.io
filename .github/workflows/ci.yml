@@ -78,3 +78,8 @@ jobs:
       # Lint GitHub Actions workflow files
       - name: Lint GitHub Actions workflow files
         uses: devops-actions/actionlint@v0.1.11
+
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
+        

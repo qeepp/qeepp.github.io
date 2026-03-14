@@ -5,41 +5,123 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <url><loc>https://qeepp.com/</loc></url>
-  <url><loc>https://qeepp.com/about</loc></url>
-  <url><loc>https://qeepp.com/resources</loc></url>
-  <url><loc>https://qeepp.com/contact</loc></url>
-  <url><loc>https://qeepp.com/starfish-diagram</loc></url>
-  <url><loc>https://qeepp.com/radar-chart</loc></url>
-  <url><loc>https://qeepp.com/trends-chart</loc></url>
-  <url><loc>https://qeepp.com/qeepp-assessment</loc></url>
-  <url><loc>https://qeepp.com/assessment-methodology</loc></url>
-  <url><loc>https://qeepp.com/premature-scaling</loc></url>
+  <url>
+    <loc>https://qeepp.com/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/premature-scaling</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/starfish-diagram</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <url>
     <loc>https://qeepp.com/radar-chart</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://qeepp.com/trends-chart</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://qeepp.com/qeepp-assessment</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://qeepp.com/assessment-methodology</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-assessment</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/resources</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://qeepp.com/contact</loc>
-    <priority>0.6</priority>
+    <loc>https://qeepp.com/qeepp-about</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://qeepp.com/contact</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/faq</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-assessment-checklist</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-practical-assessment-framework</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-diagnostic-interview</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-case-azure-modernization</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-maturity-model</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://qeepp.com/qeepp-transformation-playbook</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 
 </urlset>
