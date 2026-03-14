@@ -24,7 +24,7 @@ jobs:
           node-version: "20"
 
       - name: Generate sitemap
-        run: node scripts/generate-sitemap.js
+        run: node assets/js/generate-sitemap.js
 
       # Optional formatting consistency check, non-blocking
       - name: Check formatting (Prettier)
