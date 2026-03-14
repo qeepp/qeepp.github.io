@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://qeepp.com/radar-chart" />
   <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
   <link rel="stylesheet" href="/assets/css/qeepp.css" />
+  <link rel="stylesheet" href="/assets/css/qeepp-charts.css" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="QEEPP" />
@@ -74,90 +75,10 @@
     }
 
     .radar-panel-title {
-      margin: 0 0 2px !important;
+      margin: 0 0 6px !important;
       padding: 0 !important;
       line-height: 1.1 !important;
       text-align: center;
-    }
-
-    .radar-svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0;
-    }
-
-    .radar-guide {
-      fill: none;
-      stroke: #eef2f6;
-      stroke-width: 1.2;
-    }
-
-    .radar-axis {
-      stroke: #d7dee7;
-      stroke-width: 1.1;
-    }
-
-    .radar-ring {
-      fill: none;
-      stroke-linecap: round;
-      opacity: 0.85;
-    }
-
-    .radar-letter {
-      font-size: 18px;
-      font-weight: 700;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      fill: rgba(255, 255, 255, 0.82);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .radar-center-title {
-      font-size: 22px;
-      font-weight: 600;
-      fill: var(--text);
-      text-anchor: middle;
-    }
-
-    .radar-center-sub {
-      font-size: 18px;
-      font-weight: 400;
-      fill: var(--text);
-      text-anchor: middle;
-    }
-
-    .radar-legend {
-      width: 100%;
-      margin: 2px 0 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: nowrap;
-      gap: 14px;
-    }
-
-    .radar-legend-item {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 13px;
-      line-height: 1.1;
-      color: var(--text);
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      min-width: 0;
-      white-space: nowrap;
-    }
-
-    .radar-legend-swatch {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      flex: 0 0 10px;
     }
 
     #radarForm {
@@ -178,15 +99,6 @@
     }
 
     @media (max-width: 940px) {
-      .radar-letter {
-        font-size: 16px;
-      }
-
-      .radar-legend {
-        flex-wrap: wrap;
-        gap: 10px 14px;
-      }
-
       #radarForm {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -203,6 +115,7 @@
 <body>
   <a class="skip" href="#content">Skip to content</a>
   <div id="site-header"></div>
+
   <main id="content" class="page trends-page">
     <div class="wrap">
       <div class="radar-page">
@@ -216,12 +129,10 @@
                 </div>
               </div>
               <h1>QEEPP Radar</h1>
-              <p class="lead">
-                <p style="margin-top:12px; color:var(--muted); font-size:14px;">
-                  The QEEPP Radar chart visualizes the maturity level of each QEEPP dimension across a transformation assessment.
-                  <br><br>
-                  The chart is particularly useful for current-state assessment, target-state planning, and identifying structural priorities for improvement.
-                </p>
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Radar chart visualizes the maturity level of each QEEPP dimension across a transformation assessment.
+                <br><br>
+                The chart is particularly useful for current-state assessment, target-state planning, and identifying structural priorities for improvement.
               </p>
             </div>
           </div>
@@ -242,16 +153,7 @@
 
         <section class="panel radar-diag">
           <h3 class="radar-panel-title">The QEEPP Radar</h3>
-
-          <svg
-            id="qeeppRadarSvg"
-            class="radar-svg"
-            viewBox="0 40 700 620"
-            role="img"
-            aria-label="QEEPP Radar Diagram"
-          ></svg>
-
-          <div class="radar-legend" id="qeeppRadarLegend"></div>
+          <div id="radarChart"></div>
         </section>
 
         <div class="panel radar-controls">
@@ -322,195 +224,47 @@
 
   <div id="site-modals"></div>
   <div id="site-footer"></div>
-  <script defer src="assets/js/qeepp.js"></script>
 
+  <script src="assets/js/qeepp-charts.js"></script>
+  <script defer src="assets/js/qeepp.js"></script>
   <script>
     (function () {
-      const svg = document.getElementById("qeeppRadarSvg");
-      const legend = document.getElementById("qeeppRadarLegend");
-      const selects = document.querySelectorAll('#radarForm select[data-dimension]');
-
-      const dims = [
-        { key: "quality",       label: "Quality",       letter: "Q", color: "#2563EB", score: 3 },
-        { key: "effectiveness", label: "Effectiveness", letter: "E", color: "#16A34A", score: 4 },
-        { key: "efficiency",    label: "Efficiency",    letter: "E", color: "#F59E0B", score: 2 },
-        { key: "performance",   label: "Performance",   letter: "P", color: "#DC2626", score: 3 },
-        { key: "productivity",  label: "Productivity",  letter: "P", color: "#9333EA", score: 1 }
-      ];
-
-      const config = {
-        cx: 350,
-        cy: 350,
-        startAngle: -45,
-        axisCount: 8,
-        innerRadius: 100,
-        ringThickness: 26,
-        ringGap: 6
+      const fields = {
+        quality: document.getElementById("qualityScore"),
+        effectiveness: document.getElementById("effectivenessScore"),
+        efficiency: document.getElementById("efficiencyScore"),
+        performance: document.getElementById("performanceScore"),
+        productivity: document.getElementById("productivityScore")
       };
 
-      function createSvg(tag, attrs = {}) {
-        const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
-        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
-        return el;
-      }
-
-      function clearSvg() {
-        while (svg.firstChild) svg.removeChild(svg.firstChild);
-      }
-
-      function polar(cx, cy, r, angleDeg) {
-        const rad = angleDeg * Math.PI / 180;
+      function getCurrentScores() {
         return {
-          x: cx + r * Math.cos(rad),
-          y: cy + r * Math.sin(rad)
+          quality: Number(fields.quality.value),
+          effectiveness: Number(fields.effectiveness.value),
+          efficiency: Number(fields.efficiency.value),
+          performance: Number(fields.performance.value),
+          productivity: Number(fields.productivity.value)
         };
       }
 
-      function arcPath(cx, cy, r, startAngle, endAngle) {
-        const start = polar(cx, cy, r, startAngle);
-        const end = polar(cx, cy, r, endAngle);
-        const delta = endAngle - startAngle;
-        const largeArcFlag = delta > 180 ? 1 : 0;
-
-        return [
-          "M", start.x, start.y,
-          "A", r, r, 0, largeArcFlag, 1, end.x, end.y
-        ].join(" ");
-      }
-
-      function ringRadius(index) {
-        return config.innerRadius + index * (config.ringThickness + config.ringGap);
-      }
-
-      function outerRadius() {
-        return ringRadius(dims.length - 1) + config.ringThickness / 2;
-      }
-
-      function percentFromScore(score) {
-        return Math.max(1, Math.min(5, Number(score))) * 20;
-      }
-
-      function drawGuides() {
-        dims.forEach((_, i) => {
-          svg.appendChild(createSvg("circle", {
-            cx: config.cx,
-            cy: config.cy,
-            r: ringRadius(i),
-            class: "radar-guide"
-          }));
-        });
-
-        const outer = outerRadius();
-
-        for (let i = 0; i < config.axisCount; i++) {
-          const angle = config.startAngle + i * (360 / config.axisCount);
-          const p = polar(config.cx, config.cy, outer, angle);
-
-          svg.appendChild(createSvg("line", {
-            x1: config.cx,
-            y1: config.cy,
-            x2: p.x,
-            y2: p.y,
-            class: "radar-axis"
-          }));
-        }
-      }
-
-      function drawRings() {
-        dims.forEach((dim, i) => {
-          const r = ringRadius(i);
-          const percent = percentFromScore(dim.score);
-          const endAngle = config.startAngle + (360 * percent / 100);
-
-          if (percent === 100) {
-            svg.appendChild(createSvg("circle", {
-              cx: config.cx,
-              cy: config.cy,
-              r,
-              stroke: dim.color,
-              "stroke-width": config.ringThickness,
-              class: "radar-ring"
-            }));
-          } else {
-            svg.appendChild(createSvg("path", {
-              d: arcPath(config.cx, config.cy, r, config.startAngle, endAngle),
-              stroke: dim.color,
-              "stroke-width": config.ringThickness,
-              class: "radar-ring"
-            }));
+      function renderRadar() {
+        QEEPPCharts.radar("radarChart", {
+          current: getCurrentScores(),
+          config: {
+            showLegend: true,
+            showCenterText: true,
+            centerTitle: "QEEPP",
+            centerSub: "Radar"
           }
-
-          const letterPos = polar(config.cx, config.cy, r, config.startAngle);
-          const letter = createSvg("text", {
-            x: letterPos.x,
-            y: letterPos.y,
-            class: "radar-letter"
-          });
-          letter.textContent = dim.letter;
-          svg.appendChild(letter);
         });
       }
 
-      function drawCenterText() {
-        const title = createSvg("text", {
-          x: config.cx,
-          y: config.cy - 8,
-          class: "radar-center-title"
-        });
-        title.textContent = "QEEPP";
-
-        const sub = createSvg("text", {
-          x: config.cx,
-          y: config.cy + 18,
-          class: "radar-center-sub"
-        });
-        sub.textContent = "Radar";
-
-        svg.appendChild(title);
-        svg.appendChild(sub);
-      }
-
-      function renderLegend() {
-        legend.innerHTML = "";
-
-        dims.forEach((dim) => {
-          const item = document.createElement("div");
-          item.className = "radar-legend-item";
-
-          const swatch = document.createElement("span");
-          swatch.className = "radar-legend-swatch";
-          swatch.style.background = dim.color;
-
-          const text = document.createElement("span");
-          text.textContent = dim.label;
-
-          item.appendChild(swatch);
-          item.appendChild(text);
-          legend.appendChild(item);
-        });
-      }
-
-      function render() {
-        clearSvg();
-        drawGuides();
-        drawRings();
-        drawCenterText();
-        renderLegend();
-      }
-
-      function syncFromControls() {
-        selects.forEach((select) => {
-          const dim = dims.find(d => d.key === select.dataset.dimension);
-          if (dim) dim.score = Number(select.value);
-        });
-        render();
-      }
-
-      selects.forEach((select) => {
-        select.addEventListener("change", syncFromControls);
+      Object.values(fields).forEach((field) => {
+        field.addEventListener("change", renderRadar);
+        field.addEventListener("input", renderRadar);
       });
 
-      syncFromControls();
+      renderRadar();
     })();
   </script>
 </body>

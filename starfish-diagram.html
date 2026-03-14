@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://qeepp.com/starfish-diagram" />
   <link rel="icon" href="/assets/icons/qeepp-fav.ico" />
   <link rel="stylesheet" href="/assets/css/qeepp.css" />
+  <link rel="stylesheet" href="/assets/css/qeepp-charts.css" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="QEEPP" />
@@ -61,148 +62,10 @@
       align-items: start;
     }
 
-    .starfish-diag {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      max-width: 880px;
-      margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      min-height: 520px;
-    }
-
-    .starfish-diag::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(125, 211, 252, 0.2);
-      clip-path: polygon(
-        50% 100%,
-        61.23% 65.45%,
-        97.55% 65.45%,
-        68.16% 44.10%,
-        79.39% 9.55%,
-        50% 30.90%,
-        20.61% 9.55%,
-        31.84% 44.10%,
-        2.45% 65.45%,
-        38.77% 65.45%
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .star-inner {
-      position: absolute;
-      inset: 0;
-      background: rgba(125, 211, 252, 0.35);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .label {
-      position: absolute;
-      z-index: 1;
-      text-align: center;
-      line-height: 1.2;
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    .diagram {
-      top: 1%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 15px;
-    }
-
-    .success {
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 13px;
-      letter-spacing: 0.2px;
-    }
-
-    .governance {
-      top: 38%;
-      left: 7%;
-    }
-
-    .ambition {
-      top: 38%;
-      right: 9%;
-    }
-
-    .stability1 {
-      top: 78%;
-      left: 20%;
-    }
-
-    .stability2 {
-      top: 78%;
-      right: 21%;
-    }
-
-    .quality {
-      top: 78%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .effectiveness {
-      top: 25%;
-      left: 29%;
-    }
-
-    .efficiency {
-      top: 58%;
-      right: 17.5%;
-    }
-
-    .performance {
-      top: 58%;
-      left: 15%;
-    }
-
-    .productivity {
-      top: 25%;
-      right: 28%;
-    }
-
     .starfish-info-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-    }
-
-    @media (max-width: 940px) {
-      .starfish-diag {
-        min-height: 0;
-      }
-
-      .label {
-        font-size: 12px;
-      }
-
-      .diagram {
-        font-size: 13px;
-      }
-
-      .success {
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .governance { left: 4%; }
-      .ambition { right: 5%; }
-      .stability1 { left: 12%; }
-      .stability2 { right: 13%; }
-      .effectiveness { left: 20%; }
-      .productivity { right: 20%; }
-      .performance { left: 9%; }
-      .efficiency { right: 10%; }
     }
   </style>
 </head>
@@ -224,115 +87,99 @@
                 </div>
               </div>
               <h1>QEEPP Starfish</h1>
-              <p class="lead">
-                <p style="margin-top:12px; color:var(--muted); font-size:14px;">
-                  The QEEPP Starfish diagram is a visual model representing the interconnectedness of the five dimensions, the current state, and the structural maturity target.
-                  <br><br>
-                  The five rays of the starfish reflect the five dimensions of the QEEPP framework: Quality, Effectiveness, Efficiency, Performance, and Productivity.
-                </p>
+              <p style="margin-top:12px; color:var(--muted); font-size:14px;">
+                The QEEPP Starfish diagram is a visual model representing the interconnectedness of the five dimensions, the current state, and the structural maturity target.
+                <br><br>
+                The five rays of the starfish reflect the five dimensions of the QEEPP framework: Quality, Effectiveness, Efficiency, Performance, and Productivity.
               </p>
             </div>
           </div>
+
           <img
             src="assets/icons/qeepp-framework-symbol.svg"
             alt="QEEPP Framework Symbol"
             class="hero-starfish"
           />
-          <!-- #6cc9ff 80% -->
         </section>
 
-      <div class="heroActions">
-        <a class="btn primary" href="starfish-diagram">QEEPP Starfish</a>
-        <a class="btn" href="radar-chart">QEEPP Radar</a>
-        <a class="btn" href="trends-chart">QEEPP Trends</a>
-        <a class="btn" href="assessment-methodology">QEEPP Assessment</a>
-      </div>
+        <div class="heroActions">
+          <a class="btn primary" href="starfish-diagram">QEEPP Starfish</a>
+          <a class="btn" href="radar-chart">QEEPP Radar</a>
+          <a class="btn" href="trends-chart">QEEPP Trends</a>
+          <a class="btn" href="assessment-methodology">QEEPP Assessment</a>
+        </div>
 
-
-        <section class="panel starfish-diag">
-          <span class="label diagram"><b>The QEEPP Starfish</b></span>
-          <span class="label success">SUCCESSFUL<br>TRANSFORMATION</span>
-          <span class="label governance">GOVERNANCE<br>ZONE</span>
-          <span class="label ambition">AMBITION<br>ZONE</span>
-          <span class="label stability1">STABILITY<br>ZONE</span>
-          <span class="label stability2">STABILITY<br>ZONE</span>
-          <span class="label quality">Quality<br>Stabilized</span>
-          <span class="label effectiveness">Effectiveness<br>Aligned</span>
-          <span class="label efficiency">Efficiency<br>Optimized</span>
-          <span class="label performance">Performance<br>Measured</span>
-          <span class="label productivity">Productivity<br>Scaled</span>
-          <div class="star-inner"></div>
+        <section class="panel">
+          <div id="starfishChart"></div>
         </section>
 
+        <div class="panel">
+          <h3>Interactive Assessment Input</h3>
 
-<div class="panel">
-  <h3>Interactive Assessment Input</h3>
+          <form id="starfishForm" class="starfish-form">
+            <label>
+              Quality
+              <select id="qualityScore">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
 
-  <form id="starfishForm" class="starfish-form">
-    <label>
-      Quality
-      <select id="qualityScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
+            <label>
+              Effectiveness
+              <select id="effectivenessScore">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" selected>4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
 
-    <label>
-      Effectiveness
-      <select id="effectivenessScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4" selected>4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
+            <label>
+              Efficiency
+              <select id="efficiencyScore">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
 
-    <label>
-      Efficiency
-      <select id="efficiencyScore">
-        <option value="1">1</option>
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
+            <label>
+              Performance
+              <select id="performanceScore">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
 
-    <label>
-      Performance
-      <select id="performanceScore">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
+            <label>
+              Productivity
+              <select id="productivityScore">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+          </form>
 
-    <label>
-      Productivity
-      <select id="productivityScore">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </label>
-  </form>
-  <h3>QEEPP values from the scorecard</h3>
-</div>
-
+          <h3>QEEPP values from the scorecard</h3>
+        </div>
 
         <section class="panel">
           <h3>Understanding the QEEPP Starfish Diagram</h3>
 
           <div class="starfish-info-grid">
-
             <div class="layer">
               <div>
                 <span>The outer starfish shape represents the ideal state, which reflects the goal of a fully structured transformation.</span>
@@ -340,15 +187,13 @@
               </div>
             </div>
 
-
-
             <div class="layer">
               <div>
                 <strong>QEEPP Starfish Diagram Zones</strong>
                 <br>
                 <span><b>Governance Zone &nbsp;•&nbsp;</b> Shows the degree to which the transformation initiatives are aligned and monitored.</span>
                 <span><b>Ambition Zone &nbsp;•&nbsp;</b> Shows the level of optimization and preparation to scale.</span>
-                <span><b>Stability Zone &nbsp;•&nbsp;</b> Shows if the transformation structured and stabilized.</span>
+                <span><b>Stability Zone &nbsp;•&nbsp;</b> Shows if the transformation is structured and stabilized.</span>
               </div>
             </div>
 
@@ -421,9 +266,52 @@
 
   <div id="site-modals"></div>
   <div id="site-footer"></div>
+
+  <script src="assets/js/qeepp-charts.js"></script>
   <script defer src="assets/js/qeepp.js"></script>
+  <script>
+    (function () {
+      const fields = {
+        quality: document.getElementById("qualityScore"),
+        effectiveness: document.getElementById("effectivenessScore"),
+        efficiency: document.getElementById("efficiencyScore"),
+        performance: document.getElementById("performanceScore"),
+        productivity: document.getElementById("productivityScore")
+      };
 
-  
+      function getCurrentScores() {
+        return {
+          quality: Number(fields.quality.value),
+          effectiveness: Number(fields.effectiveness.value),
+          efficiency: Number(fields.efficiency.value),
+          performance: Number(fields.performance.value),
+          productivity: Number(fields.productivity.value)
+        };
+      }
 
+      function renderStarfish() {
+        QEEPPCharts.starfish("starfishChart", {
+          current: getCurrentScores(),
+          target: {
+            quality: 5,
+            effectiveness: 5,
+            efficiency: 5,
+            performance: 5,
+            productivity: 5
+          },
+          currentFill: "rgba(125, 211, 252, 0.40)",
+          targetFill: "rgba(125, 211, 252, 0.58)",
+          showCurrentPentagon: false
+        });
+      }
+
+      Object.values(fields).forEach((field) => {
+        field.addEventListener("change", renderStarfish);
+        field.addEventListener("input", renderStarfish);
+      });
+
+      renderStarfish();
+    })();
+  </script>
 </body>
 </html>
