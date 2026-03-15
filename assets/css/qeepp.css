@@ -1137,3 +1137,38 @@ textarea.input{
   text-transform:uppercase;
   letter-spacing:.08em;
 }
+
+.principle-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.principle-table th,
+.principle-table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  line-height: 1.55;
+}
+
+.principle-table th {
+  color: var(--muted);
+  font-weight: 600;
+  background: rgba(255,255,255,0.03);
+}
+
+.principle-table td strong {
+  color: var(--text);
+}
+
+@media (max-width: 920px) {
+  .principles-grid,
+  .principles-cards,
+  .principles-links {
+    grid-template-columns: 1fr;
+  }
+}

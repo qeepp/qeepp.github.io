@@ -1,62 +1,199 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+structural control architecture of the framework
+QEEPP Framework Principles** page, because this table explains the **internal structure of the model itself**.
 
-  <title>QEEPP Starfish Test</title>
-  <meta name="robots" content="noindex, nofollow" />
+## Best place
 
-  <link rel="stylesheet" href="assets/css/qeepp-charts.css" />
+On **`qeepp-principles.html`**, place it:
 
-  <style>
-    :root {
-      --text: #e8eef7;
-    }
+* after **How the principles shape the QEEPP framework**
+* before **What happens when principles are violated**
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0b1220;
-      color: #e8eef7;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+That is the cleanest flow:
 
-    body {
-      padding: 28px 18px 40px;
-    }
+1. principles
+2. how they shape the framework
+3. **the structural governance matrix**
+4. what failure looks like when the structure is violated
 
-    .test-wrap {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-  <main class="test-wrap">
-    <div id="caseStarfish"></div>
-  </main>
+## Best way to present it
 
-  <script src="assets/js/qeepp-charts.js"></script>
+Do not introduce it with “The resulting model.” That sounds a bit abstract and abrupt.
 
-<script>
-  window.addEventListener("DOMContentLoaded", function () {
-    QEEPPCharts.starfish("caseStarfish", {
-      current: {
-        quality: 2,
-        effectiveness: 4,
-        efficiency: 2,
-        performance: 2,
-        productivity: 4
-      },
+Use a heading like one of these:
 
-      currentFill: "rgba(125, 211, 252, 0.50)",
-      targetFill: "rgba(125, 211, 252, 0.20)",
-      showCurrentPentagon: true
-    });
-  });
-</script>
+* **QEEPP Structural Governance Matrix** ← best
+* **QEEPP Structural Control Matrix**
+* **QEEPP 5×5 Structural Matrix**
 
-</body>
-</html>
+I would choose:
+
+**QEEPP Structural Governance Matrix**
+
+because your sentence already says:
+
+> This is a structural governance matrix.
+
+That makes the naming consistent and strong.
+
+## Suggested intro wording
+
+Use this above the table:
+
+```html
+<section class="panel">
+  <h3>QEEPP Structural Governance Matrix</h3>
+  <p class="principle-sub">
+    The QEEPP framework is organized as a 5 × 5 structural governance matrix. Each transformation dimension is made operational through five structural controls that together determine the maturity of that dimension.
+  </p>
+
+  <p style="margin:0; color:var(--muted); font-size:14px;">
+    This matrix forms the control architecture of the framework. It shows how the five dimensions are translated into practical structural controls for assessment, governance, and recurring maturity evaluation.
+  </p>
+```
+
+Then place the table.
+
+## Improved table labels
+
+Instead of generic `Control 1` to `Control 5`, I would keep them if you want the clean lattice feel, but there is a better option:
+
+Use:
+
+* **Control A**
+* **Control B**
+* **Control C**
+* **Control D**
+* **Control E**
+
+No. Better to keep `Control 1–5` because it is simpler and more mechanical.
+
+So keep:
+
+```html
+<th>Control 1</th>
+<th>Control 2</th>
+<th>Control 3</th>
+<th>Control 4</th>
+<th>Control 5</th>
+```
+
+## Recommended wording inside the table
+
+Use the more accurate names:
+
+* **Debt and risk** instead of **Debt**
+* **Value streams** is good
+* **KPIs** is good
+* **Scale capacity** is good
+
+## Full section ready to paste
+
+```html
+<section class="panel">
+  <h3>QEEPP Structural Governance Matrix</h3>
+  <p class="principle-sub">
+    The QEEPP framework is organized as a 5 × 5 structural governance matrix. Each transformation dimension is made operational through five structural controls that together determine the maturity of that dimension.
+  </p>
+
+  <p style="margin:0; color:var(--muted); font-size:14px;">
+    This matrix forms the control architecture of the framework. It shows how the five dimensions are translated into practical structural controls for assessment, governance, and recurring maturity evaluation.
+  </p>
+
+  <table class="principle-table" aria-label="QEEPP Structural Governance Matrix">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Control 1</th>
+        <th>Control 2</th>
+        <th>Control 3</th>
+        <th>Control 4</th>
+        <th>Control 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Quality</strong></td>
+        <td>Architecture</td>
+        <td>Security</td>
+        <td>Data</td>
+        <td>Reliability</td>
+        <td>Debt and risk</td>
+      </tr>
+      <tr>
+        <td><strong>Effectiveness</strong></td>
+        <td>Strategy</td>
+        <td>Capability</td>
+        <td>Value streams</td>
+        <td>Outcomes</td>
+        <td>Prioritization</td>
+      </tr>
+      <tr>
+        <td><strong>Efficiency</strong></td>
+        <td>Operating model</td>
+        <td>FinOps</td>
+        <td>Rationalization</td>
+        <td>DevSecOps</td>
+        <td>Automation</td>
+      </tr>
+      <tr>
+        <td><strong>Performance</strong></td>
+        <td>KPIs</td>
+        <td>Service metrics</td>
+        <td>Cadence</td>
+        <td>Risk reporting</td>
+        <td>Transparency</td>
+      </tr>
+      <tr>
+        <td><strong>Productivity</strong></td>
+        <td>Platforms</td>
+        <td>Self-service</td>
+        <td>Reuse</td>
+        <td>Enablement</td>
+        <td>Scale capacity</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="principle-note">
+    <strong>Interpretation:</strong>
+    This structural governance matrix defines the 25 control areas of the QEEPP framework. Each control is assessed on the 1–5 maturity scale, allowing the framework to evaluate both dimension maturity and structural balance across the transformation system.
+  </div>
+</section>
+```
+
+## Why this is the best presentation
+
+This wording makes clear that the table is:
+
+* the **control architecture**
+* the **25 control set**
+* the **operational structure behind the assessment**
+* a **governance matrix**, not just a checklist
+
+## Secondary placement
+
+Later, you could also place a lighter version on:
+
+* `qeepp-assessment-checklist.html`
+
+There, introduce it as:
+
+**QEEPP structural control set**
+
+or
+
+**The 25 structural controls of the QEEPP framework**
+
+But on the **Principles page**, the fuller matrix version is more appropriate.
+
+## One small refinement
+
+If you want a slightly more formal tone, you can replace:
+
+> This is a structural governance matrix.
+
+with:
+
+> This matrix represents the structural governance architecture of the QEEPP framework.
+
+That reads more polished for a framework page.
