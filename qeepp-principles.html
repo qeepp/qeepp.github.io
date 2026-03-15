@@ -127,40 +127,6 @@
       color: var(--text);
     }
 
-    .principle-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .principle-table th,
-    .principle-table td {
-      padding: 12px 14px;
-      text-align: left;
-      vertical-align: top;
-      font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      line-height: 1.55;
-    }
-
-    .principle-table th {
-      color: var(--muted);
-      font-weight: 600;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .principle-table td strong {
-      color: var(--text);
-    }
-
-    @media (max-width: 920px) {
-      .principles-grid,
-      .principles-cards,
-      .principles-links {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 
@@ -388,6 +354,76 @@
         </section>
 
         <section class="panel">
+        <h3>QEEPP Structural Control Matrix</h3>
+        <p class="principle-sub">
+            The QEEPP framework forms a 5 × 5 structural maturity lattice. Each dimension contains five structural controls that together determine the maturity of that dimension and shape the overall transformation profile.
+        </p><br>
+        <p style="margin:0; color:var(--muted); font-size:14px;">
+            This matrix forms the control architecture of the framework. It shows how the five dimensions are translated into practical structural controls for assessment, governance, and recurring maturity evaluation.
+        </p>
+
+        <table class="principle-table" aria-label="QEEPP Structural Control Matrix">
+            <thead>
+            <tr>
+                <th>Dimension</th>
+                <th>Control 1</th>
+                <th>Control 2</th>
+                <th>Control 3</th>
+                <th>Control 4</th>
+                <th>Control 5</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><strong>Quality</strong></td>
+                <td>Architecture</td>
+                <td>Security</td>
+                <td>Data</td>
+                <td>Reliability</td>
+                <td>Debt and risk</td>
+            </tr>
+            <tr>
+                <td><strong>Effectiveness</strong></td>
+                <td>Strategy</td>
+                <td>Capability</td>
+                <td>Value streams</td>
+                <td>Outcomes</td>
+                <td>Prioritization</td>
+            </tr>
+            <tr>
+                <td><strong>Efficiency</strong></td>
+                <td>Operating model</td>
+                <td>FinOps</td>
+                <td>Rationalization</td>
+                <td>DevSecOps</td>
+                <td>Automation</td>
+            </tr>
+            <tr>
+                <td><strong>Performance</strong></td>
+                <td>KPIs</td>
+                <td>Service metrics</td>
+                <td>Cadence</td>
+                <td>Risk reporting</td>
+                <td>Transparency</td>
+            </tr>
+            <tr>
+                <td><strong>Productivity</strong></td>
+                <td>Platforms</td>
+                <td>Self-service</td>
+                <td>Reuse</td>
+                <td>Enablement</td>
+                <td>Scale capacity</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="principle-note">
+            <strong>Interpretation:</strong>
+            These 25 structural controls form the control layer of the QEEPP assessment model. Each control is evaluated on the 1–5 maturity scale, creating the structural maturity profile visualized through the QEEPP charts.
+        </div>
+        </section>
+
+<section class="panel">
           <h3>What happens when principles are violated</h3>
 
           <div class="assessment-method-grid">
