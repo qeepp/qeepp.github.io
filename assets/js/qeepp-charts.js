@@ -632,11 +632,11 @@
     if (allFull) {
       maturitySignal = "Historical progression reached full structural integrity across all five dimensions.";
     } else if (totalDelta > 0 && regressing.length === 0) {
-      maturitySignal = "Overall maturity progression is positive across the saved assessments.";
+      maturitySignal = "Overall structural progression is positive across the saved assessments.";
     } else if (totalDelta < 0) {
-      maturitySignal = "Overall maturity regression is visible across the saved assessments.";
+      maturitySignal = "Overall integrity regression is visible across the saved assessments.";
     } else if (totalDelta === 0 && steady.length === QEEPP_MATRIX_DIMENSIONS.length) {
-      maturitySignal = "Historical pattern is steady but shows no net maturity movement.";
+      maturitySignal = "Historical pattern is steady but shows no structural integrity progression.";
     }
 
     let warningLine = "";
@@ -660,7 +660,7 @@
       } else if (regressing.length) {
         suggestionLine = `Suggested focus: investigate regression in ${regressing.join(", ")} and reinforce structural controls before further expansion.`;
       } else if (steady.length === QEEPP_MATRIX_DIMENSIONS.length) {
-        suggestionLine = "Suggested focus: re-establish forward maturity movement while preserving structural balance.";
+        suggestionLine = "Suggested focus: re-establish forward integrity progression while preserving structural balance.";
       } else {
         suggestionLine = "Suggested focus: continue balanced progression while protecting lower-dimension integrity.";
       }
