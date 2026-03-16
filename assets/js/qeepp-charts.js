@@ -630,7 +630,7 @@
     let maturitySignal = "Mixed movement across saved assessments.";
 
     if (allFull) {
-      maturitySignal = "Historical progression reached full structural maturity across all five dimensions.";
+      maturitySignal = "Historical progression reached full structural integrity across all five dimensions.";
     } else if (totalDelta > 0 && regressing.length === 0) {
       maturitySignal = "Overall maturity progression is positive across the saved assessments.";
     } else if (totalDelta < 0) {
@@ -644,7 +644,7 @@
 
     if (allFull) {
       warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
-      suggestionLine = "The latest saved assessment indicates full structural maturity across all five dimensions.";
+      suggestionLine = "The latest saved assessment indicates full structural integrity across all five dimensions.";
     } else {
       const lowestCurrent = deltaByDimension.reduce((a, b) => a.current <= b.current ? a : b);
 

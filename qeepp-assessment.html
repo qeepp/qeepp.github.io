@@ -5,8 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>QEEPP Assessment | Interactive Transformation Maturity Assessment</title>
-  <meta name="description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <title>QEEPP Assessment | Interactive Structural Integrity Assessment</title>
+  <meta name="description" content="Use the QEEPP Assessment to evaluate structural integrity across the five core dimensions of digital transformation." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Rado Dimitrov" />
 
@@ -16,15 +16,15 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="QEEPP" />
-  <meta property="og:title" content="QEEPP Assessment | Interactive Transformation Maturity Assessment" />
-  <meta property="og:description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <meta property="og:title" content="QEEPP Assessment | Interactive Structural Integrity Assessment" />
+  <meta property="og:description" content="Use the QEEPP Assessment to evaluate structural integrity across the five core dimensions of digital transformation." />
   <meta property="og:url" content="https://qeepp.com/qeepp-assessment" />
   <meta property="og:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
   <meta property="og:image:alt" content="QEEPP Assessment" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="QEEPP Assessment | Interactive Transformation Maturity Assessment" />
-  <meta name="twitter:description" content="Use the QEEPP Assessment to evaluate structural maturity across the five core dimensions of digital transformation." />
+  <meta name="twitter:title" content="QEEPP Assessment | Interactive Structural Integrity Assessment" />
+  <meta name="twitter:description" content="Use the QEEPP Assessment to evaluate structural integrity across the five core dimensions of digital transformation." />
   <meta name="twitter:image" content="https://qeepp.com/assets/images/qeepp-framework-og.png" />
 
   <script type="application/ld+json">
@@ -35,7 +35,7 @@
     "url": "https://qeepp.com/qeepp-assessment",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
-    "description": "Interactive QEEPP assessment for evaluating digital transformation structural maturity across Quality, Effectiveness, Efficiency, Performance, and Productivity.",
+    "description": "Interactive QEEPP assessment for evaluating digital transformation structural integrity across Quality, Effectiveness, Efficiency, Performance, and Productivity.",
     "creator": {
       "@type": "Person",
       "name": "Rado Dimitrov"
@@ -749,12 +749,12 @@
               <div class="kicker" title="Transformation Discipline Framework">
                 <div class="kicker-left">
                   <span class="dot" aria-hidden="true"></span>
-                  <span class="kickerText">QEEPP Assessment Applies Structural Maturity Scoring</span>
+                  <span class="kickerText">QEEPP Assessment Applies structural integrity Scoring</span>
                 </div>
               </div>
               <h1>QEEPP Assessment</h1>
               <div class="assessment-intro">
-                The QEEPP assessment is a recurring structural assessment used to evaluate transformation maturity, identify imbalance, and guide disciplined progression from stability to scale.
+                The QEEPP assessment is a recurring structural assessment used to evaluate transformation structural integrity, identify imbalance, and guide disciplined progression from stability to scale.
                 <br><br>
                 Assess each checklist element using the five maturity states. Each dimension score is populated automatically using the lowest checklist level in that group. Manual score adjustment is enabled only when all five checklist elements for that dimension are at Defined or above.
               </div>
@@ -813,7 +813,7 @@
 
             <section class="panel chart-card">
               <h3>QEEPP Starfish</h3>
-              <div class="chart-caption">Current structural maturity versus full target state.</div>
+              <div class="chart-caption">Current structural integrity versus full target state.</div>
               <div class="mini-starfish-wrap">
                 <div id="miniStarfish" class="mini-starfish-diag">
                   <span class="mini-label mini-success">SUCCESSFUL<br>TRANSFORMATION</span>
@@ -1581,7 +1581,7 @@ function renderTrendAnalysis(savedPeriods) {
   let maturitySignal = "Mixed movement across saved assessments.";
 
   if (allFull) {
-    maturitySignal = "Historical progression reached full structural maturity across all five dimensions.";
+    maturitySignal = "Historical progression reached full structural integrity across all five dimensions.";
   } else if (totalDelta > 0 && regressing.length === 0) {
     maturitySignal = "Overall maturity progression is positive across the saved assessments.";
   } else if (totalDelta < 0) {
@@ -1595,7 +1595,7 @@ function renderTrendAnalysis(savedPeriods) {
 
   if (allFull) {
     warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
-    suggestionLine = "The latest saved assessment indicates full structural maturity across all five dimensions.";
+    suggestionLine = "The latest saved assessment indicates full structural integrity across all five dimensions.";
   } else {
     const lowestCurrent = deltaByDimension.reduce((a, b) => a.current <= b.current ? a : b);
 
