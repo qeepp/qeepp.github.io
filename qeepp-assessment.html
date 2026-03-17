@@ -1583,11 +1583,11 @@ function renderTrendAnalysis(savedPeriods) {
   if (allFull) {
     maturitySignal = "Historical progression reached full structural integrity across all five dimensions.";
   } else if (totalDelta > 0 && regressing.length === 0) {
-    maturitySignal = "Overall maturity progression is positive across the saved assessments.";
+    maturitySignal = "Overall integrity progression is positive across the saved assessments.";
   } else if (totalDelta < 0) {
-    maturitySignal = "Overall maturity regression is visible across the saved assessments.";
+    maturitySignal = "Overall integrity regression is visible across the saved assessments.";
   } else if (totalDelta === 0 && steady.length === DIMENSIONS.length) {
-    maturitySignal = "Historical pattern is steady but shows no net maturity movement.";
+    maturitySignal = "Historical pattern is steady but shows no structural integrity progress.";
   }
 
   let warningLine = "";
@@ -1619,7 +1619,7 @@ function renderTrendAnalysis(savedPeriods) {
 
   el.innerHTML = `
     <div class="trend-analysis-grid">
-      <div><strong>Historical analysis:</strong> ${maturitySignal}</div>
+      <div><strong>Historical analysis:</strong> ${integritySignal}</div>
       <div><strong>Improving:</strong> ${improving.length ? improving.join(", ") : "None"}</div>
       <div><strong>Regressing:</strong> ${regressing.length ? regressing.join(", ") : "None"}</div>
       <div><strong>Steady:</strong> ${steady.length ? steady.join(", ") : "None"}</div>
