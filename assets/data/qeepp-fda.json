@@ -1,0 +1,959 @@
+{
+  "meta": {
+    "title": "QEEPP Full Diagnostic Assessment",
+    "version": "1.0.0",
+    "description": "Evidence-based full diagnostic assessment aligned to the QEEPP Practical Assessment Framework.",
+    "answerScale": [
+      {
+        "value": 0,
+        "label": "Not evident",
+        "description": "No credible evidence found in the assessed scope."
+      },
+      {
+        "value": 1,
+        "label": "Isolated / informal",
+        "description": "Some isolated signs exist, but the control is informal or unreliable."
+      },
+      {
+        "value": 2,
+        "label": "Partial / inconsistent",
+        "description": "The control exists in parts of the scope, but application is uneven or incomplete."
+      },
+      {
+        "value": 3,
+        "label": "Defined / repeatable",
+        "description": "The control is defined and applied in a repeatable way across the assessed scope."
+      },
+      {
+        "value": 4,
+        "label": "Governed / measured",
+        "description": "The control is monitored, governed, and used in management or delivery decisions."
+      },
+      {
+        "value": 5,
+        "label": "Embedded / self-sustaining",
+        "description": "The control is broadly embedded, consistently sustained, and structurally dependable."
+      }
+    ],
+    "evidenceBasisOptions": [
+      {
+        "value": "direct",
+        "label": "Direct evidence reviewed"
+      },
+      {
+        "value": "stakeholder",
+        "label": "Stakeholder-confirmed"
+      },
+      {
+        "value": "assumed",
+        "label": "Assumed / not verified"
+      }
+    ],
+    "confidenceOptions": [
+      {
+        "value": "low",
+        "label": "Low"
+      },
+      {
+        "value": "medium",
+        "label": "Medium"
+      },
+      {
+        "value": "high",
+        "label": "High"
+      }
+    ]
+  },
+  "dimensions": [
+    {
+      "id": "quality",
+      "label": "Quality",
+      "sequenceLabel": "Stabilize",
+      "tagline": "Structural integrity before velocity",
+      "controls": [
+        {
+          "id": "architecture",
+          "label": "Architecture baseline",
+          "description": "Assess whether architecture is defined, repeatable, and governed consistently.",
+          "checkpoints": "Target architecture exists, standards are visible, review mechanisms are used, and platform sprawl is understood.",
+          "assessmentActions": "Review architecture documents, inspect standards, examine review decisions, and compare deployed patterns against the intended architecture baseline.",
+          "scoringGuidance": [
+            "1: no architecture discipline",
+            "2: isolated or inconsistent standards",
+            "3: documented and repeatable standards",
+            "4: architecture is governed and monitored",
+            "5: architecture discipline is embedded across the assessed scope"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Is there a defined target architecture for the transformation?",
+              "help": "Look for a documented target architecture, reference patterns, standards, platform principles, and a visible intended future state."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are reference architectures and standards documented?",
+              "help": "Check whether standards are explicit, visible to teams, and consistently available where delivery decisions are made."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are architectural decisions governed consistently?",
+              "help": "Review architecture review boards, exception handling, decision records, and whether architecture materially influences real delivery choices."
+            }
+          ]
+        },
+        {
+          "id": "security",
+          "label": "Security guardrails",
+          "description": "Assess whether security expectations are integrated into delivery and operationalized through visible controls.",
+          "checkpoints": "Security expectations are defined, pipeline controls exist, and vulnerabilities are monitored and acted on.",
+          "assessmentActions": "Inspect security policies, review pipeline controls, examine vulnerability dashboards, and confirm whether security reviews occur during delivery.",
+          "scoringGuidance": [
+            "1: security is reactive",
+            "2: controls exist but are partial or informal",
+            "3: security practices are defined and repeatable",
+            "4: security is actively governed and measured",
+            "5: security guardrails are embedded and self-sustaining"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are security controls integrated into delivery practices?",
+              "help": "Look for security checks in pipelines, change processes, pull-request reviews, release governance, and operational workflows."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are security guardrails defined and understood?",
+              "help": "Check for clear security expectations, defined policies, secure defaults, platform guardrails, and shared understanding across teams."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is vulnerability management active and visible?",
+              "help": "Inspect vulnerability dashboards, remediation workflows, review cadences, and whether issues are acted on rather than merely reported."
+            }
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data foundations",
+          "description": "Assess whether data ownership, governance, and quality are treated as a visible structural discipline.",
+          "checkpoints": "Ownership is assigned, governance is defined, and data quality is treated as an operational discipline rather than an afterthought.",
+          "assessmentActions": "Review data ownership and stewardship, inspect governance artifacts, and verify whether quality issues are monitored and escalated consistently.",
+          "scoringGuidance": [
+            "1: fragmented data management",
+            "2: limited governance with inconsistent ownership",
+            "3: governance is defined and repeatable",
+            "4: data quality and governance are actively managed",
+            "5: data foundations are embedded at scale"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Is data ownership clearly defined?",
+              "help": "Look for named owners, stewardship roles, accountable teams, and clarity on who governs critical data domains."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are governance responsibilities and quality expectations visible?",
+              "help": "Check whether data rules, stewardship expectations, issue handling, and quality responsibilities are documented and understood."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are data standards applied consistently?",
+              "help": "Review schema standards, data controls, quality checks, lineage practices, and whether teams follow them in operational reality."
+            }
+          ]
+        },
+        {
+          "id": "reliability",
+          "label": "Reliability engineering",
+          "description": "Assess whether service expectations, resilience, and learning from failure are engineered intentionally.",
+          "checkpoints": "Reliability targets exist, resilience is designed intentionally, and operational learning is visible after incidents.",
+          "assessmentActions": "Review SLA or SLO records, inspect resilience patterns, evaluate outage history, and verify the presence of recovery testing and post-incident review.",
+          "scoringGuidance": [
+            "1: frequent or unmanaged instability",
+            "2: reactive recovery with partial controls",
+            "3: reliability practices are defined",
+            "4: resilience is managed and monitored",
+            "5: reliability is engineered and institutionally governed"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are uptime and service expectations defined?",
+              "help": "Look for SLAs, SLOs, availability targets, service tiers, and explicit expectations about reliability."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are resilience and recovery mechanisms tested?",
+              "help": "Check failover design, recovery procedures, backup validation, resilience exercises, and proof that mechanisms are actually tested."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are failures reviewed systematically?",
+              "help": "Inspect incident reviews, root-cause follow-up, learning loops, and whether systemic improvements happen after outages or degradations."
+            }
+          ]
+        },
+        {
+          "id": "debt-risk",
+          "label": "Technical debt and risk",
+          "description": "Assess whether structural debt and technical risk are visible, reviewed, and credibly prioritized.",
+          "checkpoints": "Technical debt is not hidden, risk is visible, and structural remediation competes credibly with feature pressure.",
+          "assessmentActions": "Inspect risk registers, review backlog tagging, examine remediation plans, and confirm whether debt is discussed in governance conversations.",
+          "scoringGuidance": [
+            "1: debt and risk are unmanaged",
+            "2: acknowledged but not governed",
+            "3: tracked and reviewed periodically",
+            "4: actively governed and prioritized",
+            "5: embedded discipline with sustained structural control"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Is technical debt visible and quantified?",
+              "help": "Look for debt registers, backlog tagging, quantified exposure, architecture concerns, and visibility beyond verbal acknowledgement."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are structural risks captured and reviewed?",
+              "help": "Check for risk registers, review forums, escalation paths, and whether risks are revisited systematically."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Does delivery planning account for debt reduction?",
+              "help": "Review sprint, release, and portfolio planning to see whether remediation work competes credibly with feature pressure."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "effectiveness",
+      "label": "Effectiveness",
+      "sequenceLabel": "Align",
+      "tagline": "Relevance before optimization",
+      "controls": [
+        {
+          "id": "strategy",
+          "label": "Strategy alignment",
+          "description": "Assess whether transformation work is visibly tied to strategy and understood in business terms.",
+          "checkpoints": "Strategy is visible in the assessment scope and transformation effort is not disconnected from business priorities.",
+          "assessmentActions": "Review strategic plans, roadmaps, and executive messaging. Test whether initiatives can be traced clearly to strategic objectives.",
+          "scoringGuidance": [
+            "1: disconnected initiative activity",
+            "2: weak or inconsistent linkage to strategy",
+            "3: strategy alignment is defined",
+            "4: alignment is governed and reviewed",
+            "5: transformation is consistently strategy-led"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are initiatives explicitly tied to strategic objectives?",
+              "help": "Look for clear traceability from initiatives to strategic goals, business priorities, or target outcomes."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is strategic intent visible in the transformation scope?",
+              "help": "Check roadmaps, charters, funding logic, and executive communications for visible strategic framing."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Can leadership explain why this work matters in business terms?",
+              "help": "Test whether leaders can explain the work through business outcomes, not just delivery milestones or technical activity."
+            }
+          ]
+        },
+        {
+          "id": "capability",
+          "label": "Capability mapping",
+          "description": "Assess whether transformation scope is framed through business capabilities and visible dependencies.",
+          "checkpoints": "Capability language is used consistently and dependencies are visible enough to guide decisions.",
+          "assessmentActions": "Review capability maps, dependency views, and transformation roadmaps. Confirm whether capability strengthening is explicit and traceable.",
+          "scoringGuidance": [
+            "1: no meaningful capability mapping",
+            "2: partial and inconsistent mapping",
+            "3: capability mapping is defined",
+            "4: capabilities drive planning and dependency decisions",
+            "5: capability mapping is embedded in transformation governance"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are business capabilities mapped to the transformation scope?",
+              "help": "Look for capability maps, capability heatmaps, target-state models, and explicit links between work and capability improvement."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are dependencies visible across business and technology?",
+              "help": "Check whether cross-functional dependencies are mapped, discussed, and used to inform sequencing or decisions."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is the change framed in capability terms, not only project terms?",
+              "help": "Review planning materials and governance language to see whether capability outcomes matter beyond project delivery status."
+            }
+          ]
+        },
+        {
+          "id": "value-streams",
+          "label": "Value stream alignment",
+          "description": "Assess whether work is organized around value delivery rather than remaining trapped in silos.",
+          "checkpoints": "Value streams are explicit enough to influence ownership, decision-making, and prioritization.",
+          "assessmentActions": "Review value stream maps, product ownership structures, and operating model decisions to see whether value flow shapes delivery.",
+          "scoringGuidance": [
+            "1: siloed work with little value visibility",
+            "2: value streams discussed but weakly applied",
+            "3: value stream alignment is defined",
+            "4: value streams shape governance and delivery",
+            "5: value flow is embedded across the assessed scope"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are value streams clearly identified?",
+              "help": "Look for named value streams, product lines, customer journeys, or service flows that meaningfully structure the work."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Do teams and initiatives align to value delivery?",
+              "help": "Check whether ownership, teams, and decision-making align to value flow instead of fragmented functional boundaries."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is work organized beyond functional silos?",
+              "help": "Review governance, team design, and operating patterns for evidence that value flow shapes delivery in practice."
+            }
+          ]
+        },
+        {
+          "id": "outcomes",
+          "label": "Outcome definition",
+          "description": "Assess whether success is defined in measurable outcomes rather than only activity or delivery output.",
+          "checkpoints": "Outcomes are explicit, measurable, and used to distinguish real business progress from mere activity.",
+          "assessmentActions": "Inspect KPI sets, OKRs, or outcome statements. Verify whether outcomes are reviewed and influence decisions.",
+          "scoringGuidance": [
+            "1: activity without outcome definition",
+            "2: partial metrics with weak business meaning",
+            "3: outcomes are defined and repeatable",
+            "4: outcomes are reviewed and governed",
+            "5: outcomes consistently drive transformation decisions"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are measurable outcomes defined?",
+              "help": "Look for explicit outcome statements, target measures, KPIs, OKRs, and links to business value."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are success criteria framed beyond delivery activity?",
+              "help": "Check whether success is defined by actual impact, not just milestones, launches, or completion counts."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Do OKRs or equivalent measures exist?",
+              "help": "Review the presence, clarity, and practical use of OKRs, outcome metrics, or equivalent decision-support measures."
+            }
+          ]
+        },
+        {
+          "id": "prioritization",
+          "label": "Initiative prioritization",
+          "description": "Assess whether work is prioritized by value and structural readiness rather than politics or noise.",
+          "checkpoints": "Prioritization is not purely political or reactive and can be explained through strategic and structural logic.",
+          "assessmentActions": "Review governance forums, funding discussions, and portfolio decisions to test how trade-offs are actually made.",
+          "scoringGuidance": [
+            "1: ad hoc prioritization",
+            "2: inconsistent value-based prioritization",
+            "3: prioritization is defined and repeatable",
+            "4: prioritization is governed through evidence",
+            "5: portfolio choice is disciplined and consistently value-led"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are initiatives prioritized by value and structural readiness?",
+              "help": "Look for prioritization frameworks that consider expected value, strategic relevance, dependencies, and readiness constraints."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is prioritization visible and explainable?",
+              "help": "Check whether trade-offs are documented, governance logic is transparent, and choices can be explained credibly."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Can lower-value work be delayed in favor of more important outcomes?",
+              "help": "Review actual portfolio decisions for evidence that more important work displaces less valuable work when needed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "label": "Efficiency",
+      "sequenceLabel": "Optimize",
+      "tagline": "Lean before expansion",
+      "controls": [
+        {
+          "id": "operating-model",
+          "label": "Operating model",
+          "description": "Assess whether the operating model is clear enough to support efficient execution with manageable friction.",
+          "checkpoints": "Roles, ownership, and governance pathways are clear enough to support efficient execution.",
+          "assessmentActions": "Review operating model artifacts, team boundaries, and decision forums. Test whether ownership is explicit and workable in practice.",
+          "scoringGuidance": [
+            "1: chaotic or unclear operating model",
+            "2: early structure with frequent friction",
+            "3: operating model is defined",
+            "4: operating model is actively managed",
+            "5: operating model is embedded and scalable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Is the operating model clearly defined?",
+              "help": "Look for documented operating model principles, team boundaries, governance pathways, and role clarity."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are decision rights and responsibilities understood?",
+              "help": "Check whether ownership is explicit, decision paths are visible, and teams understand who is accountable for what."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Do handoffs introduce unnecessary friction?",
+              "help": "Review real delivery flow for blocked decisions, waiting, rework, duplicated approvals, or unclear interfaces between teams."
+            }
+          ]
+        },
+        {
+          "id": "finops",
+          "label": "FinOps discipline",
+          "description": "Assess whether cost visibility and optimization discipline are active and influence design or operational choices.",
+          "checkpoints": "Cost transparency exists and operational or platform decisions are influenced by cost insight.",
+          "assessmentActions": "Inspect cost dashboards, showback or chargeback logic, and optimization review cadence to verify whether cost discipline is real.",
+          "scoringGuidance": [
+            "1: limited cost visibility",
+            "2: cost review is reactive or partial",
+            "3: FinOps practices are defined",
+            "4: optimization is governed and ongoing",
+            "5: cost discipline is embedded in delivery behavior"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are costs baselined and visible?",
+              "help": "Look for cost dashboards, service baselines, tagging, ownership views, and accessible reporting of spend."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is optimization continuous rather than occasional?",
+              "help": "Check whether review cadence, optimization backlogs, or governance patterns make cost management ongoing."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Do teams understand the cost impact of design choices?",
+              "help": "Review whether engineering, platform, or product teams can see and discuss cost implications of architecture and delivery decisions."
+            }
+          ]
+        },
+        {
+          "id": "rationalization",
+          "label": "Application rationalization",
+          "description": "Assess whether duplication and platform sprawl are being reduced through governed structural decisions.",
+          "checkpoints": "Rationalization is more than inventory. There is visible reduction of duplication and improvement of coherence.",
+          "assessmentActions": "Review application inventories, rationalization plans, and retirement decisions. Confirm whether consolidation activity is real and governed.",
+          "scoringGuidance": [
+            "1: unmanaged sprawl",
+            "2: inventory exists but action is weak",
+            "3: rationalization is defined and progressing",
+            "4: rationalization is managed through governance",
+            "5: rationalization is embedded in structural decision-making"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are redundant applications or platforms being reduced?",
+              "help": "Look for retirement plans, decommissioning activity, consolidation programs, and evidence of actual reduction."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is platform sprawl understood and addressed?",
+              "help": "Check inventories, architecture views, ownership clarity, and whether sprawl is visible enough to manage."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are rationalization decisions linked to transformation goals?",
+              "help": "Review whether rationalization supports strategic outcomes, operating simplification, or target-state architecture."
+            }
+          ]
+        },
+        {
+          "id": "devsecops",
+          "label": "DevSecOps flow",
+          "description": "Assess whether delivery pipelines and controls create repeatable, measurable, and integrated flow.",
+          "checkpoints": "Delivery flow is visible, repeatable, and increasingly standardized across the assessment scope.",
+          "assessmentActions": "Review pipeline designs, cycle-time metrics, control gates, and exception handling to assess the integrity of delivery flow.",
+          "scoringGuidance": [
+            "1: highly manual and inconsistent flow",
+            "2: partial automation with uneven discipline",
+            "3: DevSecOps flow is defined and repeatable",
+            "4: flow is measured and governed",
+            "5: flow is embedded, standardized, and sustainable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are delivery pipelines standardized?",
+              "help": "Look for common pipeline patterns, release stages, control gates, reusable workflows, and reduced variation where appropriate."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is flow measured and improved over time?",
+              "help": "Check cycle-time metrics, lead times, bottlenecks, DORA-style measures, and evidence of flow improvement over time."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are security and control integrated into the delivery process?",
+              "help": "Review whether security checks, approval gates, and controls are embedded in flow rather than bolted on afterward."
+            }
+          ]
+        },
+        {
+          "id": "automation",
+          "label": "Automation",
+          "description": "Assess whether automation materially reduces manual friction and improves structural consistency.",
+          "checkpoints": "Automation is systematic enough to improve consistency, speed, and control rather than merely providing isolated technical convenience.",
+          "assessmentActions": "Inspect infrastructure as code repositories, orchestration patterns, and operational workflows to verify whether automation changes the way work is done.",
+          "scoringGuidance": [
+            "1: mainly manual operations",
+            "2: isolated automation with limited structural impact",
+            "3: automation is defined and repeatable",
+            "4: automation is governed and measurable",
+            "5: automation is embedded and scaled across the scope"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are repetitive tasks automated intentionally?",
+              "help": "Look for systematic automation of repetitive operational or delivery tasks rather than isolated convenience scripts."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is infrastructure provisioned through governed mechanisms?",
+              "help": "Check for infrastructure as code, policy guardrails, approved modules, and governed provisioning workflows."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Does automation reduce manual friction materially?",
+              "help": "Review whether automation changes delivery behavior, reduces waiting, errors, or inconsistency, and is visible in practice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "sequenceLabel": "Measure",
+      "tagline": "Measurement before momentum",
+      "controls": [
+        {
+          "id": "kpi",
+          "label": "KPI framework",
+          "description": "Assess whether transformation KPIs are meaningful, relevant, and active in governance conversations.",
+          "checkpoints": "KPIs are explicit, relevant, and active in leadership discussions rather than decorative reporting elements.",
+          "assessmentActions": "Review scorecards, governance packs, and reporting definitions to confirm whether KPI language is operationalized.",
+          "scoringGuidance": [
+            "1: little meaningful KPI discipline",
+            "2: partial metrics with weak governance use",
+            "3: KPI framework is defined",
+            "4: KPIs are reviewed and managed",
+            "5: KPI discipline is embedded across the organization"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are transformation KPIs clearly defined?",
+              "help": "Look for explicit KPI definitions, owners, calculation logic, and stable reporting measures."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Do the KPIs reflect structural integrity rather than only activity?",
+              "help": "Check whether metrics illuminate quality, risk, stability, outcomes, or control integrity, not just delivery volume."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are the KPIs used in governance conversations?",
+              "help": "Review scorecards, governance packs, and meeting outputs for evidence that KPIs influence oversight and decisions."
+            }
+          ]
+        },
+        {
+          "id": "service-metrics",
+          "label": "Service metrics",
+          "description": "Assess whether service expectations and service performance data are visible and actively used.",
+          "checkpoints": "Service expectations are explicit and used to guide operations, reliability, and governance decisions.",
+          "assessmentActions": "Inspect service definitions, reliability metrics, and operational reviews to verify whether service-level management is functioning consistently.",
+          "scoringGuidance": [
+            "1: little service measurement discipline",
+            "2: inconsistent service metrics",
+            "3: service metrics are defined",
+            "4: service performance is monitored and governed",
+            "5: service management is embedded and mature"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are SLA or SLO expectations defined?",
+              "help": "Look for service targets, reliability thresholds, support commitments, and explicit expectations for service behavior."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are reliability and service measures visible?",
+              "help": "Check dashboards, reports, and operational views for uptime, latency, error rates, incident metrics, or related service indicators."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Do teams respond consistently to service performance data?",
+              "help": "Review whether service data triggers action, remediation, prioritization, or governance follow-up."
+            }
+          ]
+        },
+        {
+          "id": "cadence",
+          "label": "Execution cadence",
+          "description": "Assess whether governance and review rhythm is reliable enough to create accountability and action.",
+          "checkpoints": "Governance rhythm exists and contributes to accountability rather than producing only ceremonial meetings.",
+          "assessmentActions": "Review governance calendars, meeting outputs, and decision logs to test whether cadence is active and consequential.",
+          "scoringGuidance": [
+            "1: weak or absent cadence",
+            "2: inconsistent reviews with limited follow-through",
+            "3: cadence is defined and repeatable",
+            "4: cadence is managed and action-oriented",
+            "5: cadence is embedded and structurally reliable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are governance reviews held regularly?",
+              "help": "Look for scheduled forums, established review cycles, and predictable governance touchpoints."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is there a reliable rhythm for assessing progress?",
+              "help": "Check whether review cadence is dependable, timely, and actually sustained over time."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Do reviews lead to decisions and action?",
+              "help": "Review decisions, action logs, escalations, and follow-through to verify that cadence is consequential rather than ceremonial."
+            }
+          ]
+        },
+        {
+          "id": "risk-reporting",
+          "label": "Risk and compliance reporting",
+          "description": "Assess whether risks and compliance exceptions are visible early enough to support timely corrective action.",
+          "checkpoints": "Risks and compliance exposures are surfaced in time to support corrective action rather than retrospective explanation.",
+          "assessmentActions": "Review risk registers, control reporting, and escalation practices to confirm that risk visibility is active and not purely formal.",
+          "scoringGuidance": [
+            "1: limited risk visibility",
+            "2: partial reporting with weak escalation",
+            "3: reporting is defined and repeatable",
+            "4: reporting is managed through governance",
+            "5: risk and compliance visibility is embedded institutionally"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are structural risks visible early?",
+              "help": "Look for leading indicators, early escalation patterns, and reporting that surfaces issues before they become crises."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is compliance reporting reliable and usable?",
+              "help": "Check whether compliance signals are current, understandable, decision-relevant, and not merely formal artifacts."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Can governance bodies see exceptions before they become crises?",
+              "help": "Review whether exceptions, deviations, or material risks reach decision-makers with enough time to act."
+            }
+          ]
+        },
+        {
+          "id": "transparency",
+          "label": "Operational transparency",
+          "description": "Assess whether performance signals are visible, trusted, and sufficient for informed governance.",
+          "checkpoints": "Operational signals are visible enough to support shared understanding and prompt action across leadership and delivery stakeholders.",
+          "assessmentActions": "Inspect dashboards, audience access, and reporting practices to test whether transparency is real, timely, and actionable.",
+          "scoringGuidance": [
+            "1: low visibility and weak transparency",
+            "2: fragmented reporting",
+            "3: transparency is defined and available",
+            "4: transparency is monitored and used in governance",
+            "5: visibility is embedded and broadly trusted"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are dashboards visible and trusted?",
+              "help": "Look for accessible dashboards, consistent definitions, data trust, and audience confidence in reported signals."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Can relevant stakeholders see performance clearly?",
+              "help": "Check whether leadership, delivery, and operational stakeholders all have access to relevant views when needed."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is transparency sufficient for informed governance decisions?",
+              "help": "Review whether transparency is timely, actionable, and adequate for governance trade-offs and interventions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "productivity",
+      "label": "Productivity",
+      "sequenceLabel": "Scale",
+      "tagline": "Scale without degradation",
+      "controls": [
+        {
+          "id": "platforms",
+          "label": "Platform enablement",
+          "description": "Assess whether internal platforms create structural leverage and accelerate delivery across teams.",
+          "checkpoints": "Platforms are enabling delivery across multiple teams and creating structural leverage rather than isolated technical benefit.",
+          "assessmentActions": "Review platform services, adoption patterns, and team usage. Test whether platform enablement materially changes delivery capability.",
+          "scoringGuidance": [
+            "1: little platform leverage",
+            "2: partial platform capability with limited adoption",
+            "3: platform enablement is defined and usable",
+            "4: platforms are managed and broadly adopted",
+            "5: platform enablement is embedded and structurally scalable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Do internal platforms accelerate delivery in a controlled way?",
+              "help": "Look for platform services that improve speed, consistency, or safety while remaining governed."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Are teams benefiting from common services and patterns?",
+              "help": "Check adoption of shared services, standard patterns, paved roads, and whether teams actually use them."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is platform enablement reducing duplication?",
+              "help": "Review whether platforms reduce repeated reinvention, bespoke tooling, or fragmented team-level solutions."
+            }
+          ]
+        },
+        {
+          "id": "self-service",
+          "label": "Self-service infrastructure",
+          "description": "Assess whether teams can provision approved capabilities independently within visible guardrails.",
+          "checkpoints": "Self-service exists within guardrails and expands capability without reducing governance strength.",
+          "assessmentActions": "Review provisioning models, guardrails, approval patterns, and usage pathways to confirm whether self-service is both real and governed.",
+          "scoringGuidance": [
+            "1: fully dependent manual provisioning",
+            "2: limited self-service with inconsistent control",
+            "3: self-service is defined and available",
+            "4: self-service is governed and effective",
+            "5: self-service is embedded, trusted, and scalable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Can teams provision approved capabilities independently?",
+              "help": "Look for self-service pathways, approved templates, internal portals, and reduced dependence on central bottlenecks."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is self-service governed by standards and controls?",
+              "help": "Check policy guardrails, approval boundaries, secure defaults, and whether self-service remains controlled."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Does self-service reduce dependence on central bottlenecks?",
+              "help": "Review actual workflow evidence to confirm whether self-service improves flow rather than existing only on paper."
+            }
+          ]
+        },
+        {
+          "id": "reuse",
+          "label": "Reusable components",
+          "description": "Assess whether reuse is systematic, intentional, and materially reduces delivery duplication.",
+          "checkpoints": "Reuse is visible in architecture and delivery patterns and contributes materially to scale efficiency.",
+          "assessmentActions": "Inspect component catalogs, template libraries, and reference implementations to verify whether reuse is systematic and adopted.",
+          "scoringGuidance": [
+            "1: high duplication and limited reuse",
+            "2: ad hoc reuse with weak structure",
+            "3: reusable assets are defined and repeatable",
+            "4: reuse is governed and broadly applied",
+            "5: reuse is embedded as a structural operating norm"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Are patterns, templates, and services reused consistently?",
+              "help": "Look for catalogs, templates, shared modules, reference implementations, and repeated usage across teams."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Does reuse reduce delivery time and duplication?",
+              "help": "Check whether reuse changes delivery speed, reduces repeated work, and lowers unnecessary variation."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Is reuse intentional rather than accidental?",
+              "help": "Review governance, platform design, or enablement practices to see whether reuse is designed and encouraged deliberately."
+            }
+          ]
+        },
+        {
+          "id": "enablement",
+          "label": "Delivery enablement",
+          "description": "Assess whether teams have the standards, tooling, and support needed to deliver consistently without excessive reinvention.",
+          "checkpoints": "Teams are enabled by shared tooling, guidance, and operational support rather than left to build everything independently.",
+          "assessmentActions": "Review onboarding paths, enablement assets, standards, and support models to assess whether delivery capability is being scaled systematically.",
+          "scoringGuidance": [
+            "1: weak delivery support and high reinvention",
+            "2: partial enablement with inconsistency",
+            "3: enablement is defined and available",
+            "4: enablement is managed and broadly useful",
+            "5: enablement is embedded and structurally scalable"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Do teams have the standards, tooling, and support needed to deliver well?",
+              "help": "Look for standards, tooling, onboarding aids, enablement guides, office hours, support channels, and delivery support assets."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Is enablement consistent across the assessed scope?",
+              "help": "Check whether support and guidance are broadly available, not dependent on local heroes or isolated teams."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Can teams onboard and operate without excessive reinvention?",
+              "help": "Review whether new or existing teams can become effective without building everything from scratch."
+            }
+          ]
+        },
+        {
+          "id": "scale-capacity",
+          "label": "Scalable capacity",
+          "description": "Assess whether growth in scope or throughput can occur without multiplying complexity and instability.",
+          "checkpoints": "Growth in scope or throughput does not automatically produce fragmentation, instability, or governance breakdown.",
+          "assessmentActions": "Review scaling patterns, team growth, operational stability, and governance quality under expansion to determine whether scale is sustainable.",
+          "scoringGuidance": [
+            "1: growth quickly amplifies weakness",
+            "2: scale is partial and fragile",
+            "3: scalable capacity is defined and plausible",
+            "4: scale is managed and supported by structure",
+            "5: scale is sustainable and institutionally supported"
+          ],
+          "questions": [
+            {
+              "id": "q1",
+              "axis": "existence",
+              "text": "Can delivery capacity expand without multiplying complexity?",
+              "help": "Look for scaling mechanisms, modular structures, platform leverage, or operating patterns that support growth cleanly."
+            },
+            {
+              "id": "q2",
+              "axis": "consistency",
+              "text": "Does growth preserve control, alignment, and reliability?",
+              "help": "Check whether expansion maintains governance quality, architectural coherence, and operational stability."
+            },
+            {
+              "id": "q3",
+              "axis": "operational",
+              "text": "Are scale mechanisms visible in practice rather than assumed?",
+              "help": "Review actual examples of scaling, team growth, throughput expansion, or platform adoption to test whether scale is real and sustainable."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

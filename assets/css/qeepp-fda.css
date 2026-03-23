@@ -1,0 +1,307 @@
+/* QEEPP Full Diagnostic Assessment support styles */
+
+.fda-meta-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+
+@media (max-width: 940px){
+  .fda-meta-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.fda-intro-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:14px;
+  align-items:start;
+}
+
+@media (max-width: 940px){
+  .fda-intro-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.fda-accordion{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.fda-dimension{
+  border:1px solid rgba(35,50,68,.65);
+  border-radius:var(--radius);
+  background:rgba(15,22,32,.36);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.fda-dimension summary{
+  list-style:none;
+  cursor:pointer;
+  padding:18px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  background:rgba(15,22,32,.55);
+}
+
+.fda-dimension summary::-webkit-details-marker{
+  display:none;
+}
+
+.fda-dimension-title{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.fda-dimension-title h3{
+  margin:0;
+  font-size:20px;
+  letter-spacing:-.2px;
+}
+
+.fda-dimension-title p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.fda-dimension-meta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.fda-dimension-body{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.fda-control{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.fda-control-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.fda-control-head h4{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.fda-control-head p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.fda-score{
+  min-width:86px;
+  text-align:center;
+}
+
+.fda-question{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.fda-question-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.fda-question-head label{
+  display:block;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.fda-help-toggle{
+  flex:0 0 auto;
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  border:1px solid rgba(35,50,68,.75);
+  background:rgba(11,15,20,.35);
+  color:var(--text);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.fda-help-toggle:hover,
+.fda-help-toggle:focus{
+  border-color:rgba(125,211,252,.55);
+  background:rgba(11,15,20,.5);
+}
+
+.fda-help{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(35,50,68,.55);
+  background:rgba(11,15,20,.28);
+}
+
+.fda-scale-hint{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.fda-control-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:14px;
+}
+
+@media (max-width: 940px){
+  .fda-control-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.fda-control-side{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.fda-hint-list{
+  margin:8px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.fda-hint-list li{
+  margin:6px 0;
+}
+
+.fda-result{
+  white-space:normal;
+}
+
+.fda-result strong{
+  color:var(--text);
+}
+
+.fda-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.fda-toolbar .btn{
+  white-space:nowrap;
+}
+
+.fda-sticky-actions{
+  position:sticky;
+  bottom:10px;
+  z-index:50;
+  margin-top:18px;
+}
+
+.fda-sticky-actions .panel{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  background:rgba(15,22,32,.92);
+}
+
+.fda-sticky-summary{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.fda-pill-soft{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(35,50,68,.75);
+  background:rgba(11,15,20,.35);
+  font-size:12px;
+  color:rgba(232,238,246,.88);
+}
+
+.fda-results-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+
+@media (max-width: 940px){
+  .fda-results-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.fda-dimension-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  border:1px solid rgba(255,255,255,0.10);
+}
+
+.fda-dimension-table th,
+.fda-dimension-table td{
+  padding:10px 12px;
+  text-align:left;
+  vertical-align:top;
+  border:1px solid rgba(255,255,255,0.10);
+  font-size:13px;
+}
+
+.fda-dimension-table th{
+  color:var(--muted);
+  background:rgba(255,255,255,0.03);
+  font-weight:600;
+}
+
+.fda-alert{
+  border-left:4px solid rgba(251,191,36,.7);
+  padding:12px 14px;
+  background:rgba(251,191,36,.08);
+  border-radius:14px;
+  color:rgba(232,238,246,.9);
+  font-size:13px;
+}
+
+.fda-alert + .fda-alert{
+  margin-top:10px;
+}
+
+.fda-empty{
+  color:var(--muted);
+}
+
+.fda-hidden{
+  display:none !important;
+}

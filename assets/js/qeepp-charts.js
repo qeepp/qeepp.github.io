@@ -249,7 +249,7 @@
   };
 
   function clampScore(value) {
-    const n = Math.floor(Number(value));
+    const n = Number(value);
     if (Number.isNaN(n)) return 1;
     return Math.max(1, Math.min(5, n));
   }
@@ -511,7 +511,7 @@
   ];
 
   function clampScore(value) {
-    const n = Math.floor(Number(value));
+    const n = Number(value);
     if (Number.isNaN(n)) return 0;
     return Math.max(0, Math.min(5, n));
   }
@@ -526,7 +526,8 @@
       0
     );
 
-    return Math.floor(total);
+    /*return Math.floor(total);*/
+    return total;
   }  
 
    function createMatrixMarkup(root) {
