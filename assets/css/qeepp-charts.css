@@ -42,14 +42,6 @@
   font-size: 15px;
 }
 
-.qeepp-starfish .qeepp-success {
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 13px;
-  letter-spacing: 0.2px;
-}
-
 .qeepp-starfish .qeepp-governance {
   top: 38%;
   left: 7%;
@@ -60,14 +52,11 @@
   right: 9%;
 }
 
-.qeepp-starfish .qeepp-stability1 {
-  top: 78%;
-  left: 20%;
-}
-
-.qeepp-starfish .qeepp-stability2 {
-  top: 78%;
-  right: 21%;
+.qeepp-starfish .qeepp-stability-base {
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .qeepp-starfish .qeepp-quality {
@@ -108,26 +97,16 @@
   .qeepp-starfish .qeepp-title {
     font-size: 13px;
   }
-
-  .qeepp-starfish .qeepp-success {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 720px) {
   .qeepp-starfish .qeepp-governance { left: 4%; }
   .qeepp-starfish .qeepp-ambition { right: 5%; }
-  .qeepp-starfish .qeepp-stability1 { left: 12%; }
-  .qeepp-starfish .qeepp-stability2 { right: 13%; }
   .qeepp-starfish .qeepp-effectiveness { left: 20%; }
   .qeepp-starfish .qeepp-productivity { right: 20%; }
   .qeepp-starfish .qeepp-performance { left: 9%; }
   .qeepp-starfish .qeepp-efficiency { right: 10%; }
 }
-
-
-
-
 
 .qeepp-radar {
   --qeepp-text: var(--text, #e8eef7);
@@ -222,9 +201,6 @@
     font-size: 16px;
   }
 }
-
-
-
 
 .qeepp-matrix {
   --quality: #2563EB;
@@ -406,8 +382,8 @@
 .box-lg { width: 380px; }
 .box-xl { width: 480px; }
 
-.qeepp-matrix-card .qeepp-matrix-x-label.q { color: #2563EB !important; } 
-.qeepp-matrix-card .qeepp-matrix-x-label.ef { color: #16A34A !important; } 
-.qeepp-matrix-card .qeepp-matrix-x-label.ec { color: #F59E0B !important; } 
-.qeepp-matrix-card .qeepp-matrix-x-label.pf { color: #DC2626 !important; } 
+.qeepp-matrix-card .qeepp-matrix-x-label.q { color: #2563EB !important; }
+.qeepp-matrix-card .qeepp-matrix-x-label.ef { color: #16A34A !important; }
+.qeepp-matrix-card .qeepp-matrix-x-label.ec { color: #F59E0B !important; }
+.qeepp-matrix-card .qeepp-matrix-x-label.pf { color: #DC2626 !important; }
 .qeepp-matrix-card .qeepp-matrix-x-label.pr { color: #9333EA !important; }

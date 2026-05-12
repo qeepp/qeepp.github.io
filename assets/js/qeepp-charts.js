@@ -9,7 +9,6 @@
     productivity: [79.39, 9.55]
   };
 
-  // Draw order you requested
   const STAR_ORDER = [
     "quality",
     "effectiveness",
@@ -18,7 +17,6 @@
     "productivity"
   ];
 
-  // Optional thin pentagon around current only
   const PENTAGON_ORDER = [
     "effectiveness",
     "productivity",
@@ -88,16 +86,14 @@
   function createStarfishMarkup(root, options) {
     const title = options.title === false
       ? ""
-      : '<span class="qeepp-label qeepp-title"><b>The QEEPP Starfish</b></span>';
+      : '<span class="qeepp-label qeepp-title"><b>QEEPP Starfish</b></span>';
 
     const zones = options.showZones === false
       ? ""
       : `
-        <span class="qeepp-label qeepp-success">SUCCESSFUL<br>TRANSFORMATION</span>
         <span class="qeepp-label qeepp-governance">GOVERNANCE<br>ZONE</span>
         <span class="qeepp-label qeepp-ambition">AMBITION<br>ZONE</span>
-        <span class="qeepp-label qeepp-stability1">STABILITY<br>ZONE</span>
-        <span class="qeepp-label qeepp-stability2">STABILITY<br>ZONE</span>
+        <span class="qeepp-label qeepp-stability-base">STABILITY BASE</span>
       `;
 
     const dimensionLabels = options.showDimensionLabels === false
@@ -117,14 +113,12 @@
 
       <svg viewBox="0 0 100 100" aria-label="QEEPP Starfish Diagram" preserveAspectRatio="xMidYMid meet">
         <g>
-          <!-- ideal background starfish -->
           <polygon
             id="qeeppStarfishBase"
             points="${pointsString(BASE_OUTLINE_POINTS)}"
             fill="var(--qeepp-base-fill)">
           </polygon>
 
-          <!-- target state star, behind current -->
           <polygon
             id="qeeppTargetStar"
             points=""
@@ -133,7 +127,6 @@
             display="none">
           </polygon>
 
-          <!-- optional current thin outer pentagon -->
           <polygon
             id="qeeppCurrentPentagon"
             points=""
@@ -143,7 +136,6 @@
             display="none">
           </polygon>
 
-          <!-- current state star, top/front layer -->
           <polygon
             id="qeeppCurrentStar"
             points=""
@@ -180,7 +172,6 @@
     const currentStar = root.querySelector("#qeeppCurrentStar");
     const currentPentagon = root.querySelector("#qeeppCurrentPentagon");
 
-    // target first, behind
     if (options.target) {
       const targetPoints = buildScaledTipPoints(options.target);
       targetStar.setAttribute("points", pointsStringFromOrder(targetPoints, STAR_ORDER));
@@ -193,7 +184,6 @@
       targetStar.setAttribute("display", "none");
     }
 
-    // current second, on top
     const currentPoints = buildScaledTipPoints(options.current);
     currentStar.setAttribute("points", pointsStringFromOrder(currentPoints, STAR_ORDER));
 
@@ -201,7 +191,6 @@
       currentStar.setAttribute("fill", options.currentFill);
     }
 
-    // optional current pentagon only
     if (options.showCurrentPentagon) {
       currentPentagon.setAttribute("points", pointsStringFromOrder(currentPoints, PENTAGON_ORDER));
       currentPentagon.setAttribute("display", "block");
@@ -217,11 +206,6 @@
   window.QEEPPCharts = window.QEEPPCharts || {};
   window.QEEPPCharts.starfish = renderStarfish;
 })();
-
-
-
-
-
 
 (function () {
   "use strict";
@@ -371,7 +355,6 @@
 
     clearNode(svg);
 
-    // guides
     dims.forEach((_, i) => {
       svg.appendChild(createSvg("circle", {
         cx: config.cx,
@@ -381,7 +364,6 @@
       }));
     });
 
-    // axis spokes
     const outer = outerRadius();
     for (let i = 0; i < config.axisCount; i++) {
       const angle = config.startAngle + i * (360 / config.axisCount);
@@ -396,7 +378,6 @@
       }));
     }
 
-    // target rings first, behind current
     if (targetScores) {
       dims.forEach((dim, i) => {
         const r = ringRadius(i);
@@ -427,7 +408,6 @@
       });
     }
 
-    // current rings on top
     dims.forEach((dim, i) => {
       const r = ringRadius(i);
       const percent = percentFromScore(dim.score);
@@ -463,7 +443,6 @@
       svg.appendChild(letter);
     });
 
-    // center text
     if (config.showCenterText) {
       const title = createSvg("text", {
         x: config.cx,
@@ -496,9 +475,6 @@
   window.QEEPPCharts.radar = renderRadar;
 })();
 
-
-
-
 (function () {
   "use strict";
 
@@ -525,12 +501,10 @@
       (sum, d) => sum + clampScore(period[d.key]),
       0
     );
-
-    /*return Math.floor(total);*/
     return total;
-  }  
+  }
 
-   function createMatrixMarkup(root) {
+  function createMatrixMarkup(root) {
     root.innerHTML = `<div class="qeepp-matrix"></div>`;
   }
 
@@ -781,6 +755,3 @@
   window.QEEPPCharts.matrix = renderMatrix;
   window.QEEPPCharts.trends = renderTrends;
 })();
-
-
-
