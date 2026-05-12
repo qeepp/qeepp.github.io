@@ -426,23 +426,19 @@
       font-size: 11px;
     }
 
-    .mini-success {
-      top: 7%;
+    .mini-stability-base {
+      top: 90%;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 10px;
-      letter-spacing: 0.2px;
+      white-space: nowrap;
     }
-
     .mini-governance { top: 39%; left: 4%; }
     .mini-ambition { top: 39%; right: 4%; }
-    .mini-stability1 { top: 79%; left: 13%; }
-    .mini-stability2 { top: 79%; right: 13%; }
-    .mini-quality { top: 78%; left: 50%; transform: translateX(-50%); }
-    .mini-effectiveness { top: 25%; left: 21%; }
-    .mini-efficiency { top: 58%; right: 10%; }
-    .mini-performance { top: 58%; left: 10%; }
-    .mini-productivity { top: 25%; right: 21%; }
+    .mini-quality { top: 75%; left: 50%; transform: translateX(-50%); }
+    .mini-effectiveness { top: 25%; left: 35%; transform: translateX(-50%); }
+    .mini-efficiency { top: 56%; right: 12%; transform: translateX(-50%); }
+    .mini-performance { top: 56%; left: 25%; transform: translateX(-50%); }
+    .mini-productivity { top: 25%; left: 65%; transform: translateX(-50%); }
 
     /* Radar */
     .mini-radar-wrap {
@@ -816,16 +812,14 @@
               <div class="chart-caption">Current structural integrity versus full target state.</div>
               <div class="mini-starfish-wrap">
                 <div id="miniStarfish" class="mini-starfish-diag">
-                  <span class="mini-label mini-success">SUCCESSFUL<br>TRANSFORMATION</span>
                   <span class="mini-label mini-governance">GOVERNANCE<br>ZONE</span>
                   <span class="mini-label mini-ambition">AMBITION<br>ZONE</span>
-                  <span class="mini-label mini-stability1">STABILITY<br>ZONE</span>
-                  <span class="mini-label mini-stability2">STABILITY<br>ZONE</span>
+                  <span class="mini-label mini-stability-base">STABILITY BASE</span>
                   <span class="mini-label mini-quality">Quality<br>Stabilized</span>
                   <span class="mini-label mini-effectiveness">Effectiveness<br>Aligned</span>
                   <span class="mini-label mini-efficiency">Efficiency<br>Optimized</span>
                   <span class="mini-label mini-performance">Performance<br>Measured</span>
-                  <span class="mini-label mini-productivity">Productivity<br>Scaled</span>
+                  <span class="mini-label mini-productivity">Productivity<br>Scaled</span>                  
 
                   <svg class="mini-star-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <path id="miniStarInnerPath" class="mini-star-inner-path" d=""></path>
@@ -1576,16 +1570,16 @@ function renderTrendAnalysis(savedPeriods) {
   const totalDelta = totalScore(last) - totalScore(first);
   const allFull = DIMENSIONS.every(d => Number(last[d.key]) === 5);
 
-  let maturitySignal = "Mixed movement across saved assessments.";
+  let integritySignal = "Mixed movement across saved assessments.";
 
   if (allFull) {
-    maturitySignal = "Historical progression reached full structural integrity across all five dimensions.";
+    integritySignal = "Historical progression reached full structural integrity across all five dimensions.";
   } else if (totalDelta > 0 && regressing.length === 0) {
-    maturitySignal = "Overall integrity progression is positive across the saved assessments.";
+    integritySignal = "Overall integrity progression is positive across the saved assessments.";
   } else if (totalDelta < 0) {
-    maturitySignal = "Overall integrity regression is visible across the saved assessments.";
+    integritySignal = "Overall integrity regression is visible across the saved assessments.";
   } else if (totalDelta === 0 && steady.length === DIMENSIONS.length) {
-    maturitySignal = "Historical pattern is steady but shows no structural integrity progress.";
+    integritySignal = "Historical pattern is steady but shows no structural integrity progress.";
   }
 
   let warningLine = "";
