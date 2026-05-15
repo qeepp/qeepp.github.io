@@ -881,7 +881,7 @@ section[id]{
   z-index:9999;
 }
 
-/* Pills / badges / sequences */
+/* Pills, badges, sequences */
 .pillrow{
   display:flex;
   gap:10px;
@@ -1128,7 +1128,8 @@ textarea.input{
   }
 }
 
-.footer .smallLinks strong {
+/* Footer nested text */
+.footer .smallLinks strong{
   display:block;
   margin-top:14px;
   margin-bottom:4px;
@@ -1138,37 +1139,201 @@ textarea.input{
   letter-spacing:.08em;
 }
 
-.principle-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
-  border: 1px solid rgba(255,255,255,0.12);
+/* Tables */
+.principle-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+  border:1px solid rgba(255,255,255,0.12);
 }
 
 .principle-table th,
-.principle-table td {
-  padding: 12px 14px;
+.principle-table td{
+  padding:12px 14px;
+  text-align:left;
+  vertical-align:top;
+  font-size:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  line-height:1.55;
+}
+
+.principle-table th{
+  color:var(--muted);
+  font-weight:600;
+  background:rgba(255,255,255,0.03);
+}
+
+.principle-table td strong{
+  color:var(--text);
+}
+
+@media (max-width: 920px){
+  .principles-grid,
+  .principles-cards,
+  .principles-links{
+    grid-template-columns:1fr;
+  }
+}
+
+/* QEEPP Integrity Summary */
+.integrity-summary-card{
+  margin-top:18px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 252, 0.10), transparent 32%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.integrity-kicker{
+  display:inline-block;
+  margin-bottom:8px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.integrity-title{
+  margin:0 0 10px;
+  font-size:24px;
+  line-height:1.2;
+  color:var(--text);
+}
+
+.integrity-meaning{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.65;
+}
+
+.integrity-score-grid{
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0, 1fr));
+  gap:12px;
+  margin-top:18px;
+}
+
+.integrity-score-grid div{
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255, 255, 255, 0.035);
+  min-width:0;
+}
+
+.integrity-score-grid span{
+  display:block;
+  margin-bottom:6px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
+
+.integrity-score-grid strong{
+  display:block;
+  font-size:20px;
+  line-height:1.2;
+  color:var(--text);
+}
+
+.integrity-note{
+  margin:16px 0 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
+
+@media (max-width: 980px){
+  .integrity-score-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px){
+  .integrity-score-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px){
+  .integrity-score-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* =======================================================
+   QEEPP Assessment History View Mode
+   ======================================================= */
+
+.history-button {
+  width: 100%;
   text-align: left;
-  vertical-align: top;
-  font-size: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  line-height: 1.55;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
 }
 
-.principle-table th {
+.history-button:hover {
+  border-color: rgba(125, 211, 252, 0.28);
+  background: rgba(125, 211, 252, 0.06);
+}
+
+.history-button.is-selected {
+  border-color: rgba(125, 211, 252, 0.45);
+  background: rgba(125, 211, 252, 0.10);
+}
+
+.mini-matrix.is-clickable {
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.mini-matrix.is-clickable:hover {
+  transform: translateY(-1px);
+  border-color: rgba(125, 211, 252, 0.32);
+  background: linear-gradient(180deg, rgba(125,211,252,0.07), rgba(255,255,255,0.018));
+}
+
+.mini-matrix.is-selected {
+  border-color: rgba(125, 211, 252, 0.48);
+  background: linear-gradient(180deg, rgba(125,211,252,0.10), rgba(255,255,255,0.02));
+}
+
+.dimension-card.is-history-view {
+  opacity: 0.78;
+}
+
+.dimension-card.is-history-view .checklist-grid {
+  filter: grayscale(0.35);
+}
+
+.assessment-mode-note {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  background: rgba(125, 211, 252, 0.06);
   color: var(--muted);
-  font-weight: 600;
-  background: rgba(255,255,255,0.03);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.principle-table td strong {
+.assessment-mode-note strong {
   color: var(--text);
 }
 
-@media (max-width: 920px) {
-  .principles-grid,
-  .principles-cards,
-  .principles-links {
-    grid-template-columns: 1fr;
-  }
+.assessment-mode-note.is-hidden {
+  display: none;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 13px !important;
+  line-height: 1.5;
+  margin: 6px 0 0;
 }
