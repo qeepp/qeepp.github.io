@@ -129,7 +129,7 @@
       transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
-    .assessment-link:hover {
+    .assessment-link:hover, .assessment-link.is-active {
       transform: translateY(-1px);
       border-color: rgba(125, 211, 252, 0.32);
       background: rgba(125, 211, 252, 0.06);
@@ -1221,7 +1221,7 @@
           <h3>Related QEEPP assessment pages</h3>
 
           <div class="assessment-links">
-            <a class="assessment-link" href="assessment-methodology.html">
+            <a class="assessment-link is-active" href="assessment-methodology.html">
               <strong>Assessment Methodology</strong>
               <span>Scoring logic, dependency structure, and interpretation of structural integrity.</span>
             </a>
