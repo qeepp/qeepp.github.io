@@ -100,6 +100,7 @@
       grid-template-columns: 240px 1fr;
       grid-template-areas:
         "name scores"
+        "mode mode"
         "status status";
       gap: 12px 14px;
       align-items: start;
@@ -126,6 +127,10 @@
       color: var(--muted);
       min-width: 0;
       padding-top: 4px;
+    }
+
+    #assessmentModeNote {
+      grid-area: mode;
     }
 
     .summary-status-inline strong,
@@ -367,7 +372,6 @@
       line-height: 1.5;
     }
 
-    /* Starfish */
     .mini-starfish-wrap {
       width: 100%;
       max-width: 400px;
@@ -432,15 +436,15 @@
       transform: translateX(-50%);
       white-space: nowrap;
     }
-    .mini-governance { top: 37%; left: 13%; transform: translateX(-50%);  }
-    .mini-ambition { top: 37%; right: 3%; transform: translateX(-50%);  }
+
+    .mini-governance { top: 37%; left: 13%; transform: translateX(-50%); }
+    .mini-ambition { top: 37%; right: 3%; transform: translateX(-50%); }
     .mini-quality { top: 75%; left: 50%; transform: translateX(-50%); }
     .mini-effectiveness { top: 25%; left: 35%; transform: translateX(-50%); }
     .mini-efficiency { top: 56%; right: 11%; transform: translateX(-50%); }
     .mini-performance { top: 56%; left: 24%; transform: translateX(-50%); }
     .mini-productivity { top: 25%; left: 65%; transform: translateX(-50%); }
 
-    /* Radar */
     .mini-radar-wrap {
       width: 100%;
       max-width: 454px;
@@ -512,7 +516,6 @@
       flex: 0 0 10px;
     }
 
-    /* Trends */
     .current-matrix-wrap {
       width: 100%;
       max-width: 320px;
@@ -690,6 +693,7 @@
         grid-template-areas:
           "name"
           "scores"
+          "mode"
           "status";
       }
 
@@ -782,6 +786,9 @@
             </div>
 
             <div id="summaryInlineGrid" class="summary-inline-grid"></div>
+
+            <div id="assessmentModeNote" class="assessment-mode-note is-hidden"></div>
+
             <div id="summaryStatusInline" class="summary-status-inline"></div>
           </div>
         </section>
@@ -796,11 +803,12 @@
             <section class="panel">
               <h3>Saved assessment history</h3>
               <div class="history-note">
-                Save the completed scorecard to build recurring QEEPP Trends history.
+                Save the completed scorecard to build recurring QEEPP Trends history. Click a saved assessment to view its historical state.
               </div>
 
               <div class="action-row">
                 <button id="saveAssessmentBtn" class="mini-btn" type="button" disabled>Save assessment point</button>
+                <button id="startFromDisplayedBtn" class="mini-btn" type="button" disabled>Start new from displayed state</button>
                 <button id="clearHistoryBtn" class="mini-btn" type="button">Clear saved history</button>
               </div>
 
@@ -819,7 +827,7 @@
                   <span class="mini-label mini-effectiveness">Effectiveness<br>Aligned</span>
                   <span class="mini-label mini-efficiency">Efficiency<br>Optimized</span>
                   <span class="mini-label mini-performance">Performance<br>Measured</span>
-                  <span class="mini-label mini-productivity">Productivity<br>Scaled</span>                  
+                  <span class="mini-label mini-productivity">Productivity<br>Scaled</span>
 
                   <svg class="mini-star-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <path id="miniStarInnerPath" class="mini-star-inner-path" d=""></path>
@@ -853,7 +861,7 @@
 
             <section class="panel chart-card">
               <h3>QEEPP Trends</h3>
-              <div class="chart-caption">Historical trends chart for the latest four assessments ordered chronologically</div>
+              <div class="chart-caption">Historical trends chart for the latest four assessments ordered chronologically. Click a saved trend matrix to view that state.</div>
               <div id="historicalTrendBoard" class="trend-board"></div>
               <div class="mini-legend">
                 <div class="mini-legend-item"><span class="mini-swatch" style="background:var(--quality)"></span>Quality</div>
@@ -866,40 +874,48 @@
             </section>
           </div>
         </section>
+
+        <section class="section" id="qeepp-integrity-summary-section">
+          <div class="panel">
+              <h3>Transformation integrity sumamry</h3>
+              <div class="section-subtitle">Interprets the displayed QEEPP score pattern as the current structural condition</div>
+            <div id="qeeppIntegritySummary"></div>
+          </div>
+        </section>
       </div>
     </div>
   </main>
 
   <div id="site-modals"></div>
-  <!-- build:footer -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footergrid">
-      <div>
-        <div class="brand" style="margin-bottom:8px;">
-          <span class="logo" aria-hidden="true"></span>
-          <span>QEEPP</span>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footergrid">
+        <div>
+          <div class="brand" style="margin-bottom:8px;">
+            <span class="logo" aria-hidden="true"></span>
+            <span>QEEPP</span>
+          </div>
+
+          <div style="color:var(--muted); max-width:70ch;">
+            Quality &nbsp;•&nbsp; Effectiveness &nbsp;•&nbsp; Efficiency &nbsp;•&nbsp; Performance &nbsp;•&nbsp; Productivity
+          </div>
+
+          <div style="margin-top:15px; color:rgba(232,238,246,.7); font-family:var(--mono); font-size:12px;">
+            Digital transformation needs structure before scale.
+            <div class="footer-divider"></div>
+            QEEPP | Transformation, Disciplined.
+          </div>
         </div>
 
-        <div style="color:var(--muted); max-width:70ch;">
-          Quality &nbsp;•&nbsp; Effectiveness &nbsp;•&nbsp; Efficiency &nbsp;•&nbsp; Performance &nbsp;•&nbsp; Productivity
-        </div>
-
-        <div style="margin-top:15px; color:rgba(232,238,246,.7); font-family:var(--mono); font-size:12px;">
-          Digital transformation needs structure before scale.
-          <div class="footer-divider"></div>
-          QEEPP | Transformation, Disciplined.
-        </div>
-      </div>
-
-      <div class="smallLinks">
-        <a href="index.html">Framework</a>
-        <a href="assessment-methodology.html">Assessment</a>
-        <a href="resources.html">Resources</a>
-        <a href="faq.html">FAQ</a>
-        <a href="qeepp-about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="license.html">License</a>
+        <div class="smallLinks">
+          <a href="index.html">Framework</a>
+          <a href="assessment-methodology.html">Assessment</a>
+          <a href="resources.html">Resources</a>
+          <a href="faq.html">FAQ</a>
+          <a href="qeepp-about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="license.html">License</a>
 
           <div style="margin-top:12px; color:var(--muted); font-size:12px;">
             © 2026 Rado Dimitrov. QEEPP framework content licensed under CC BY 4.0.
@@ -909,11 +925,12 @@
               QEEPP name, logos, and model names are brand identifiers.
             </p>
           </div>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
-<!-- /build:footer -->
+  </footer>
+
+  <script src="assets/js/qeepp-integrity.js"></script>
   <script defer src="assets/js/qeepp.js"></script>
 
   <div id="qeeppContextMenu" class="qeepp-context-menu">
@@ -1018,12 +1035,15 @@
       }
     ];
 
-    const STORAGE_KEY = "qeeppAssessmentHistoryV9";
+    const STORAGE_KEY = "qeeppAssessmentHistoryV10";
 
     const state = {
       dimensionItems: {},
       manualScores: {},
-      dimensionScores: {}
+      dimensionScores: {},
+      mode: "edit",
+      selectedHistoryIndex: null,
+      selectedHistoryName: ""
     };
 
     function loadHistory() {
@@ -1128,6 +1148,12 @@
       const hasBlanks = values.some(value => value === "" || value === null || value === undefined);
 
       if (hasBlanks) {
+        if (state.mode === "edit-from-history") {
+          scoreSelect.disabled = false;
+          manualNote.innerHTML = "Editable copy started from a saved score pattern. Checklist evidence was not saved, so controls remain blank until completed.";
+          return;
+        }
+
         state.manualScores[dimensionKey] = null;
         state.dimensionScores[dimensionKey] = "";
         scoreSelect.value = "";
@@ -1158,6 +1184,8 @@
     }
 
     function recalcAllScores() {
+      if (state.mode === "history-view") return;
+
       syncStateFromDom();
       DIMENSIONS.forEach(dimension => updateDimensionState(dimension.key));
     }
@@ -1183,18 +1211,80 @@
     }
 
     function isAssessmentComplete() {
-      return DIMENSIONS.every(d => state.dimensionScores[d.key] !== "" && state.dimensionScores[d.key] !== null && state.dimensionScores[d.key] !== undefined);
+      return DIMENSIONS.every(d => {
+        const value = state.dimensionScores[d.key];
+        return value !== "" && value !== null && value !== undefined && !Number.isNaN(Number(value));
+      });
     }
 
     function hasAnyCurrentValues() {
       return DIMENSIONS.some(d => {
-        const v = state.dimensionScores[d.key];
-        return v !== "" && v !== null && v !== undefined && Number(v) > 0;
+        const value = state.dimensionScores[d.key];
+        return value !== "" && value !== null && value !== undefined && Number(value) > 0;
       });
     }
 
     function updateSaveButtonState() {
-      document.getElementById("saveAssessmentBtn").disabled = !isAssessmentComplete();
+      const saveBtn = document.getElementById("saveAssessmentBtn");
+      const startBtn = document.getElementById("startFromDisplayedBtn");
+
+      if (state.mode === "history-view") {
+        saveBtn.disabled = true;
+        startBtn.disabled = false;
+        return;
+      }
+
+      saveBtn.disabled = !isAssessmentComplete();
+      startBtn.disabled = true;
+    }
+
+    function renderAssessmentModeNote() {
+      const note = document.getElementById("assessmentModeNote");
+
+      if (!note) return;
+
+      if (state.mode === "history-view") {
+        note.classList.remove("is-hidden");
+        note.innerHTML = `
+          <strong>Viewing saved assessment.</strong>
+          Checklist-level controls are disabled because this saved point stores dimension scores only.
+          Enter a new assessment name or click “Start new from displayed state” to create an editable copy.
+        `;
+        return;
+      }
+
+      if (state.mode === "edit-from-history") {
+        note.classList.remove("is-hidden");
+        note.innerHTML = `
+          <strong>Editable copy started.</strong>
+          This assessment began from the displayed historical score pattern. Add or update the name before saving it as a new assessment point.
+        `;
+        return;
+      }
+
+      note.classList.add("is-hidden");
+      note.innerHTML = "";
+    }
+
+    function setAssessmentMode(mode) {
+      state.mode = mode;
+
+      const isHistoryView = mode === "history-view";
+
+      document.querySelectorAll(".check-select").forEach(select => {
+        select.disabled = isHistoryView;
+      });
+
+      document.querySelectorAll(".score-select").forEach(select => {
+        select.disabled = isHistoryView;
+      });
+
+      document.querySelectorAll(".dimension-card").forEach(card => {
+        card.classList.toggle("is-history-view", isHistoryView);
+      });
+
+      renderAssessmentModeNote();
+      updateSaveButtonState();
     }
 
     function renderSummary() {
@@ -1228,7 +1318,7 @@
       const status = readinessLabel(state.dimensionScores);
 
       summaryStatusInline.innerHTML = `
-        <strong>${status}</strong>
+        <strong>${state.mode === "history-view" ? "Historical state selected" : status}</strong>
         <span>Lowest dimension: ${lowestDimension.title} (${state.dimensionScores[lowestDimension.key]})</span>
         <span>${dependencyMessage(state.dimensionScores)}</span>
       `;
@@ -1238,7 +1328,7 @@
 
     function getCurrentPeriod() {
       return {
-        label: "Current Assessment",
+        label: state.mode === "history-view" ? "Selected Saved Assessment" : "Current Assessment",
         quality: state.dimensionScores.quality === "" ? 0 : Number(state.dimensionScores.quality),
         effectiveness: state.dimensionScores.effectiveness === "" ? 0 : Number(state.dimensionScores.effectiveness),
         efficiency: state.dimensionScores.efficiency === "" ? 0 : Number(state.dimensionScores.efficiency),
@@ -1247,13 +1337,147 @@
       };
     }
 
+    function getCurrentIntegrityScores() {
+      return {
+        quality: Number(state.dimensionScores.quality),
+        effectiveness: Number(state.dimensionScores.effectiveness),
+        efficiency: Number(state.dimensionScores.efficiency),
+        performance: Number(state.dimensionScores.performance),
+        productivity: Number(state.dimensionScores.productivity)
+      };
+    }
+
+    function renderIntegritySummary() {
+      const container = document.getElementById("qeeppIntegritySummary");
+
+      if (!container) return;
+
+      if (!isAssessmentComplete()) {
+        if (window.QEEPPIntegrity && typeof QEEPPIntegrity.renderPending === "function") {
+          QEEPPIntegrity.renderPending("qeeppIntegritySummary");
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="integrity-summary-card">
+            <div class="integrity-kicker">QEEPP Integrity Level</div>
+            <h3 class="integrity-title">Assessment in progress</h3>
+            <p class="integrity-meaning">
+              Complete all five dimension scores to calculate the QEEPP Integrity Level.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      if (!window.QEEPPIntegrity || typeof QEEPPIntegrity.renderSummary !== "function") {
+        container.innerHTML = `
+          <div class="integrity-summary-card">
+            <div class="integrity-kicker">QEEPP Integrity Level</div>
+            <h3 class="integrity-title">Integrity calculator unavailable</h3>
+            <p class="integrity-meaning">
+              The QEEPP Integrity script is not loaded or was loaded after the assessment page script.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      QEEPPIntegrity.renderSummary("qeeppIntegritySummary", getCurrentIntegrityScores());
+    }
+
+    function viewSavedAssessment(historyIndex) {
+      const history = loadHistory();
+      const item = history[historyIndex];
+
+      if (!item || !item.scores) return;
+
+      state.selectedHistoryIndex = historyIndex;
+      state.selectedHistoryName = item.name || item.shortLabel || item.label || "Saved Assessment";
+
+      DIMENSIONS.forEach(dimension => {
+        const value = Number(item.scores[dimension.key]);
+
+        state.dimensionScores[dimension.key] = value;
+        state.manualScores[dimension.key] = null;
+        state.dimensionItems[dimension.key] = dimension.items.map(() => "");
+
+        const scoreSelect = document.querySelector(`[data-score-dimension="${dimension.key}"]`);
+        const manualNote = document.getElementById(`${dimension.key}ManualNote`);
+
+        if (scoreSelect) {
+          scoreSelect.value = String(value);
+          scoreSelect.disabled = true;
+        }
+
+        if (manualNote) {
+          manualNote.innerHTML = "Viewing saved assessment score. Checklist-level controls are unavailable because this saved point stores dimension scores only.";
+        }
+      });
+
+      document.querySelectorAll(".check-select").forEach(select => {
+        select.value = "";
+        select.disabled = true;
+      });
+
+      document.getElementById("assessmentName").value = state.selectedHistoryName;
+
+      setAssessmentMode("history-view");
+      renderSummary();
+      renderCharts();
+      renderIntegritySummary();
+      renderHistory();
+    }
+
+    function startNewEditableAssessmentFromDisplayedScores(optionalName) {
+      const nameInput = document.getElementById("assessmentName");
+      const providedName = (optionalName || nameInput.value || "").trim();
+
+      state.selectedHistoryIndex = null;
+      state.selectedHistoryName = "";
+
+      DIMENSIONS.forEach(dimension => {
+        const scoreValue = state.dimensionScores[dimension.key];
+
+        state.dimensionItems[dimension.key] = dimension.items.map(() => "");
+        state.manualScores[dimension.key] = Number(scoreValue);
+
+        const scoreSelect = document.querySelector(`[data-score-dimension="${dimension.key}"]`);
+        const manualNote = document.getElementById(`${dimension.key}ManualNote`);
+
+        if (scoreSelect) {
+          scoreSelect.value = String(scoreValue);
+          scoreSelect.disabled = false;
+        }
+
+        if (manualNote) {
+          manualNote.innerHTML = "Editable copy started from the displayed score pattern. Checklist controls remain blank because detailed checklist evidence was not saved.";
+        }
+      });
+
+      document.querySelectorAll(".check-select").forEach(select => {
+        select.value = "";
+        select.disabled = false;
+      });
+
+      if (providedName) {
+        nameInput.value = providedName;
+      }
+
+      setAssessmentMode("edit-from-history");
+      renderSummary();
+      renderCharts();
+      renderIntegritySummary();
+      renderHistory();
+    }
+
     function updateMiniStarfish() {
       const note = document.getElementById("miniStarfishNote");
       const path = document.getElementById("miniStarInnerPath");
 
       if (!hasAnyCurrentValues()) {
         path.setAttribute("d", "");
-        //note.innerHTML = "<strong>Select checklist scores</strong> to generate the current-state starfish.";
+        note.textContent = "";
         return;
       }
 
@@ -1380,58 +1604,43 @@
         }));
       }
 
-      if (hasAnyCurrentValues()) {
-        dims.forEach((dim, i) => {
-          const r = ringRadius(i);
-          const percent = Math.max(0, Math.min(5, Number(dim.score))) * 20;
+      dims.forEach((dim, i) => {
+        const r = ringRadius(i);
+        const percent = Math.max(0, Math.min(5, Number(dim.score))) * 20;
 
-          if (percent > 0) {
-            const endAngle = config.startAngle + (360 * percent / 100);
+        if (hasAnyCurrentValues() && percent > 0) {
+          const endAngle = config.startAngle + (360 * percent / 100);
 
-            if (percent === 100) {
-              svg.appendChild(createSvg("circle", {
-                cx: config.cx,
-                cy: config.cy,
-                r,
-                stroke: dim.color,
-                "stroke-width": config.ringThickness,
-                class: "radar-ring"
-              }));
-            } else {
-              svg.appendChild(createSvg("path", {
-                d: arcPath(config.cx, config.cy, r, config.startAngle, endAngle),
-                stroke: dim.color,
-                "stroke-width": config.ringThickness,
-                class: "radar-ring"
-              }));
-            }
+          if (percent === 100) {
+            svg.appendChild(createSvg("circle", {
+              cx: config.cx,
+              cy: config.cy,
+              r,
+              stroke: dim.color,
+              "stroke-width": config.ringThickness,
+              class: "radar-ring"
+            }));
+          } else {
+            svg.appendChild(createSvg("path", {
+              d: arcPath(config.cx, config.cy, r, config.startAngle, endAngle),
+              stroke: dim.color,
+              "stroke-width": config.ringThickness,
+              class: "radar-ring"
+            }));
           }
+        }
 
-          const letterPos = polar(config.cx, config.cy, r, config.startAngle);
-          const letter = createSvg("text", {
-            x: letterPos.x,
-            y: letterPos.y,
-            class: "radar-letter"
-          });
-          letter.textContent = dim.letter;
-          svg.appendChild(letter);
+        const letterPos = polar(config.cx, config.cy, r, config.startAngle);
+        const letter = createSvg("text", {
+          x: letterPos.x,
+          y: letterPos.y,
+          class: "radar-letter"
         });
+        letter.textContent = dim.letter;
+        svg.appendChild(letter);
+      });
 
-        note.textContent = "";
-      } else {
-        dims.forEach((dim, i) => {
-          const r = ringRadius(i);
-          const letterPos = polar(config.cx, config.cy, r, config.startAngle);
-          const letter = createSvg("text", {
-            x: letterPos.x,
-            y: letterPos.y,
-            class: "radar-letter"
-          });
-          letter.textContent = dim.letter;
-          svg.appendChild(letter);
-        });
-        //note.innerHTML = "<strong>Select checklist scores</strong> to render the current radar state.";
-      }
+      note.textContent = "";
 
       const title = createSvg("text", {
         x: config.cx,
@@ -1471,7 +1680,7 @@
       return DIMENSIONS.reduce((sum, d) => sum + Number(period[d.key] || 0), 0);
     }
 
-    function renderMatrix(period, placeholder = false, isCurrentLarge = false) {
+    function renderMatrix(period, placeholder = false, isCurrentLarge = false, historyIndex = null) {
       let gridHtml = "";
 
       for (let row = 5; row >= 1; row--) {
@@ -1491,8 +1700,16 @@
         gridHtml += `<div class="mini-x-label ${d.xClass}" title="${d.title}">${d.short}</div>`;
       });
 
+      const isSelected =
+        historyIndex !== null &&
+        state.mode === "history-view" &&
+        state.selectedHistoryIndex === historyIndex;
+
       return `
-        <article class="mini-matrix ${placeholder ? "placeholder" : ""} ${isCurrentLarge ? "current-large" : ""}">
+        <article
+          class="mini-matrix ${placeholder ? "placeholder" : ""} ${isCurrentLarge ? "current-large" : ""} ${historyIndex !== null ? "is-clickable" : ""} ${isSelected ? "is-selected" : ""}"
+          ${historyIndex !== null ? `data-history-index="${historyIndex}" role="button" tabindex="0"` : ""}
+        >
           <div class="mini-matrix-title">
             ${period.label ? `<h4>${period.label}</h4>` : ""}
             <div class="mini-matrix-score">${totalScore(period)}/25</div>
@@ -1514,14 +1731,15 @@
       const board = document.getElementById("historicalTrendBoard");
       const history = loadHistory();
 
-      const periods = history.slice(-4).map((item, index) => ({
-        label: item.name || item.shortLabel || `A${index + 1}`,
+      const periods = history.slice(-4).map((item) => ({
+        label: item.name || item.shortLabel || item.label,
         quality: item.scores.quality,
         effectiveness: item.scores.effectiveness,
         efficiency: item.scores.efficiency,
         performance: item.scores.performance,
         productivity: item.scores.productivity,
-        placeholder: false
+        placeholder: false,
+        historyIndex: history.indexOf(item)
       }));
 
       while (periods.length < 4) {
@@ -1532,95 +1750,109 @@
           efficiency: 0,
           performance: 0,
           productivity: 0,
-          placeholder: true
+          placeholder: true,
+          historyIndex: null
         });
       }
 
-      board.innerHTML = periods.map(p => renderMatrix(p, !!p.placeholder, false)).join("");
+      board.innerHTML = periods.map(p => renderMatrix(p, !!p.placeholder, false, p.historyIndex)).join("");
+
+      board.querySelectorAll("[data-history-index]").forEach(card => {
+        card.addEventListener("click", () => {
+          viewSavedAssessment(Number(card.dataset.historyIndex));
+        });
+
+        card.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            viewSavedAssessment(Number(card.dataset.historyIndex));
+          }
+        });
+      });
+
       renderTrendAnalysis(periods.filter(p => !p.placeholder));
     }
 
+    function renderTrendAnalysis(savedPeriods) {
+      const el = document.getElementById("trendAnalysis");
 
-function renderTrendAnalysis(savedPeriods) {
-  const el = document.getElementById("trendAnalysis");
+      if (!savedPeriods.length) {
+        el.innerHTML = `
+          <div class="trend-analysis-grid">
+            <div><strong>Historical analysis:</strong> No saved assessments yet.</div>
+            <div>Save completed scorecards to enable progression and regression interpretation.</div>
+          </div>
+        `;
+        return;
+      }
 
-  if (!savedPeriods.length) {
-    el.innerHTML = `
-      <div class="trend-analysis-grid">
-        <div><strong>Historical analysis:</strong> No saved assessments yet.</div>
-        <div>Save completed scorecards to enable progression and regression interpretation.</div>
-      </div>
-    `;
-    return;
-  }
+      const first = savedPeriods[0];
+      const last = savedPeriods[savedPeriods.length - 1];
 
-  const first = savedPeriods[0];
-  const last = savedPeriods[savedPeriods.length - 1];
+      const deltaByDimension = DIMENSIONS.map(d => ({
+        title: d.title,
+        delta: Number(last[d.key]) - Number(first[d.key]),
+        current: Number(last[d.key])
+      }));
 
-  const deltaByDimension = DIMENSIONS.map(d => ({
-    title: d.title,
-    delta: Number(last[d.key]) - Number(first[d.key]),
-    current: Number(last[d.key])
-  }));
+      const improving = deltaByDimension.filter(d => d.delta > 0).map(d => d.title);
+      const regressing = deltaByDimension.filter(d => d.delta < 0).map(d => d.title);
+      const steady = deltaByDimension.filter(d => d.delta === 0).map(d => d.title);
 
-  const improving = deltaByDimension.filter(d => d.delta > 0).map(d => d.title);
-  const regressing = deltaByDimension.filter(d => d.delta < 0).map(d => d.title);
-  const steady = deltaByDimension.filter(d => d.delta === 0).map(d => d.title);
+      const totalDelta = totalScore(last) - totalScore(first);
+      const allFull = DIMENSIONS.every(d => Number(last[d.key]) === 5);
 
-  const totalDelta = totalScore(last) - totalScore(first);
-  const allFull = DIMENSIONS.every(d => Number(last[d.key]) === 5);
+      let integritySignal = "Mixed movement across saved assessments.";
 
-  let integritySignal = "Mixed movement across saved assessments.";
+      if (allFull) {
+        integritySignal = "Historical progression reached full structural integrity across all five dimensions.";
+      } else if (totalDelta > 0 && regressing.length === 0) {
+        integritySignal = "Overall integrity progression is positive across the saved assessments.";
+      } else if (totalDelta < 0) {
+        integritySignal = "Overall integrity regression is visible across the saved assessments.";
+      } else if (totalDelta === 0 && steady.length === DIMENSIONS.length) {
+        integritySignal = "Historical pattern is steady but shows no structural integrity progress.";
+      }
 
-  if (allFull) {
-    integritySignal = "Historical progression reached full structural integrity across all five dimensions.";
-  } else if (totalDelta > 0 && regressing.length === 0) {
-    integritySignal = "Overall integrity progression is positive across the saved assessments.";
-  } else if (totalDelta < 0) {
-    integritySignal = "Overall integrity regression is visible across the saved assessments.";
-  } else if (totalDelta === 0 && steady.length === DIMENSIONS.length) {
-    integritySignal = "Historical pattern is steady but shows no structural integrity progress.";
-  }
+      let warningLine = "";
+      let suggestionLine = "";
 
-  let warningLine = "";
-  let suggestionLine = "";
+      if (allFull) {
+        warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
+        suggestionLine = "The latest saved assessment indicates full structural integrity across all five dimensions.";
+      } else {
+        const lowestCurrent = deltaByDimension.reduce((a, b) => a.current <= b.current ? a : b);
 
-  if (allFull) {
-    warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
-    suggestionLine = "The latest saved assessment indicates full structural integrity across all five dimensions.";
-  } else {
-    const lowestCurrent = deltaByDimension.reduce((a, b) => a.current <= b.current ? a : b);
+        warningLine = `Primary structural warning remains ${lowestCurrent.title}, currently at ${lowestCurrent.current}/5.`;
 
-    warningLine = `Primary structural warning remains ${lowestCurrent.title}, currently at ${lowestCurrent.current}/5.`;
-    if (lowestCurrent.current < 3) {
-      warningLine += " This dimension is constraining structural readiness and should be prioritized.";
-    } else if (regressing.length === 0 && totalDelta >= 0) {
-      warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
+        if (lowestCurrent.current < 3) {
+          warningLine += " This dimension is constraining structural readiness and should be prioritized.";
+        } else if (regressing.length === 0 && totalDelta >= 0) {
+          warningLine = "No immediate structural warning is indicated in the latest saved assessment.";
+        }
+
+        if (lowestCurrent.current < 3) {
+          suggestionLine = `Suggested focus: stabilize and raise ${lowestCurrent.title} before pushing scale in higher-order dimensions.`;
+        } else if (regressing.length) {
+          suggestionLine = `Suggested focus: investigate regression in ${regressing.join(", ")} and reinforce structural controls before further expansion.`;
+        } else if (steady.length === DIMENSIONS.length) {
+          suggestionLine = "Suggested focus: re-establish forward maturity movement while preserving structural balance.";
+        } else {
+          suggestionLine = "Suggested focus: continue balanced progression while protecting lower-dimension integrity.";
+        }
+      }
+
+      el.innerHTML = `
+        <div class="trend-analysis-grid">
+          <div><strong>Historical analysis:</strong> ${integritySignal}</div>
+          <div><strong>Improving:</strong> ${improving.length ? improving.join(", ") : "None"}</div>
+          <div><strong>Regressing:</strong> ${regressing.length ? regressing.join(", ") : "None"}</div>
+          <div><strong>Steady:</strong> ${steady.length ? steady.join(", ") : "None"}</div>
+          <div><strong>Warning signs:</strong> ${warningLine}</div>
+          <div><strong>Suggested action:</strong> ${suggestionLine}</div>
+        </div>
+      `;
     }
-
-    if (lowestCurrent.current < 3) {
-      suggestionLine = `Suggested focus: stabilize and raise ${lowestCurrent.title} before pushing scale in higher-order dimensions.`;
-    } else if (regressing.length) {
-      suggestionLine = `Suggested focus: investigate regression in ${regressing.join(", ")} and reinforce structural controls before further expansion.`;
-    } else if (steady.length === DIMENSIONS.length) {
-      suggestionLine = "Suggested focus: re-establish forward maturity movement while preserving structural balance.";
-    } else {
-      suggestionLine = "Suggested focus: continue balanced progression while protecting lower-dimension integrity.";
-    }
-  }
-
-  el.innerHTML = `
-    <div class="trend-analysis-grid">
-      <div><strong>Historical analysis:</strong> ${integritySignal}</div>
-      <div><strong>Improving:</strong> ${improving.length ? improving.join(", ") : "None"}</div>
-      <div><strong>Regressing:</strong> ${regressing.length ? regressing.join(", ") : "None"}</div>
-      <div><strong>Steady:</strong> ${steady.length ? steady.join(", ") : "None"}</div>
-      <div><strong>Warning signs:</strong> ${warningLine}</div>
-      <div><strong>Suggested action:</strong> ${suggestionLine}</div>
-    </div>
-  `;
-}
-
 
     function renderCharts() {
       updateMiniStarfish();
@@ -1643,17 +1875,33 @@ function renderTrendAnalysis(savedPeriods) {
         return;
       }
 
-      historyList.innerHTML = history.slice().reverse().map((item) => `
-        <div class="history-item">
-          <strong>${item.label}</strong>
-          ${item.name ? `${item.name}<br>` : ""}
-          Quality ${item.scores.quality} ·
-          Effectiveness ${item.scores.effectiveness} ·
-          Efficiency ${item.scores.efficiency} ·
-          Performance ${item.scores.performance} ·
-          Productivity ${item.scores.productivity}
-        </div>
-      `).join("");
+      historyList.innerHTML = history.slice().reverse().map((item, reverseIndex) => {
+        const historyIndex = history.length - 1 - reverseIndex;
+        const selected = state.mode === "history-view" && state.selectedHistoryIndex === historyIndex;
+
+        return `
+          <button
+            class="history-item history-button ${selected ? "is-selected" : ""}"
+            type="button"
+            data-history-index="${historyIndex}"
+            aria-label="View saved assessment ${item.name || item.shortLabel || item.label}"
+          >
+            <strong>${item.label}</strong>
+            ${item.name ? `${item.name}<br>` : ""}
+            Quality ${item.scores.quality} ·
+            Effectiveness ${item.scores.effectiveness} ·
+            Efficiency ${item.scores.efficiency} ·
+            Performance ${item.scores.performance} ·
+            Productivity ${item.scores.productivity}
+          </button>
+        `;
+      }).join("");
+
+      historyList.querySelectorAll("[data-history-index]").forEach(button => {
+        button.addEventListener("click", () => {
+          viewSavedAssessment(Number(button.dataset.historyIndex));
+        });
+      });
     }
 
     function applyValueToDimension(dimensionKey, value) {
@@ -1672,6 +1920,8 @@ function renderTrendAnalysis(savedPeriods) {
       recalcAllScores();
       renderSummary();
       renderCharts();
+      renderIntegritySummary();
+      renderAssessmentModeNote();
     }
 
     function getNextAssessmentSequence(history) {
@@ -1698,6 +1948,8 @@ function renderTrendAnalysis(savedPeriods) {
     function attachEvents() {
       document.querySelectorAll(".check-select").forEach(select => {
         select.addEventListener("change", (event) => {
+          if (state.mode === "history-view") return;
+
           const value = event.target.value;
 
           if (event.ctrlKey && event.altKey && value !== "") {
@@ -1712,16 +1964,44 @@ function renderTrendAnalysis(savedPeriods) {
 
       document.querySelectorAll(".score-select").forEach(select => {
         select.addEventListener("change", (event) => {
+          if (state.mode === "history-view") return;
+
           const dimensionKey = event.target.dataset.scoreDimension;
+
           if (event.target.disabled || event.target.value === "") return;
+
           state.manualScores[dimensionKey] = Number(event.target.value);
+          state.dimensionScores[dimensionKey] = Number(event.target.value);
           updateDimensionState(dimensionKey);
           renderSummary();
           renderCharts();
+          renderIntegritySummary();
         });
       });
 
+      document.getElementById("assessmentName").addEventListener("input", () => {
+        if (state.mode !== "history-view") return;
+
+        const name = document.getElementById("assessmentName").value.trim();
+
+        if (!name || name === state.selectedHistoryName) return;
+
+        startNewEditableAssessmentFromDisplayedScores(name);
+      });
+
+      document.getElementById("startFromDisplayedBtn").addEventListener("click", () => {
+        if (state.mode !== "history-view") return;
+
+        const currentName = document.getElementById("assessmentName").value.trim();
+        const baseName = currentName && currentName !== state.selectedHistoryName
+          ? currentName
+          : `${state.selectedHistoryName || "Assessment"} Copy`;
+
+        startNewEditableAssessmentFromDisplayedScores(baseName);
+      });
+
       document.getElementById("saveAssessmentBtn").addEventListener("click", () => {
+        if (state.mode === "history-view") return;
         if (!isAssessmentComplete()) return;
 
         const history = loadHistory();
@@ -1746,39 +2026,61 @@ function renderTrendAnalysis(savedPeriods) {
 
         saveHistory(history);
         document.getElementById("assessmentName").value = savedName;
+
+        state.mode = "edit";
+        state.selectedHistoryIndex = null;
+        state.selectedHistoryName = "";
+
         renderHistory();
         renderCharts();
+        renderSummary();
+        renderIntegritySummary();
+        renderAssessmentModeNote();
       });
 
       document.getElementById("clearHistoryBtn").addEventListener("click", () => {
         localStorage.removeItem(STORAGE_KEY);
+
+        state.selectedHistoryIndex = null;
+        state.selectedHistoryName = "";
+
+        if (state.mode === "history-view") {
+          state.mode = "edit";
+        }
+
         renderHistory();
         renderCharts();
+        renderSummary();
+        renderIntegritySummary();
+        renderAssessmentModeNote();
+        updateSaveButtonState();
       });
 
       const menu = document.getElementById("qeeppContextMenu");
       let activeSelect = null;
 
-      document.addEventListener("contextmenu", (e) => {
-        const select = e.target.closest(".check-select");
+      document.addEventListener("contextmenu", (event) => {
+        if (state.mode === "history-view") return;
+
+        const select = event.target.closest(".check-select");
         if (!select) return;
 
-        e.preventDefault();
+        event.preventDefault();
         activeSelect = select;
 
-        menu.style.left = `${e.pageX}px`;
-        menu.style.top = `${e.pageY}px`;
+        menu.style.left = `${event.pageX}px`;
+        menu.style.top = `${event.pageY}px`;
         menu.style.display = "block";
       });
 
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest("#qeeppContextMenu")) {
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest("#qeeppContextMenu")) {
           menu.style.display = "none";
         }
       });
 
       menu.querySelectorAll("div").forEach(item => {
-        item.addEventListener("click", function() {
+        item.addEventListener("click", function () {
           if (!activeSelect) return;
 
           const action = this.dataset.action;
@@ -1810,6 +2112,9 @@ function renderTrendAnalysis(savedPeriods) {
       renderSummary();
       renderHistory();
       renderCharts();
+      renderIntegritySummary();
+      renderAssessmentModeNote();
+      updateSaveButtonState();
     }
 
     init();
